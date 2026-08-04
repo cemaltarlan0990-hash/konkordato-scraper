@@ -12,7 +12,7 @@ headers = {
     "Origin": "https://www.ilan.gov.tr"
 }
 
-list_url = "https://www.ilan.gov.tr/api/services/app/Ad/AdsByFilter"
+list_url = "https://www.ilan.gov.tr/api/api/services/app/Ad/AdsByFilter"
 payload = {
     "keys": {"txv": [49]},
     "skipCount": 0,
