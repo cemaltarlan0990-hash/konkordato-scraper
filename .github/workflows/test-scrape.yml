@@ -3,6 +3,9 @@ name: Test Scrape
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test-request:
     runs-on: ubuntu-latest
@@ -20,3 +23,11 @@ jobs:
 
       - name: Run test script
         run: python test_scrape.py
+
+      - name: Commit and push ilanlar.json
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add ilanlar.json
+          git diff --staged --quiet || git commit -m "Günlük ilan verisi güncellendi"
+          git push
