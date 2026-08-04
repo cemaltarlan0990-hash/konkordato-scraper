@@ -1,17 +1,22 @@
-import requests
+name: Test Scrape
 
-url = "https://www.ilan.gov.tr/ilan/kategori/49/konkordato-ve-muhlet-iik-288inci-md-"
+on:
+  workflow_dispatch:
 
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                  "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-}
+jobs:
+  test-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-try:
-    response = requests.get(url, headers=headers, timeout=15)
-    print("Status code:", response.status_code)
-    print("Content length:", len(response.text))
-    print("İlk 500 karakter:")
-    print(response.text[:500])
-except Exception as e:
-    print("HATA:", e)
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run test script
+        run: python test_scrape.py
