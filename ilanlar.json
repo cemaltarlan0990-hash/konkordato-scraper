@@ -66,6 +66,17 @@
       "mahkeme": "İSTANBUL 3. ASLİYE TİCARET MAHKEMESİ",
       "esasNo": "2026/1644 Esas",
       "link": "https://www.ilan.gov.tr/ilan/2186041/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ilanen-tebligi"
+    },
+    {
+      "ilanId": "TEST001",
+      "vergiNo": "1761016486",
+      "firma": "TEST FİRMA A.Ş.",
+      "durum": "Test Kaydı",
+      "tarih": "2026-08-04",
+      "sehir": "İSTANBUL",
+      "mahkeme": "TEST MAHKEMESİ",
+      "esasNo": "2026/TEST",
+      "link": "https://www.ilan.gov.tr/test"
     }
   ]
 }
