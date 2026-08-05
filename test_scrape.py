@@ -63,13 +63,15 @@ def gecerli_vkn(vkn):
 # ---------------------------------------------------------------
 # UNVAN CIKARIMI  (VKN'den bagimsiz)
 # ---------------------------------------------------------------
+HARF = 'A-Za-zÇĞİÖŞÜçğıöşüÂÎÛâîû'
+
 SIRKET_EKLERI = (
     r'ANONİM\s+ŞİRKETİ|'
     r'LİMİTED\s+ŞİRKETİ|'
     r'KOLLEKTİF\s+ŞİRKETİ|'
     r'KOMANDİT\s+ŞİRKETİ|'
-    r'LTD\.?\s?ŞTİ\.?|'
-    r'A\.?\s?Ş\.?'
+    r'(?<![' + HARF + r'])LTD\.?\s?ŞTİ\.?|'
+    r'(?<![' + HARF + r'])A\.?\s?Ş\.?(?![' + HARF + r'])'
 )
 
 UNVAN_DESENI = re.compile(
@@ -81,6 +83,7 @@ UNVAN_DESENI = re.compile(
 SINIR = re.compile(
     r'.*(?:MAHKEMESİ|MAHKEMESI|HAKİMLİĞİ|BAŞKANLIĞI|MÜDÜRLÜĞÜ|'
     r'DAVACI|DAVALI|BORÇLU|BORCLU|DAVACISI|KOMİSER|KOMISER|'
+    r'VERGİ\s*NO(?:LU|SU)?|VERGI\s*NO(?:LU|SU)?|'
     r'İ\s*L\s*A\s*N|ESAS|SAYILI|DOSYA(?:SI)?|'
     r'ALEYHİNE|TARAFINDAN|HAKKINDA|ÜNVANLI|UNVANLI|:)\s*',
     re.IGNORECASE
@@ -88,6 +91,13 @@ SINIR = re.compile(
 
 # Sinirdan sonra kalabilecek kucuk harfli baglayici kelimeler
 ARTIK = re.compile(r'^(?:[a-zçğıöşü]+\s+)+')
+
+# Unvan mutlaka bir sirket eki ile bitmeli
+BITIS_KONTROL = re.compile(
+    r'(?:ANONİM\s+ŞİRKETİ|LİMİTED\s+ŞİRKETİ|KOLLEKTİF\s+ŞİRKETİ|'
+    r'KOMANDİT\s+ŞİRKETİ|LTD\.?\s?ŞTİ\.?|A\.?\s?Ş\.?)$',
+    re.IGNORECASE
+)
 
 # Unvan sanilabilecek ama sirket olmayan ifadeler
 YASAK_KELIMELER = [
@@ -102,6 +112,10 @@ def unvan_temizle(unvan):
     u = re.sub(r'\s+', ' ', unvan).strip()
     if ',' in u:
         u = u.split(',')[-1].strip()
+
+    # Kucuk harfli " ve " bir ayiractir; buyuk harfli "VE" unvanin parcasidir
+    if ' ve ' in u:
+        u = u.split(' ve ')[-1].strip()
 
     m = SINIR.match(u)
     if m:
@@ -138,7 +152,9 @@ def unvanlari_bul(text):
     bulunanlar = []
     for eslesme in UNVAN_DESENI.findall(text):
         unvan = unvan_temizle(eslesme)
-        if len(unvan) < 8:
+        if len(unvan) < 10:
+            continue
+        if not BITIS_KONTROL.search(unvan):
             continue
         if any(y in unvan.upper() for y in YASAK_KELIMELER):
             continue
