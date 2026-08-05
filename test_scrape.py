@@ -9,7 +9,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # ---------------------------------------------------------------
 # AYARLAR
 # ---------------------------------------------------------------
-GERIYE_DONUK_GUN = 1      # bugün + kaç gün geriye bakılsın
+GERIYE_DONUK_GUN = 0      # bugün + kaç gün geriye bakılsın
 SAYFA_BOYUTU = 20
 MAKS_SAYFA = 30
 
