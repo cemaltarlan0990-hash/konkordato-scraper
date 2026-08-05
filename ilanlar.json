@@ -77,6 +77,17 @@
       "mahkeme": "T.C. İSTANBUL 18. ASLİYE TİCARET MAHKEMESİ",
       "esasNo": "2026/773 Esas",
       "link": "https://www.ilan.gov.tr/ilan/2187820/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari"
+    },
+    {
+      "ilanId": "TEST001",
+      "vergiNo": "7330742371",
+      "firma": "PRIMUS COATING TURKEY KAPLAMA SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+      "durum": "Test Kaydı",
+      "tarih": "2026-08-04",
+      "sehir": "İSTANBUL",
+      "mahkeme": "TEST MAHKEMESİ",
+      "esasNo": "2026/TEST",
+      "link": "https://www.ilan.gov.tr/test"
     }
   ]
 }
