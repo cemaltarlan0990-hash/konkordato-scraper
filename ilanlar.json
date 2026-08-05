@@ -88,6 +88,28 @@
       "mahkeme": "TEST MAHKEMESİ",
       "esasNo": "2026/TEST",
       "link": "https://www.ilan.gov.tr/test"
+    },
+    {
+    "ilanId": "TEST002",
+    "vergiNo": "8720626696",
+    "firma": "TURTAŞ İTHALAT VE İHRACAT ANONİM ŞİRKETİ",
+    "durum": "Test Kaydı",
+    "tarih": "2026-08-05",
+    "sehir": "İSTANBUL",
+    "mahkeme": "TEST MAHKEMESİ",
+    "esasNo": "2026/TEST",
+    "link": "https://www.ilan.gov.tr/test"
+    },
+    {
+    "ilanId": "TEST002",
+    "vergiNo": "8671053596",
+    "firma": "ÖRNEK SANAYİ VE TİCARET A.Ş.",
+    "durum": "Test Kaydı",
+    "tarih": "2026-08-05",
+    "sehir": "İSTANBUL",
+    "mahkeme": "TEST MAHKEMESİ",
+    "esasNo": "2026/TEST",
+    "link": "https://www.ilan.gov.tr/test"
     }
   ]
 }
