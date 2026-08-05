@@ -9,7 +9,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # ---------------------------------------------------------------
 # AYARLAR
 # ---------------------------------------------------------------
-GERIYE_DONUK_GUN = 0      # bugün + kaç gün geriye bakılsın
+GERIYE_DONUK_GUN = 0      # 0 = sadece bugun, 1 = bugun + dun
 SAYFA_BOYUTU = 20
 MAKS_SAYFA = 30
 
@@ -27,7 +27,7 @@ DETAY_URL = "https://www.ilan.gov.tr/api/api/services/app/AdDetail/GetAdDetail"
 
 
 # ---------------------------------------------------------------
-# YARDIMCI FONKSIYONLAR
+# METIN TEMIZLEME
 # ---------------------------------------------------------------
 def clean_html(content):
     text = re.sub(r'&nbsp;', ' ', content or '')
@@ -36,13 +36,11 @@ def clean_html(content):
     return text
 
 
+# ---------------------------------------------------------------
+# VKN DOGRULAMA
+# ---------------------------------------------------------------
 def gecerli_vkn(vkn):
-    """Turkiye vergi kimlik numarasi dogrulama algoritmasi.
-
-    10 haneli her sayiyi kabul etmek yerine kontrol hanesini dogrular.
-    Boylece telefon numaralari, dosya numaralari ve diger 10 haneli
-    sayilar buyuk olcude elenir.
-    """
+    """Turkiye vergi kimlik numarasi kontrol hanesi dogrulamasi."""
     if not vkn or len(vkn) != 10 or not vkn.isdigit():
         return False
     if vkn == "0000000000":
@@ -62,26 +60,109 @@ def gecerli_vkn(vkn):
     return (10 - (toplam % 10)) % 10 == d[9]
 
 
+# ---------------------------------------------------------------
+# UNVAN CIKARIMI  (VKN'den bagimsiz)
+# ---------------------------------------------------------------
+SIRKET_EKLERI = (
+    r'ANONİM\s+ŞİRKETİ|'
+    r'LİMİTED\s+ŞİRKETİ|'
+    r'KOLLEKTİF\s+ŞİRKETİ|'
+    r'KOMANDİT\s+ŞİRKETİ|'
+    r'LTD\.?\s?ŞTİ\.?|'
+    r'A\.?\s?Ş\.?'
+)
+
+UNVAN_DESENI = re.compile(
+    r'([A-ZÇĞİÖŞÜ][A-ZÇĞİÖŞÜa-zçğıöşü0-9\.\,&/\-\s]{2,90}?'
+    r'(?:' + SIRKET_EKLERI + r'))'
+)
+
+# Unvanin baslamasi gereken yeri belirler: bu kaliplardan SONRASI unvandir.
+SINIR = re.compile(
+    r'.*(?:MAHKEMESİ|MAHKEMESI|HAKİMLİĞİ|BAŞKANLIĞI|MÜDÜRLÜĞÜ|'
+    r'DAVACI|DAVALI|BORÇLU|BORCLU|DAVACISI|KOMİSER|KOMISER|'
+    r'İ\s*L\s*A\s*N|ESAS|SAYILI|DOSYA(?:SI)?|'
+    r'ALEYHİNE|TARAFINDAN|HAKKINDA|ÜNVANLI|UNVANLI|:)\s*',
+    re.IGNORECASE
+)
+
+# Sinirdan sonra kalabilecek kucuk harfli baglayici kelimeler
+ARTIK = re.compile(r'^(?:[a-zçğıöşü]+\s+)+')
+
+# Unvan sanilabilecek ama sirket olmayan ifadeler
+YASAK_KELIMELER = [
+    "MAHKEMES", "KOMİSER", "KOMISER", "İCRA", "ICRA",
+    "TİCARET SİCİL", "TICARET SICIL", "BAROSU", "NOTER", "MÜDÜRLÜĞÜ",
+    "BAKANLIĞI", "BAŞKANLIĞI", "AVUKAT", "HAKİMLİĞİ"
+]
+
+
+def unvan_temizle(unvan):
+    """Unvanin basindaki mahkeme adi, taraf sifati gibi ekleri temizler."""
+    u = re.sub(r'\s+', ' ', unvan).strip()
+    if ',' in u:
+        u = u.split(',')[-1].strip()
+
+    m = SINIR.match(u)
+    if m:
+        u = u[m.end():]
+
+    m2 = ARTIK.match(u)
+    if m2:
+        u = u[m2.end():]
+
+    u = re.sub(r'^(VE|İLE|ILE|SN|SAYIN|NO|NOLU)\s+', '', u, flags=re.IGNORECASE)
+    return u.strip(' .,-:;')
+
+
+def unvan_uzun_bicim(unvan):
+    """Kisaltmalari acik yazima cevirir: A.Ş. -> ANONİM ŞİRKETİ"""
+    u = unvan.upper()
+    u = re.sub(r'\bLTD\.?\s?ŞTİ\.?', 'LİMİTED ŞİRKETİ', u)
+    u = re.sub(r'\bA\.?\s?Ş\.?(?=\s|$)', 'ANONİM ŞİRKETİ', u)
+    return re.sub(r'\s+', ' ', u).strip()
+
+
+def unvan_kisa_bicim(unvan):
+    """Acik yazimi kisaltmaya cevirir: ANONİM ŞİRKETİ -> A.Ş."""
+    u = unvan.upper()
+    u = re.sub(r'\bLİMİTED\s+ŞİRKETİ\b', 'LTD. ŞTİ.', u)
+    u = re.sub(r'\bANONİM\s+ŞİRKETİ\b', 'A.Ş.', u)
+    u = re.sub(r'\bA\.?\s?Ş\.?(?=\s|$)', 'A.Ş.', u)
+    u = re.sub(r'\bLTD\.?\s?ŞTİ\.?(?=\s|$)', 'LTD. ŞTİ.', u)
+    return re.sub(r'\s+', ' ', u).strip()
+
+
+def unvanlari_bul(text):
+    """Metindeki tum sirket unvanlarini yakalar (VKN'den bagimsiz)."""
+    bulunanlar = []
+    for eslesme in UNVAN_DESENI.findall(text):
+        unvan = unvan_temizle(eslesme)
+        if len(unvan) < 8:
+            continue
+        if any(y in unvan.upper() for y in YASAK_KELIMELER):
+            continue
+        if unvan not in bulunanlar:
+            bulunanlar.append(unvan)
+    return bulunanlar
+
+
 def firma_vkn_ciftleri(text):
-    """Sirket unvani ile hemen ardindan gelen VKN'yi birlikte yakalar."""
+    """Unvan ile hemen ardindan gelen VKN'yi birlikte yakalar."""
     pattern = (
         r'([A-ZÇĞİÖŞÜ][A-ZÇĞİÖŞÜ0-9\.\,&/\- ]{2,80}?'
-        r'(?:A\.Ş\.?|ANONİM ŞİRKETİ|LTD\.?\s?ŞTİ\.?|LİMİTED ŞİRKETİ|'
-        r'KOLLEKTİF ŞİRKETİ|KOMANDİT ŞİRKETİ|TAAHHÜT LİMİTED ŞİRKETİ))'
+        r'(?:' + SIRKET_EKLERI + r'))'
         r'\s*\(?\s*(?:V\.?K\.?N\.?|Vergi\s*Kimlik\s*No|Vergi\s*No)\s*[:.]?\s*(\d{10})\s*\)?'
     )
     ciftler = {}
     for unvan, vkn in re.findall(pattern, text):
         if not gecerli_vkn(vkn):
             continue
-        if ',' in unvan:
-            unvan = unvan.split(',')[-1]
-        ciftler.setdefault(vkn, unvan.strip())
+        ciftler.setdefault(vkn, unvan_temizle(unvan))
     return ciftler
 
 
 def serbest_vkn_bul(text, kullanilanlar):
-    """Unvanla eslesmeyen, metinde tek basina duran gecerli VKN'ler."""
     adaylar = re.findall(r'\b\d{10}\b', text)
     sonuc = []
     for vkn in adaylar:
@@ -92,10 +173,17 @@ def serbest_vkn_bul(text, kullanilanlar):
     return sonuc
 
 
+# ---------------------------------------------------------------
+# DIGER ALANLAR
+# ---------------------------------------------------------------
 def mahkeme_bul(text):
+    temiz = re.sub(r'^\s*İ\s*L\s*A\s*N\s+', '', text)
     pattern = r'([A-ZÇĞİÖŞÜ0-9][A-ZÇĞİÖŞÜ0-9\.\s]{3,60}?(?:MAHKEMESİ(?:\s+HAKİMLİĞİ)?))'
-    m = re.search(pattern, text)
-    return m.group(1).strip() if m else None
+    m = re.search(pattern, temiz)
+    if not m:
+        return None
+    sonuc = re.sub(r'^(İ\s*L\s*A\s*N\s+)', '', m.group(1)).strip()
+    return re.sub(r'\s+', ' ', sonuc)
 
 
 def durum_bul(baslik):
@@ -123,7 +211,7 @@ def esas_no_bul(filtreler):
 
 
 # ---------------------------------------------------------------
-# 1. ADIM - ILAN LISTESINI TOPLA
+# 1. ADIM - ILAN LISTESI
 # ---------------------------------------------------------------
 bugun = datetime.now(timezone.utc).date()
 tarih_penceresi = {
@@ -156,8 +244,6 @@ for sayfa in range(MAKS_SAYFA):
             secilen_ilanlar[ilan["id"]] = ilan
             sayfada_uygun += 1
 
-    # Sayfanin TAMAMI pencere disindaysa artik eskiye gidiyoruz demektir.
-    # Tek bir eski ilan gorunce durmuyoruz - eski kodun veri kaybettigi nokta buydu.
     if sayfada_uygun == 0:
         break
 
@@ -167,7 +253,7 @@ print(f"Pencereye giren benzersiz ilan sayisi: {len(secilen_ilanlar)}")
 
 
 # ---------------------------------------------------------------
-# 2. ADIM - DETAYLARI CEK, VKN CIKAR
+# 2. ADIM - DETAYLAR
 # ---------------------------------------------------------------
 ilan_kayitlari = []
 hatali_ilanlar = []
@@ -187,14 +273,19 @@ for ilan_id, ilan in secilen_ilanlar.items():
 
     ciftler = firma_vkn_ciftleri(temiz)
     serbest = serbest_vkn_bul(temiz, set(ciftler.keys()))
-
     vergi_nolari = list(ciftler.keys()) + serbest
-    firmalar = [{"vergiNo": v, "firma": u} for v, u in ciftler.items()]
+
+    # VKN'den bagimsiz unvan taramasi
+    tum_unvanlar = unvanlari_bul(temiz)
+    for u in ciftler.values():
+        if u and u not in tum_unvanlar:
+            tum_unvanlar.append(u)
 
     ilan_kayitlari.append({
         "ilanId": str(ilan_id),
         "vergiNolari": vergi_nolari,
-        "firmalar": firmalar,
+        "unvanlar": tum_unvanlar,
+        "firmalar": [{"vergiNo": v, "firma": u} for v, u in ciftler.items()],
         "durum": durum_bul(ilan.get("title")),
         "tarih": (ilan.get("publishStartDate") or "")[:10],
         "sehir": ilan.get("addressCityName"),
@@ -206,13 +297,21 @@ for ilan_id, ilan in secilen_ilanlar.items():
 
 
 # ---------------------------------------------------------------
-# 3. ADIM - DUZ VKN LISTESI (Power Automate bunu kullaniyor)
+# 3. ADIM - DUZ LISTELER (Power Automate bunlari kullaniyor)
 # ---------------------------------------------------------------
-tum_vkn = []
-for kayit in ilan_kayitlari:
-    for v in kayit["vergiNolari"]:
-        if v not in tum_vkn:
-            tum_vkn.append(v)
+def tekille(liste):
+    sonuc = []
+    for x in liste:
+        if x and x not in sonuc:
+            sonuc.append(x)
+    return sonuc
+
+
+tum_vkn = tekille([v for k in ilan_kayitlari for v in k["vergiNolari"]])
+ham_unvanlar = tekille([u for k in ilan_kayitlari for u in k["unvanlar"]])
+
+unvanlar_uzun = tekille([unvan_uzun_bicim(u) for u in ham_unvanlar])
+unvanlar_kisa = tekille([unvan_kisa_bicim(u) for u in ham_unvanlar])
 
 vkn_bulunamayan = [k["ilanId"] for k in ilan_kayitlari if k["vknBulunamadi"]]
 
@@ -221,6 +320,8 @@ cikti = {
     "tarihAraligi": sorted(tarih_penceresi),
     "ilanSayisi": len(ilan_kayitlari),
     "vergiNolari": tum_vkn,
+    "unvanlarUzun": unvanlar_uzun,
+    "unvanlarKisa": unvanlar_kisa,
     "vknBulunamayanIlanlar": vkn_bulunamayan,
     "hataliIlanlar": hatali_ilanlar,
     "ilanlar": ilan_kayitlari
@@ -229,8 +330,10 @@ cikti = {
 with open("ilanlar.json", "w", encoding="utf-8") as f:
     json.dump(cikti, f, ensure_ascii=False, indent=2)
 
-print(f"{len(ilan_kayitlari)} ilan, {len(tum_vkn)} benzersiz VKN yazildi.")
+print(f"{len(ilan_kayitlari)} ilan yazildi.")
+print(f"  Benzersiz VKN   : {len(tum_vkn)}")
+print(f"  Benzersiz unvan : {len(ham_unvanlar)}")
 if vkn_bulunamayan:
-    print(f"VKN cikarilamayan ilanlar: {vkn_bulunamayan}")
+    print(f"  VKN cikarilamayan ilanlar: {vkn_bulunamayan}")
 if hatali_ilanlar:
-    print(f"Detayi alinamayan ilanlar: {hatali_ilanlar}")
+    print(f"  Detayi alinamayan ilanlar: {hatali_ilanlar}")
