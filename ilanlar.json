@@ -1,5 +1,5 @@
 {
-  "olusturmaTarihi": "2026-08-05T13:07:08.710463+00:00",
+  "olusturmaTarihi": "2026-08-05T13:24:41.751892+00:00",
   "tarihAraligi": [
     "2026-08-05"
   ],
@@ -11,6 +11,50 @@
     "8680673790",
     "3231267065",
     "7280810873"
+  ],
+  "unvanlarUzun": [
+    "ŞİRAZE UNLU MAMULLERİ SANAYİ TİCARET LİMİTED ŞİRKETİ",
+    "NDEN / BAŞ",
+    "BATU ATIK PLASTİK GERİ DÖNÜŞÜM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "KORKMAZ FİLO KİRALAMA TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "PARLEMENT KOZMETİK TIBBİ CİHAZ MEDİKAL ALIM SATIM İHRACAT İTHALAT SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "TURANÇ ALIŞVERİŞ HİZMETLERİ İNŞAAT AKARYAKIT TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "VERGI NOLU TURANÇ ALIŞVERİŞ HİZMETLERİ İNŞAAT AKARYAKIT TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "HAKAN KARAKAŞ",
+    "TARİHİNDEN İTİBAREN 15 GÜN GEÇTİKTEN SONRA ULAŞ",
+    "CANER KARA TARIM TOHUMCULUK SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "DÜZCE ORMAN ÜRÜNLERI ANONİM ŞİRKETİ",
+    "DÜZCE ORMAN ÜRÜNLERİ ANONİM ŞİRKETİ",
+    "MERT HAŞ",
+    "İM ŞİNİK VE PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+    "PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+    "LOJİSTİK TURİZM İNŞAAT OTOMOTİV SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "HOTELYA OTEL MOBİLYALARI TASARIM ÜRETİM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "HOTELYA KOLTUK MOBİLYA SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "BAHADIR AHŞAP SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "NORMSAN BASINÇLI DÖKÜM SANAYİ ANONİM ŞİRKETİ"
+  ],
+  "unvanlarKisa": [
+    "ŞİRAZE UNLU MAMULLERİ SANAYİ TİCARET LTD. ŞTİ.",
+    "NDEN / BAŞ",
+    "BATU ATIK PLASTİK GERİ DÖNÜŞÜM SANAYİ VE TİCARET LTD. ŞTİ.",
+    "KORKMAZ FİLO KİRALAMA TURİZM SANAYİ VE TİCARET LTD. ŞTİ.",
+    "PARLEMENT KOZMETİK TIBBİ CİHAZ MEDİKAL ALIM SATIM İHRACAT İTHALAT SANAYİ VE TİCARET LTD. ŞTİ.",
+    "TURANÇ ALIŞVERİŞ HİZMETLERİ İNŞAAT AKARYAKIT TURİZM SANAYİ VE TİCARET LTD. ŞTİ.",
+    "VERGI NOLU TURANÇ ALIŞVERİŞ HİZMETLERİ İNŞAAT AKARYAKIT TURİZM SANAYİ VE TİCARET LTD. ŞTİ.",
+    "HAKAN KARAKAŞ",
+    "TARİHİNDEN İTİBAREN 15 GÜN GEÇTİKTEN SONRA ULAŞ",
+    "CANER KARA TARIM TOHUMCULUK SANAYİ VE TİCARET LTD. ŞTİ.",
+    "DÜZCE ORMAN ÜRÜNLERI A.Ş.",
+    "DÜZCE ORMAN ÜRÜNLERİ A.Ş.",
+    "MERT HAŞ",
+    "İM ŞİNİK VE PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET A.Ş.",
+    "PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET A.Ş.",
+    "LOJİSTİK TURİZM İNŞAAT OTOMOTİV SANAYİ VE TİCARET LTD. ŞTİ.",
+    "HOTELYA OTEL MOBİLYALARI TASARIM ÜRETİM SANAYİ VE TİCARET LTD. ŞTİ.",
+    "HOTELYA KOLTUK MOBİLYA SANAYİ VE TİCARET LTD. ŞTİ.",
+    "BAHADIR AHŞAP SANAYİ VE TİCARET LTD. ŞTİ.",
+    "NORMSAN BASINÇLI DÖKÜM SANAYİ A.Ş."
   ],
   "vknBulunamayanIlanlar": [
     "2188928",
@@ -29,11 +73,14 @@
         "8131404556",
         "2780380951"
       ],
+      "unvanlar": [
+        "ŞİRAZE UNLU MAMULLERİ SANAYİ TİCARET LİMİTED ŞİRKETİ"
+      ],
       "firmalar": [],
       "durum": "Alacaklı Bildirimi",
       "tarih": "2026-08-05",
       "sehir": "ZONGULDAK",
-      "mahkeme": "İ L A N T.C. ZONGULDAK 3. ASLİYE HUKUK MAHKEMESİ",
+      "mahkeme": "T.C. ZONGULDAK 3. ASLİYE HUKUK MAHKEMESİ",
       "esasNo": null,
       "link": "https://www.ilan.gov.tr/ilan/2189092/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinda-alacaklilara-davet-ilani",
       "vknBulunamadi": false
@@ -41,11 +88,15 @@
     {
       "ilanId": "2188928",
       "vergiNolari": [],
+      "unvanlar": [
+        "NDEN / BAŞ",
+        "BATU ATIK PLASTİK GERİ DÖNÜŞÜM SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
+      ],
       "firmalar": [],
       "durum": "Konkordato talebine ilişkin mahkeme kararı",
       "tarih": "2026-08-05",
       "sehir": "KÜTAHYA",
-      "mahkeme": "İ L A N T.C. SİMAV 2. ASLİYE HUKUK MAHKEMESİ",
+      "mahkeme": "T.C. SİMAV 2. ASLİYE HUKUK MAHKEMESİ",
       "esasNo": null,
       "link": "https://www.ilan.gov.tr/ilan/2188928/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-talebine-iliskin-mahkeme-karari",
       "vknBulunamadi": true
@@ -53,11 +104,12 @@
     {
       "ilanId": "2188892",
       "vergiNolari": [],
+      "unvanlar": [],
       "firmalar": [],
       "durum": "Kesin Mühlet",
       "tarih": "2026-08-05",
       "sehir": "DÜZCE",
-      "mahkeme": "İ L A N T.C. DÜZCE 6. ASLİYE HUKUK MAHKEMESİ",
+      "mahkeme": "T.C. DÜZCE 6. ASLİYE HUKUK MAHKEMESİ",
       "esasNo": null,
       "link": "https://www.ilan.gov.tr/ilan/2188892/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-kesin-muhlet-kararinin-ilanen-tebligi",
       "vknBulunamadi": true
@@ -68,11 +120,18 @@
         "7220827162",
         "8680673790"
       ],
+      "unvanlar": [
+        "KORKMAZ FİLO KİRALAMA TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+        "PARLEMENT KOZMETİK TIBBİ CİHAZ MEDİKAL ALIM SATIM İHRACAT İTHALAT SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+        "TURANÇ ALIŞVERİŞ HİZMETLERİ İNŞAAT AKARYAKIT TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+        "Vergi nolu TURANÇ ALIŞVERİŞ HİZMETLERİ İNŞAAT AKARYAKIT TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+        "Hakan KARAKAŞ"
+      ],
       "firmalar": [],
       "durum": "Duruşma",
       "tarih": "2026-08-05",
       "sehir": "TEKİRDAĞ",
-      "mahkeme": "İ L A N T.C. TEKİRDAĞ ASLİYE TİCARET MAHKEMESİ",
+      "mahkeme": "T.C. TEKİRDAĞ ASLİYE TİCARET MAHKEMESİ",
       "esasNo": "2026/698 Esas",
       "link": "https://www.ilan.gov.tr/ilan/2188824/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhlet-karari-ve-durusma-gunu-tebligi",
       "vknBulunamadi": false
@@ -80,6 +139,9 @@
     {
       "ilanId": "2188735",
       "vergiNolari": [],
+      "unvanlar": [
+        "TARİHİNDEN İTİBAREN 15 GÜN GEÇTİKTEN SONRA ULAŞ"
+      ],
       "firmalar": [],
       "durum": "Alacaklı Bildirimi",
       "tarih": "2026-08-05",
@@ -92,6 +154,9 @@
     {
       "ilanId": "2188667",
       "vergiNolari": [],
+      "unvanlar": [
+        "CANER KARA TARIM TOHUMCULUK SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
+      ],
       "firmalar": [],
       "durum": "Geçici Mühlet",
       "tarih": "2026-08-05",
@@ -106,11 +171,15 @@
       "vergiNolari": [
         "3231267065"
       ],
+      "unvanlar": [
+        "Düzce Orman Ürünleri A.Ş",
+        "DÜZCE ORMAN ÜRÜNLERİ ANONİM ŞİRKETİ"
+      ],
       "firmalar": [],
       "durum": "Konkordato talebinin reddine ilişkin tebligat",
       "tarih": "2026-08-05",
       "sehir": "DÜZCE",
-      "mahkeme": "İ L A N T.C. DÜZCE 4. ASLİYE HUKUK MAHKEMESİ",
+      "mahkeme": "T.C. DÜZCE 4. ASLİYE HUKUK MAHKEMESİ",
       "esasNo": null,
       "link": "https://www.ilan.gov.tr/ilan/2187925/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-talebinin-reddine-iliskin-tebligat",
       "vknBulunamadi": false
@@ -119,6 +188,12 @@
       "ilanId": "2187820",
       "vergiNolari": [
         "7280810873"
+      ],
+      "unvanlar": [
+        "NDEN / BAŞ",
+        "MERT HAŞ",
+        "İM ŞİNİK ve PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+        "PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET ANONİM ŞİRKETİ"
       ],
       "firmalar": [
         {
@@ -137,6 +212,10 @@
     {
       "ilanId": "2187722",
       "vergiNolari": [],
+      "unvanlar": [
+        "NDEN / BAŞ",
+        "LOJİSTİK TURİZM İNŞAAT OTOMOTİV SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
+      ],
       "firmalar": [],
       "durum": "Duruşma",
       "tarih": "2026-08-05",
@@ -149,6 +228,11 @@
     {
       "ilanId": "2187469",
       "vergiNolari": [],
+      "unvanlar": [
+        "HOTELYA OTEL MOBİLYALARI TASARIM ÜRETİM SANAYİ VE TİCARET LTD. ŞTİ",
+        "HOTELYA KOLTUK MOBİLYA SANAYİ VE TİCARET LTD. ŞTİ",
+        "BAHADIR AHŞAP SANAYİ VE TİCARET LTD. ŞTİ"
+      ],
       "firmalar": [],
       "durum": "Alacaklı Bildirimi",
       "tarih": "2026-08-05",
@@ -161,6 +245,10 @@
     {
       "ilanId": "2187356",
       "vergiNolari": [],
+      "unvanlar": [
+        "NDEN / BAŞ",
+        "NORMSAN BASINÇLI DÖKÜM SANAYİ ANONİM ŞİRKETİ"
+      ],
       "firmalar": [],
       "durum": "Geçici Mühlet",
       "tarih": "2026-08-05",
