@@ -1,23 +1,16 @@
 {
-  "olusturmaTarihi": "2026-08-05T12:05:41.125692+00:00",
+  "olusturmaTarihi": "2026-08-05T12:19:25.939613+00:00",
   "tarihAraligi": [
-    "2026-08-04",
     "2026-08-05"
   ],
-  "ilanSayisi": 19,
+  "ilanSayisi": 11,
   "vergiNolari": [
     "8131404556",
     "2780380951",
     "7220827162",
     "8680673790",
     "3231267065",
-    "7280810873",
-    "3961028258",
-    "7591121477",
-    "1980430421",
-    "6130875763",
-    "6081102021",
-    "3810627366"
+    "7280810873"
   ],
   "vknBulunamayanIlanlar": [
     "2188928",
@@ -26,11 +19,7 @@
     "2188667",
     "2187722",
     "2187469",
-    "2187356",
-    "2187129",
-    "2187035",
-    "2186330",
-    "2186212"
+    "2187356"
   ],
   "hataliIlanlar": [],
   "ilanlar": [
@@ -180,130 +169,6 @@
       "esasNo": "2026/1402 Esas",
       "link": "https://www.ilan.gov.tr/ilan/2187356/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-bildirimi",
       "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2187537",
-      "vergiNolari": [
-        "3961028258"
-      ],
-      "firmalar": [
-        {
-          "vergiNo": "3961028258",
-          "firma": "GORDES TARIM YEM SANAYİ VE TİCARET ANONİM ŞİRKETİ"
-        }
-      ],
-      "durum": "Alacaklı Bildirimi",
-      "tarih": "2026-08-04",
-      "sehir": "BURSA",
-      "mahkeme": "BURSA 1. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/153 ESAS",
-      "link": "https://www.ilan.gov.tr/ilan/2187537/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri",
-      "vknBulunamadi": false
-    },
-    {
-      "ilanId": "2187129",
-      "vergiNolari": [],
-      "firmalar": [],
-      "durum": "Alacaklı Bildirimi",
-      "tarih": "2026-08-04",
-      "sehir": "BALIKESİR",
-      "mahkeme": "T.C. BALIKESİR ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": null,
-      "link": "https://www.ilan.gov.tr/ilan/2187129/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri",
-      "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2187035",
-      "vergiNolari": [],
-      "firmalar": [],
-      "durum": "Konkordato talebinin ilanen tebliği",
-      "tarih": "2026-08-04",
-      "sehir": "ZONGULDAK",
-      "mahkeme": "İ L A N T.C. KDZ.EREĞLİ 3. ASLİYE HUKUK MAHKEMESİ",
-      "esasNo": null,
-      "link": "https://www.ilan.gov.tr/ilan/2187035/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-talebinin-ilanen-tebligi",
-      "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2186690",
-      "vergiNolari": [
-        "7591121477"
-      ],
-      "firmalar": [],
-      "durum": "Duruşma",
-      "tarih": "2026-08-04",
-      "sehir": "İSTANBUL",
-      "mahkeme": "T.C. İSTANBUL 3. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/1633 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2186690/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--durusma-gun-ve-saatinin-ilanen-tebligi",
-      "vknBulunamadi": false
-    },
-    {
-      "ilanId": "2186645",
-      "vergiNolari": [
-        "1980430421",
-        "6130875763",
-        "6081102021"
-      ],
-      "firmalar": [
-        {
-          "vergiNo": "1980430421",
-          "firma": "CANAYDIN SAĞLIK HİZMETLERİ VE TİCARET LİMİTED ŞİRKETİ"
-        },
-        {
-          "vergiNo": "6130875763",
-          "firma": "MEDİCA DERMA MEDİKAL ESTETİK DANIŞMANLIK TİCARET LİMİTED ŞİRKETİ"
-        },
-        {
-          "vergiNo": "6081102021",
-          "firma": "LAZERIMPERIUM CİHAZ TEKNİK SERVİS EĞİTİM VE SAĞLIK ÜRÜNLERİ LİMİTED ŞİRKETİ"
-        }
-      ],
-      "durum": "Geçici Mühlet",
-      "tarih": "2026-08-04",
-      "sehir": "İSTANBUL",
-      "mahkeme": "T.C. İSTANBUL 21. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/1268 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2186645/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhletin-uzatilmasi-ilanen-tebligi",
-      "vknBulunamadi": false
-    },
-    {
-      "ilanId": "2186330",
-      "vergiNolari": [],
-      "firmalar": [],
-      "durum": "Geçici Mühlet",
-      "tarih": "2026-08-04",
-      "sehir": "ADANA",
-      "mahkeme": "T .C. ADANA 1. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/584 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2186330/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinda-gecici-muhlet-kararinin-kaldirilmasina-iliskin-teblig",
-      "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2186212",
-      "vergiNolari": [],
-      "firmalar": [],
-      "durum": "Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı",
-      "tarih": "2026-08-04",
-      "sehir": "İSTANBUL",
-      "mahkeme": "T.C. İSTANBUL 19. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/1240 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2186212/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari",
-      "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2186041",
-      "vergiNolari": [
-        "3810627366"
-      ],
-      "firmalar": [],
-      "durum": "Geçici Mühlet",
-      "tarih": "2026-08-04",
-      "sehir": "İSTANBUL",
-      "mahkeme": "T.C. İSTANBUL 3. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/1644 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2186041/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ilanen-tebligi",
-      "vknBulunamadi": false
     }
   ]
 }
