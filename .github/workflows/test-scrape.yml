@@ -3,7 +3,7 @@ name: Test Scrape
 on:
   workflow_dispatch:        # elle tetikleme (test için kalsın)
   schedule:
-    - cron: '30 6 * * *'   # her gün 9.30'da Türkiye saati
+    - cron: '00 9 * * *'   # her gün 12.00'da Türkiye saati
 
 permissions:
   contents: write
