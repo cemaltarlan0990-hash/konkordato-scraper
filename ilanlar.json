@@ -1,239 +1,403 @@
 {
-  "olusturmaTarihi": "2026-08-05T20:17:44.591562+00:00",
+  "olusturmaTarihi": "2026-08-06T06:33:50.402826+00:00",
   "tarihAraligi": [
-    "2026-08-05"
+    "2026-08-06"
   ],
-  "ilanSayisi": 11,
+  "ilanSayisi": 20,
   "vergiNolari": [
-    "8131404556",
-    "2780380951",
-    "7220827162",
-    "8680673790",
-    "3231267065",
-    "7280810873"
+    "6130763329",
+    "5580684614",
+    "7440506323",
+    "6201684947",
+    "2060675697",
+    "6621634203",
+    "2951337892",
+    "6090996426",
+    "2920604635",
+    "6120084266",
+    "4581562708",
+    "7330026070",
+    "8160060932"
   ],
   "unvanlarUzun": [
-    "ŞİRAZE UNLU MAMULLERİ SANAYİ TİCARET LİMİTED ŞİRKETİ",
-    "BATU ATIK PLASTİK GERİ DÖNÜŞÜM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-    "KORKMAZ FİLO KİRALAMA TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-    "PARLEMENT KOZMETİK TIBBİ CİHAZ MEDİKAL ALIM SATIM İHRACAT İTHALAT SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-    "TURANÇ ALIŞVERİŞ HİZMETLERİ İNŞAAT AKARYAKIT TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-    "CANER KARA TARIM TOHUMCULUK SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-    "DÜZCE ORMAN ÜRÜNLERI ANONİM ŞİRKETİ",
-    "DÜZCE ORMAN ÜRÜNLERİ ANONİM ŞİRKETİ",
-    "PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET ANONİM ŞİRKETİ",
-    "GÖLTAŞ LOJİSTİK TURİZM İNŞAAT OTOMOTİV SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-    "HOTELYA OTEL MOBİLYALARI TASARIM ÜRETİM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-    "HOTELYA KOLTUK MOBİLYA SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-    "BAHADIR AHŞAP SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-    "NORMSAN BASINÇLI DÖKÜM SANAYİ ANONİM ŞİRKETİ"
+    "MURAT AKSOY-69760180940 ILE MF UZAY TİCARET TOPTAN SATIŞ SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "GÖKÇEDERE DEMİR ÇELİK ÜRÜN. SAN. VE TİC. LİMİTED ŞİRKETİ",
+    "GÖKÇEDERE DEMİR ÇELİK ÜRÜNLERİ SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "LİNA HARİTA MÜHENDİSLİK MİMARLIK PROJE İNŞAAT TAAHHÜT SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "NRB AYAKKABI MALZEMELERİ SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "NURBAĞ DOKUMA AYAKKABI MALZEMELERİ SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "ERTO TEKSTİL GIDA HALI TURİZM SANAYİ TİCARET LİMİTED ŞİRKETİ",
+    "ERUSLU İNTERNATİONAL TEKNOLOJİ PAZARLAMA SANAYİ TİCARET LİMİTED ŞİRKETİ",
+    "DGM YAPI DEKORASYON İNŞAAT SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "KKÜP TURİZM MEDİKAL İNŞAAT İÇ VE DIŞ TİCARET LİMİTED ŞİRKETİ",
+    "DİEL MAKİNE YEDEK PARÇA SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "LOFT MAKİNA SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "TIC LİMİTED ŞİRKETİ",
+    "HASSAN PEYZAJ YAPI ANONİM ŞİRKETİ",
+    "İZOĞLU İNŞAAT TAAHHÜT PEYZAJ GIDA TARIM ÜRETİM PAZARLAMA İTHALAT İHRACAT SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "HD MANOLYA PEYZAJ ÜRETİM PAZARLAMA SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+    "DİLDAR İNŞAAT TURİZM YATIRIM VE İŞLETMELERİ ANONİM ŞİRKETİ",
+    "DELTA ELEKTRİK-ELEKTRONİK İMALAT SANAYİ TİCARET LİMİTED ŞİRKETİ",
+    "ELİSA PROFESYONEL TEMİZLİK MADDELERİ SANAYİ VE TİCARET ANONİM ŞİRKETİ"
   ],
   "unvanlarKisa": [
-    "ŞİRAZE UNLU MAMULLERİ SANAYİ TİCARET LTD. ŞTİ.",
-    "BATU ATIK PLASTİK GERİ DÖNÜŞÜM SANAYİ VE TİCARET LTD. ŞTİ.",
-    "KORKMAZ FİLO KİRALAMA TURİZM SANAYİ VE TİCARET LTD. ŞTİ.",
-    "PARLEMENT KOZMETİK TIBBİ CİHAZ MEDİKAL ALIM SATIM İHRACAT İTHALAT SANAYİ VE TİCARET LTD. ŞTİ.",
-    "TURANÇ ALIŞVERİŞ HİZMETLERİ İNŞAAT AKARYAKIT TURİZM SANAYİ VE TİCARET LTD. ŞTİ.",
-    "CANER KARA TARIM TOHUMCULUK SANAYİ VE TİCARET LTD. ŞTİ.",
-    "DÜZCE ORMAN ÜRÜNLERI A.Ş.",
-    "DÜZCE ORMAN ÜRÜNLERİ A.Ş.",
-    "PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET A.Ş.",
-    "GÖLTAŞ LOJİSTİK TURİZM İNŞAAT OTOMOTİV SANAYİ VE TİCARET LTD. ŞTİ.",
-    "HOTELYA OTEL MOBİLYALARI TASARIM ÜRETİM SANAYİ VE TİCARET LTD. ŞTİ.",
-    "HOTELYA KOLTUK MOBİLYA SANAYİ VE TİCARET LTD. ŞTİ.",
-    "BAHADIR AHŞAP SANAYİ VE TİCARET LTD. ŞTİ.",
-    "NORMSAN BASINÇLI DÖKÜM SANAYİ A.Ş."
+    "MURAT AKSOY-69760180940 ILE MF UZAY TİCARET TOPTAN SATIŞ SANAYİ VE TİCARET LTD. ŞTİ.",
+    "GÖKÇEDERE DEMİR ÇELİK ÜRÜN. SAN. VE TİC. LTD. ŞTİ.",
+    "GÖKÇEDERE DEMİR ÇELİK ÜRÜNLERİ SANAYİ VE TİCARET LTD. ŞTİ.",
+    "LİNA HARİTA MÜHENDİSLİK MİMARLIK PROJE İNŞAAT TAAHHÜT SANAYİ VE TİCARET LTD. ŞTİ.",
+    "NRB AYAKKABI MALZEMELERİ SANAYİ VE TİCARET LTD. ŞTİ.",
+    "NURBAĞ DOKUMA AYAKKABI MALZEMELERİ SANAYİ VE TİCARET LTD. ŞTİ.",
+    "ERTO TEKSTİL GIDA HALI TURİZM SANAYİ TİCARET LTD. ŞTİ.",
+    "ERUSLU İNTERNATİONAL TEKNOLOJİ PAZARLAMA SANAYİ TİCARET LTD. ŞTİ.",
+    "DGM YAPI DEKORASYON İNŞAAT SANAYİ VE TİCARET LTD. ŞTİ.",
+    "KKÜP TURİZM MEDİKAL İNŞAAT İÇ VE DIŞ TİCARET LTD. ŞTİ.",
+    "DİEL MAKİNE YEDEK PARÇA SANAYİ VE TİCARET LTD. ŞTİ.",
+    "LOFT MAKİNA SANAYİ VE TİCARET LTD. ŞTİ.",
+    "TIC LTD. ŞTİ.",
+    "HASSAN PEYZAJ YAPI A.Ş.",
+    "İZOĞLU İNŞAAT TAAHHÜT PEYZAJ GIDA TARIM ÜRETİM PAZARLAMA İTHALAT İHRACAT SANAYİ VE TİCARET LTD. ŞTİ.",
+    "HD MANOLYA PEYZAJ ÜRETİM PAZARLAMA SANAYİ VE TİCARET LTD. ŞTİ.",
+    "DİLDAR İNŞAAT TURİZM YATIRIM VE İŞLETMELERİ A.Ş.",
+    "DELTA ELEKTRİK-ELEKTRONİK İMALAT SANAYİ TİCARET LTD. ŞTİ.",
+    "ELİSA PROFESYONEL TEMİZLİK MADDELERİ SANAYİ VE TİCARET A.Ş."
   ],
   "vknBulunamayanIlanlar": [
-    "2188928",
-    "2188892",
-    "2188735",
-    "2188667",
-    "2187722",
-    "2187469",
-    "2187356"
+    "2190221",
+    "2189932",
+    "2188991",
+    "2188941",
+    "2188940",
+    "2188932",
+    "2188926",
+    "2188837",
+    "2188658",
+    "2188382",
+    "2188247",
+    "2188243",
+    "2188245"
   ],
   "hataliIlanlar": [],
   "ilanlar": [
     {
-      "ilanId": "2189092",
-      "vergiNolari": [
-        "8131404556",
-        "2780380951"
-      ],
-      "unvanlar": [
-        "ŞİRAZE UNLU MAMULLERİ SANAYİ TİCARET LİMİTED ŞİRKETİ"
-      ],
-      "firmalar": [],
-      "durum": "Alacaklı Bildirimi",
-      "tarih": "2026-08-05",
-      "sehir": "ZONGULDAK",
-      "mahkeme": "T.C. ZONGULDAK 3. ASLİYE HUKUK MAHKEMESİ",
-      "esasNo": null,
-      "link": "https://www.ilan.gov.tr/ilan/2189092/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinda-alacaklilara-davet-ilani",
-      "vknBulunamadi": false
-    },
-    {
-      "ilanId": "2188928",
-      "vergiNolari": [],
-      "unvanlar": [
-        "BATU ATIK PLASTİK GERİ DÖNÜŞÜM SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
-      ],
-      "firmalar": [],
-      "durum": "Konkordato talebine ilişkin mahkeme kararı",
-      "tarih": "2026-08-05",
-      "sehir": "KÜTAHYA",
-      "mahkeme": "T.C. SİMAV 2. ASLİYE HUKUK MAHKEMESİ",
-      "esasNo": null,
-      "link": "https://www.ilan.gov.tr/ilan/2188928/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-talebine-iliskin-mahkeme-karari",
-      "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2188892",
+      "ilanId": "2190221",
       "vergiNolari": [],
       "unvanlar": [],
-      "firmalar": [],
-      "durum": "Kesin Mühlet",
-      "tarih": "2026-08-05",
-      "sehir": "DÜZCE",
-      "mahkeme": "T.C. DÜZCE 6. ASLİYE HUKUK MAHKEMESİ",
-      "esasNo": null,
-      "link": "https://www.ilan.gov.tr/ilan/2188892/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-kesin-muhlet-kararinin-ilanen-tebligi",
-      "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2188824",
-      "vergiNolari": [
-        "7220827162",
-        "8680673790"
-      ],
-      "unvanlar": [
-        "KORKMAZ FİLO KİRALAMA TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-        "PARLEMENT KOZMETİK TIBBİ CİHAZ MEDİKAL ALIM SATIM İHRACAT İTHALAT SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
-        "TURANÇ ALIŞVERİŞ HİZMETLERİ İNŞAAT AKARYAKIT TURİZM SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
-      ],
-      "firmalar": [],
-      "durum": "Duruşma",
-      "tarih": "2026-08-05",
-      "sehir": "TEKİRDAĞ",
-      "mahkeme": "T.C. TEKİRDAĞ ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/698 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2188824/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhlet-karari-ve-durusma-gunu-tebligi",
-      "vknBulunamadi": false
-    },
-    {
-      "ilanId": "2188735",
-      "vergiNolari": [],
-      "unvanlar": [],
-      "firmalar": [],
-      "durum": "Alacaklı Bildirimi",
-      "tarih": "2026-08-05",
-      "sehir": "KOCAELİ",
-      "mahkeme": null,
-      "esasNo": null,
-      "link": "https://www.ilan.gov.tr/ilan/2188735/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani",
-      "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2188667",
-      "vergiNolari": [],
-      "unvanlar": [
-        "CANER KARA TARIM TOHUMCULUK SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
-      ],
       "firmalar": [],
       "durum": "Geçici Mühlet",
-      "tarih": "2026-08-05",
-      "sehir": "ANTALYA",
-      "mahkeme": "T.C. ANTALYA 3. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/697Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2188667/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ilanen-tebligi",
+      "tarih": "2026-08-06",
+      "sehir": "KASTAMONU",
+      "mahkeme": "T.C. KASTAMONU 2. ASLİYE HUKUK MAHKEMESİ",
+      "esasNo": "2026/260 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2190221/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--gecici-muhlet-karari-tebligi",
       "vknBulunamadi": true
     },
     {
-      "ilanId": "2187925",
+      "ilanId": "2190010",
       "vergiNolari": [
-        "3231267065"
+        "6130763329",
+        "5580684614",
+        "7440506323"
       ],
-      "unvanlar": [
-        "Düzce Orman Ürünleri A.Ş",
-        "DÜZCE ORMAN ÜRÜNLERİ ANONİM ŞİRKETİ"
-      ],
+      "unvanlar": [],
       "firmalar": [],
-      "durum": "Konkordato talebinin reddine ilişkin tebligat",
-      "tarih": "2026-08-05",
-      "sehir": "DÜZCE",
-      "mahkeme": "T.C. DÜZCE 4. ASLİYE HUKUK MAHKEMESİ",
+      "durum": "Geçici Mühlet",
+      "tarih": "2026-08-06",
+      "sehir": "SAKARYA",
+      "mahkeme": "T.C. SAKARYA ASLİYE TİCARET MAHKEMESİ",
       "esasNo": null,
-      "link": "https://www.ilan.gov.tr/ilan/2187925/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-talebinin-reddine-iliskin-tebligat",
+      "link": "https://www.ilan.gov.tr/ilan/2190010/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ilanen-tebligi",
       "vknBulunamadi": false
     },
     {
-      "ilanId": "2187820",
+      "ilanId": "2189932",
+      "vergiNolari": [],
+      "unvanlar": [],
+      "firmalar": [],
+      "durum": "Geçici Mühlet",
+      "tarih": "2026-08-06",
+      "sehir": "ANTALYA",
+      "mahkeme": "T.C. ANTALYA 2. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2026/164 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2189932/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-ve-uzatilmasina-dair-kararinin-kaldirilmasina-iliskin-ilanen-tebligi",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2189566",
       "vergiNolari": [
-        "7280810873"
+        "6201684947"
       ],
       "unvanlar": [
-        "PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET ANONİM ŞİRKETİ"
+        "MURAT AKSOY-69760180940 ile MF UZAY TİCARET TOPTAN SATIŞ SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
+      ],
+      "firmalar": [],
+      "durum": "Alacaklı Bildirimi",
+      "tarih": "2026-08-06",
+      "sehir": "BARTIN",
+      "mahkeme": "T.C. BARTIN 3. ASLİYE HUKUK MAHKEMESİ",
+      "esasNo": "2026/26 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2189566/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--korkordato-komiserligi-alacaklilarin-alacaklarini-bildirmeye-davet",
+      "vknBulunamadi": false
+    },
+    {
+      "ilanId": "2188991",
+      "vergiNolari": [],
+      "unvanlar": [
+        "GÖKÇEDERE DEMİR ÇELİK ÜRÜN. SAN. VE TİC. LTD. ŞTİ",
+        "GÖKÇEDERE DEMİR ÇELİK ÜRÜNLERİ SANAYİ VE TİCARET LTD. ŞTİ"
+      ],
+      "firmalar": [],
+      "durum": "Alacaklı Bildirimi",
+      "tarih": "2026-08-06",
+      "sehir": "İSTANBUL",
+      "mahkeme": null,
+      "esasNo": "2026/906 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188991/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--alacaklilar-toplantisina-davet-ilani",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188941",
+      "vergiNolari": [],
+      "unvanlar": [
+        "LİNA HARİTA MÜHENDİSLİK MİMARLIK PROJE İNŞAAT TAAHHÜT SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
+      ],
+      "firmalar": [],
+      "durum": "Alacaklı Bildirimi",
+      "tarih": "2026-08-06",
+      "sehir": "ŞANLIURFA",
+      "mahkeme": "T.C. ŞANLIURFA 1. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2025/1929 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188941/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188940",
+      "vergiNolari": [],
+      "unvanlar": [
+        "NRB AYAKKABI MALZEMELERİ SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+        "NURBAĞ DOKUMA AYAKKABI MALZEMELERİ SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
+      ],
+      "firmalar": [],
+      "durum": "Konkordato davasının reddine ilişkin mahkeme kararı",
+      "tarih": "2026-08-06",
+      "sehir": "İSTANBUL",
+      "mahkeme": "T.C. İSTANBUL 3. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2026/839 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188940/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinin-reddine-iliskin-mahkeme-karari",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188932",
+      "vergiNolari": [],
+      "unvanlar": [
+        "ERTO TEKSTİL GIDA HALI TURİZM SANAYİ TİCARET LİMİTED ŞİRKETİ",
+        "ERUSLU İNTERNATİONAL TEKNOLOJİ PAZARLAMA SANAYİ TİCARET LİMİTED ŞİRKETİ"
+      ],
+      "firmalar": [],
+      "durum": "Mahkeme kararının ilanen tebliği",
+      "tarih": "2026-08-06",
+      "sehir": "İSTANBUL",
+      "mahkeme": "T.C. İSTANBUL 1. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2026/852",
+      "link": "https://www.ilan.gov.tr/ilan/2188932/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--mahkeme-kararinin-ilanen-tebligi",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188926",
+      "vergiNolari": [],
+      "unvanlar": [
+        "DGM YAPI DEKORASYON İNŞAAT SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
+      ],
+      "firmalar": [],
+      "durum": "Alacaklı Bildirimi",
+      "tarih": "2026-08-06",
+      "sehir": "ŞANLIURFA",
+      "mahkeme": "T.C. ŞANLIURFA 1. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2025/2203 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188926/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188925",
+      "vergiNolari": [
+        "2060675697",
+        "6621634203"
+      ],
+      "unvanlar": [],
+      "firmalar": [],
+      "durum": "Geçici Mühlet",
+      "tarih": "2026-08-06",
+      "sehir": "BİNGÖL",
+      "mahkeme": "T.C. BİNGÖL 4. ASLİYE HUKUK MAHKEMESİ",
+      "esasNo": "2026/117 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188925/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-karari-tebligi",
+      "vknBulunamadi": false
+    },
+    {
+      "ilanId": "2188837",
+      "vergiNolari": [],
+      "unvanlar": [
+        "KKÜP TURİZM MEDİKAL İNŞAAT İÇ VE DIŞ TİCARET LİMİTED ŞİRKETİ"
+      ],
+      "firmalar": [],
+      "durum": "Kesin Mühlet",
+      "tarih": "2026-08-06",
+      "sehir": "İZMİR",
+      "mahkeme": "T.C. İZMİR 2. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "ESAS NO: 2026/442",
+      "link": "https://www.ilan.gov.tr/ilan/2188837/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-kesin-muhlet-kararinin-ilanen-tebligi",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188658",
+      "vergiNolari": [],
+      "unvanlar": [],
+      "firmalar": [],
+      "durum": "Alacaklı Bildirimi",
+      "tarih": "2026-08-06",
+      "sehir": "İSTANBUL",
+      "mahkeme": null,
+      "esasNo": "2026/877 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188658/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--alacaklilarin-alacaklarini-bildirmeye-davet-ilani",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188543",
+      "vergiNolari": [
+        "2951337892",
+        "6090996426"
+      ],
+      "unvanlar": [
+        "DİEL MAKİNE YEDEK PARÇA SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+        "LOFT MAKİNA SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
       ],
       "firmalar": [
         {
-          "vergiNo": "7280810873",
-          "firma": "PERPOLİO ALÜMİNYUM SANAYİ VE TİCARET ANONİM ŞİRKETİ"
+          "vergiNo": "2951337892",
+          "firma": "DİEL MAKİNE YEDEK PARÇA SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
         }
       ],
       "durum": "Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı",
-      "tarih": "2026-08-05",
+      "tarih": "2026-08-06",
       "sehir": "İSTANBUL",
-      "mahkeme": "T.C. İSTANBUL 18. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/773 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2187820/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari",
+      "mahkeme": "T.C. İSTANBUL 22. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2026/1325 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188543/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari",
       "vknBulunamadi": false
     },
     {
-      "ilanId": "2187722",
+      "ilanId": "2188382",
+      "vergiNolari": [],
+      "unvanlar": [],
+      "firmalar": [],
+      "durum": "Konkordato davası mahkeme kararının ilanen tebliği",
+      "tarih": "2026-08-06",
+      "sehir": "İZMİR",
+      "mahkeme": "T.C. İZMİR 2. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "ESAS NO: 2026/206",
+      "link": "https://www.ilan.gov.tr/ilan/2188382/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasi-mahkeme-kararinin-ilanen-tebligi",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188338",
+      "vergiNolari": [
+        "2920604635",
+        "6120084266",
+        "4581562708"
+      ],
+      "unvanlar": [
+        "Tic LTD ŞTİ",
+        "Hassan Peyzaj Yapı AŞ",
+        "İZOĞLU İNŞAAT TAAHHÜT PEYZAJ GIDA TARIM ÜRETİM PAZARLAMA İTHALAT İHRACAT SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+        "HD MANOLYA PEYZAJ ÜRETİM PAZARLAMA SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+        "HASSAN PEYZAJ YAPI ANONİM ŞİRKETİ"
+      ],
+      "firmalar": [],
+      "durum": "Kesin Mühlet",
+      "tarih": "2026-08-06",
+      "sehir": "ELAZIĞ",
+      "mahkeme": "T.C. ELAZIĞ 6. ASLİYE HUKUK MAHKEMESİ",
+      "esasNo": "2025/192 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188338/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-kesin-muhletin-uzatilmasina-iliskin-mahkeme-karari",
+      "vknBulunamadi": false
+    },
+    {
+      "ilanId": "2188252",
+      "vergiNolari": [
+        "7330026070"
+      ],
+      "unvanlar": [
+        "DİLDAR İNŞAAT TURİZM YATIRIM VE İŞLETMELERİ ANONİM ŞİRKETİ"
+      ],
+      "firmalar": [
+        {
+          "vergiNo": "7330026070",
+          "firma": "DİLDAR İNŞAAT TURİZM YATIRIM VE İŞLETMELERİ ANONİM ŞİRKETİ"
+        }
+      ],
+      "durum": "Geçici Mühlet",
+      "tarih": "2026-08-06",
+      "sehir": "İSTANBUL",
+      "mahkeme": "T.C. İSTANBUL 21. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2026/592 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188252/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-uzatilmasinin-ilanen-tebligi",
+      "vknBulunamadi": false
+    },
+    {
+      "ilanId": "2188251",
+      "vergiNolari": [
+        "8160060932"
+      ],
+      "unvanlar": [],
+      "firmalar": [],
+      "durum": "Konkordatonun reddi kararı",
+      "tarih": "2026-08-06",
+      "sehir": "KONYA",
+      "mahkeme": "T.C. KONYA 1. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2026/ 321 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188251/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordatonun-reddi-karari",
+      "vknBulunamadi": false
+    },
+    {
+      "ilanId": "2188247",
       "vergiNolari": [],
       "unvanlar": [
-        "GÖLTAŞ LOJİSTİK TURİZM İNŞAAT OTOMOTİV SANAYİ VE TİCARET LİMİTED ŞİRKETİ"
+        "DELTA ELEKTRİK-ELEKTRONİK İMALAT SANAYİ TİCARET LİMİTED ŞİRKETİ"
+      ],
+      "firmalar": [],
+      "durum": "Kesin Mühlet",
+      "tarih": "2026-08-06",
+      "sehir": "İSTANBUL",
+      "mahkeme": "T.C. İSTANBUL 3. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2026/864 esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188247/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-kesin-muhlet-kararinin-uzatilmasinin-ilanen-tebligi",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188243",
+      "vergiNolari": [],
+      "unvanlar": [],
+      "firmalar": [],
+      "durum": "Duruşma",
+      "tarih": "2026-08-06",
+      "sehir": "ANKARA",
+      "mahkeme": "T.C. ANKARA 1. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2026/549 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188243/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--durusma-gun-ve-saatinin-ilanen-tebligi",
+      "vknBulunamadi": true
+    },
+    {
+      "ilanId": "2188245",
+      "vergiNolari": [],
+      "unvanlar": [
+        "ELİSA PROFESYONEL TEMİZLİK MADDELERİ SANAYİ VE TİCARET ANONİM ŞİRKETİ"
       ],
       "firmalar": [],
       "durum": "Duruşma",
-      "tarih": "2026-08-05",
-      "sehir": "İSTANBUL",
-      "mahkeme": "T.C. İSTANBUL 18. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/611 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2187722/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-durusma-gununun-ilanen-tebligi",
-      "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2187469",
-      "vergiNolari": [],
-      "unvanlar": [
-        "HOTELYA OTEL MOBİLYALARI TASARIM ÜRETİM SANAYİ VE TİCARET LTD. ŞTİ",
-        "HOTELYA KOLTUK MOBİLYA SANAYİ VE TİCARET LTD. ŞTİ",
-        "BAHADIR AHŞAP SANAYİ VE TİCARET LTD. ŞTİ"
-      ],
-      "firmalar": [],
-      "durum": "Alacaklı Bildirimi",
-      "tarih": "2026-08-05",
-      "sehir": "İSTANBUL",
-      "mahkeme": null,
-      "esasNo": "2026/919 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2187469/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--alacaklilari-alacaklarini-bildirmeye-davet-ilani",
-      "vknBulunamadi": true
-    },
-    {
-      "ilanId": "2187356",
-      "vergiNolari": [],
-      "unvanlar": [
-        "NORMSAN BASINÇLI DÖKÜM SANAYİ ANONİM ŞİRKETİ"
-      ],
-      "firmalar": [],
-      "durum": "Geçici Mühlet",
-      "tarih": "2026-08-05",
-      "sehir": "İSTANBUL",
-      "mahkeme": "T.C. İSTANBUL 2. ASLİYE TİCARET MAHKEMESİ",
-      "esasNo": "2026/1402 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2187356/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-bildirimi",
+      "tarih": "2026-08-06",
+      "sehir": "ANKARA",
+      "mahkeme": "T.C. ANKARA 1. ASLİYE TİCARET MAHKEMESİ",
+      "esasNo": "2026/549 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2188245/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--durusma-gun-ve-saatinin-ilanen-tebligi",
       "vknBulunamadi": true
     }
   ]
