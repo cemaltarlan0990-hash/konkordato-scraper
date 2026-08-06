@@ -9,7 +9,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # ---------------------------------------------------------------
 # AYARLAR
 # ---------------------------------------------------------------
-GERIYE_DONUK_GUN = 0      # 0 = sadece bugun, 1 = bugun + dun
+GERIYE_DONUK_GUN = 1      # 0 = sadece bugun, 1 = bugun + dun
 SAYFA_BOYUTU = 20
 MAKS_SAYFA = 30
 
@@ -92,6 +92,13 @@ SINIR = re.compile(
 # Sinirdan sonra kalabilecek kucuk harfli baglayici kelimeler
 ARTIK = re.compile(r'^(?:[a-zçğıöşü]+\s+)+')
 
+# Unvanin basina yapisabilen cumle baglaclari / kalip kelimeler
+CUMLE_BAGLACI = [
+    'AYRICA', 'AYNI', 'BUNUN', 'ANCAK', 'YUKARIDA', 'İŞBU', 'ISBU',
+    'SÖZ', 'KONU', 'ADRESİ', 'ADRESİNDE', 'MERKEZİ', 'ADLI', 'İSİMLİ',
+    'NEZDİNDE', 'TARAFI', 'ŞİRKET', 'FİRMA', 'MÜVEKKİL', 'ALACAKLI', 'ALACAKLISI'
+]
+
 # Unvan mutlaka bir sirket eki ile bitmeli
 BITIS_KONTROL = re.compile(
     r'(?:ANONİM\s+ŞİRKETİ|LİMİTED\s+ŞİRKETİ|KOLLEKTİF\s+ŞİRKETİ|'
@@ -125,7 +132,16 @@ def unvan_temizle(unvan):
     if m2:
         u = u[m2.end():]
 
-    u = re.sub(r'^(VE|İLE|ILE|SN|SAYIN|NO|NOLU)\s+', '', u, flags=re.IGNORECASE)
+    # Bastaki sayilari ve cumle baglaclarini tekrarli olarak at
+    for _ in range(6):
+        onceki = u
+        u = re.sub(r'^[\d\.\,\-/:;\s]+', '', u)
+        u = re.sub(r'^(?:' + '|'.join(CUMLE_BAGLACI) + r')\s+', '', u,
+                   flags=re.IGNORECASE)
+        u = re.sub(r'^(?:[a-zçğıöşü]+\s+)+', '', u)
+        if u == onceki:
+            break
+
     return u.strip(' .,-:;')
 
 
@@ -161,6 +177,51 @@ def unvanlari_bul(text):
         if unvan not in bulunanlar:
             bulunanlar.append(unvan)
     return bulunanlar
+
+
+# Arama anahtari uretimi: sirket eki ve sektor kelimeleri disarida birakilir
+ANAHTAR_DISI = {
+    'ANONİM', 'ŞİRKETİ', 'LİMİTED', 'ŞTİ', 'LTD', 'A.Ş', 'AŞ', 'A.O',
+    'KOLLEKTİF', 'KOMANDİT', 'SANAYİ', 'SANAYI', 'SAN', 'TİCARET',
+    'TICARET', 'TİC', 'VE', 'İLE', 'PAZARLAMA', 'İTHALAT', 'İHRACAT',
+    'DIŞ', 'İÇ', 'ALIM', 'SATIM', 'TURİZM', 'İNŞAAT', 'TAAHHÜT',
+    'NAKLİYAT', 'LOJİSTİK', 'OTOMOTİV', 'ÜRETİM', 'TASARIM',
+    'HİZMETLERİ', 'HİZMET', 'DANIŞMANLIK', 'YATIRIM', 'HOLDİNG',
+    'GRUP', 'ORGANİZASYON', 'İŞLETMECİLİĞİ', 'İŞLETMELERİ',
+    'MADDELERİ', 'ÜRÜNLERİ', 'MAMULLERİ', 'MALZEMELERİ', 'GEREÇLERİ',
+}
+
+HUKUKI_FORM = {'ANONİM', 'ŞİRKETİ', 'LİMİTED', 'ŞTİ', 'LTD',
+               'A.Ş', 'AŞ', 'A.O', 'KOLLEKTİF', 'KOMANDİT', 'VE'}
+
+
+def arama_anahtari(unvan, hedef=2):
+    """Unvandan CRM'de aranacak ayirt edici anahtari cikarir.
+
+    CRM'de unvanlar farkli kisaltmalarla yazildigi icin
+    (SAN. VE TIC. / SANAYI VE TICARET / TIC. VE SAN.) tam eslesme
+    calismaz. Sadece marka kismini alip contains() ile ariyoruz.
+    """
+    kelimeler = [k.strip('.,;:()') for k in (unvan or '').upper().split()]
+    kelimeler = [k for k in kelimeler if k and len(k) > 1]
+    ayirt = [k for k in kelimeler if k not in ANAHTAR_DISI]
+
+    if not ayirt:
+        return None
+
+    if len(ayirt) >= hedef:
+        return ' '.join(ayirt[:hedef])
+
+    # Tek ayirt edici kelime varsa sonrasindaki ilk sektor kelimesini ekle
+    tek = ayirt[0]
+    try:
+        i = kelimeler.index(tek)
+    except ValueError:
+        return tek if len(tek) >= 4 else None
+    for sonraki in kelimeler[i + 1:]:
+        if sonraki not in HUKUKI_FORM:
+            return tek + ' ' + sonraki
+    return tek if len(tek) >= 4 else None
 
 
 def firma_vkn_ciftleri(text):
@@ -328,6 +389,7 @@ ham_unvanlar = tekille([u for k in ilan_kayitlari for u in k["unvanlar"]])
 
 unvanlar_uzun = tekille([unvan_uzun_bicim(u) for u in ham_unvanlar])
 unvanlar_kisa = tekille([unvan_kisa_bicim(u) for u in ham_unvanlar])
+arama_anahtarlari = tekille([arama_anahtari(u) for u in ham_unvanlar])
 
 vkn_bulunamayan = [k["ilanId"] for k in ilan_kayitlari if k["vknBulunamadi"]]
 
@@ -338,6 +400,7 @@ cikti = {
     "vergiNolari": tum_vkn,
     "unvanlarUzun": unvanlar_uzun,
     "unvanlarKisa": unvanlar_kisa,
+    "aramaAnahtarlari": arama_anahtarlari,
     "vknBulunamayanIlanlar": vkn_bulunamayan,
     "hataliIlanlar": hatali_ilanlar,
     "ilanlar": ilan_kayitlari
@@ -349,6 +412,7 @@ with open("ilanlar.json", "w", encoding="utf-8") as f:
 print(f"{len(ilan_kayitlari)} ilan yazildi.")
 print(f"  Benzersiz VKN   : {len(tum_vkn)}")
 print(f"  Benzersiz unvan : {len(ham_unvanlar)}")
+print(f"  Arama anahtari  : {len(arama_anahtarlari)}")
 if vkn_bulunamayan:
     print(f"  VKN cikarilamayan ilanlar: {vkn_bulunamayan}")
 if hatali_ilanlar:
