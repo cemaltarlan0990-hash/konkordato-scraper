@@ -1,12 +1,12 @@
 {
-  "uretimZamani": "2026-08-12T08:48:53.556422+00:00",
+  "uretimZamani": "2026-08-12T08:54:29.454373+00:00",
   "crmKayitSayisi": 15088,
   "katlama": true,
-  "toplamUnvan": 201,
+  "toplamUnvan": 373,
   "ozet": {
-    "match": 1,
-    "review": 1,
-    "noMatch": 199
+    "match": 2,
+    "review": 2,
+    "noMatch": 369
   },
   "vknEslesmeleri": [],
   "isimEslesmeleri": [
@@ -32,6 +32,29 @@
       "esas": "ESAS NO : 2026/810",
       "link": "https://www.ilan.gov.tr/ilan/2185127/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ve-durusma-gununun-ilanen-tebligi",
       "ilanDurumu": "Geçici Mühlet"
+    },
+    {
+      "ilanId": "2183242",
+      "unvan": "BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 4,
+      "toplamKelime": 4,
+      "adaylar": [
+        {
+          "crmIsim": "BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ TORBALI ŞUBESİ",
+          "crmVkn": "1790636155",
+          "crmKelimeSayisi": 9
+        }
+      ],
+      "tarih": "2026-07-31",
+      "sehir": "ORDU",
+      "mahkeme": "T.C. FATSA 1. ASLİYE HUKUK MAHKEMESİ",
+      "esas": "2026/143 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2183242/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari",
+      "ilanDurumu": "Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı"
     }
   ],
   "incelenecekler": [
@@ -58,11 +81,35 @@
       "esas": null,
       "link": "https://www.ilan.gov.tr/ilan/2188735/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani",
       "ilanDurumu": "Alacaklı Bildirimi"
+    },
+    {
+      "ilanId": "2178608",
+      "unvan": "Makine San. Tic. Ltd. Şti",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "REVIEW",
+      "skor": 1.0,
+      "eslesenKelime": 1,
+      "toplamKelime": 1,
+      "adaylar": [
+        {
+          "crmIsim": "MAKİNE VE KİMYA ENDÜSTRİSİ ANONİM ŞİRKETİ",
+          "crmVkn": "6111520767",
+          "crmKelimeSayisi": 4
+        }
+      ],
+      "not": "Tek kelimelik cekirdek - insan dogrulamasi gerekli",
+      "tarih": "2026-07-27",
+      "sehir": "BURSA",
+      "mahkeme": "BURSA 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2178608/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri",
+      "ilanDurumu": "Alacaklı Bildirimi"
     }
   ],
   "teshis": {
-    "ilandanCikarilanVknCifti": 27,
-    "ilandanCikarilanSerbestVkn": 76,
+    "ilandanCikarilanVknCifti": 44,
+    "ilandanCikarilanSerbestVkn": 126,
     "crmdeBulunanVkn": 0,
     "crmdeBulunmayanVknOrnekleri": [
       "7720679565",
@@ -76,14 +123,14 @@
       "8330482293",
       "0891344337"
     ],
-    "unvaniCikarilamayanIlan": 18,
+    "unvaniCikarilamayanIlan": 41,
     "crmVknDoluKayit": 6391,
     "crmVknBosKayit": 8697
   },
-  "mailGonderilsinMi": true,
-  "mailKonusu": "Konkordato taraması: 2 firma bulundu",
-  "mailHtml": "<div style=\"font-family:Arial,sans-serif;color:#2C2C2A;max-width:1000px\"><h2 style=\"font-size:17px;font-weight:600;margin:0 0 2px 0\">Konkordato ilan taraması</h2><p style=\"font-size:12px;color:#5F5E5A;margin:0\">2026-08-12 08:48</p><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#185FA5;margin:26px 0 4px 0\">İsimden eşleşenler <span style=\"font-weight:400;color:#5F5E5A\">(1)</span></h3><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #185FA5\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BAREM AMBALAJ SANAYİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BAREM AMBALAJ SAN.TİC.A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İZMİR</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İZMİR 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ESAS NO : 2026/810</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Geçici Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2185127/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ve-durusma-gununun-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#854F0B;margin:26px 0 4px 0\">İncelenecekler <span style=\"font-weight:400;color:#5F5E5A\">(1)</span></h3><p style=\"font-family:Arial,sans-serif;font-size:12px;color:#5F5E5A;margin:0 0 8px 0\">Tam eşleşme sağlanamadı veya birden fazla aday bulundu.</p><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #854F0B\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Ermetal Ltd. Şti</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ERMETAL OTOMOTIV (METAL) VE EŞYA SAN. VE TİC. A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">KOCAELİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2188735/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table></div>",
   "reviewEsigi": 0.75,
-  "geriyeDonukGun": 10,
-  "ilanSayisi": 133
+  "geriyeDonukGun": 20,
+  "ilanSayisi": 243,
+  "mailGonderilsinMi": true,
+  "mailKonusu": "Konkordato taraması: 4 firma bulundu",
+  "mailHtml": "<div style=\"font-family:Arial,sans-serif;color:#2C2C2A;max-width:1000px\"><h2 style=\"font-size:17px;font-weight:600;margin:0 0 2px 0\">Konkordato ilan taraması</h2><p style=\"font-size:12px;color:#5F5E5A;margin:0\">2026-08-12 08:54 · son 21 gün taranan ilanlar</p><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#185FA5;margin:26px 0 4px 0\">İsimden eşleşenler <span style=\"font-weight:400;color:#5F5E5A\">(2)</span></h3><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #185FA5\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BAREM AMBALAJ SANAYİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BAREM AMBALAJ SAN.TİC.A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İZMİR</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İZMİR 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ESAS NO : 2026/810</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Geçici Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2185127/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ve-durusma-gununun-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ TORBALI ŞUBESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">1790636155</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ORDU</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. FATSA 1. ASLİYE HUKUK MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2026/143 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2183242/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#854F0B;margin:26px 0 4px 0\">İncelenecekler <span style=\"font-weight:400;color:#5F5E5A\">(2)</span></h3><p style=\"font-family:Arial,sans-serif;font-size:12px;color:#5F5E5A;margin:0 0 8px 0\">Tam eşleşme sağlanamadı veya birden fazla aday bulundu.</p><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #854F0B\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Ermetal Ltd. Şti</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ERMETAL OTOMOTIV (METAL) VE EŞYA SAN. VE TİC. A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">KOCAELİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2188735/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Makine San. Tic. Ltd. Şti</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">MAKİNE VE KİMYA ENDÜSTRİSİ ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">6111520767</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BURSA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BURSA 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2178608/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table></div>"
 }
