@@ -371,11 +371,15 @@ def ilanlari_isle(referans, ilanlar):
 
     for ilan in ilanlar:
         ilan_id = ilan.get("ilanId") or ilan.get("id")
+        # DIKKAT: ilanin "durum" alani (Gecici Muhlet vs.) eslesme
+        # durumuyla (MATCH/REVIEW) CAKISIR. Ayri isimle tasiniyor.
         ek_alanlar = {
             alan: ilan[alan]
-            for alan in ("tarih", "sehir", "mahkeme", "esas", "durum", "link")
+            for alan in ("tarih", "sehir", "mahkeme", "esas", "link")
             if alan in ilan
         }
+        if "durum" in ilan:
+            ek_alanlar["ilanDurumu"] = ilan["durum"]
 
         islenen_unvanlar = set()
 
