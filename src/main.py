@@ -90,15 +90,18 @@ def main():
     cikti = matcher.cikti_uret(sonuclar, crm_kayit_sayisi=len(referans))
     cikti["teshis"] = matcher.teshis_uret(ilanlar, referans)
 
+    # DIKKAT: bu alanlar mail uretiminden ONCE atanmali - rapor.py
+    # tarih satirinda geriyeDonukGun'u kullaniyor.
+    cikti["reviewEsigi"] = REVIEW_ESIGI
+    cikti["geriyeDonukGun"] = GERIYE_DONUK_GUN
+    cikti["ilanSayisi"] = len(ilanlar)
+
     # Mail govdesi burada uretilir; PA sadece hazir HTML'i basar.
     # Sonuc yoksa mailHtml bos kalir ve mailGonderilsinMi=false olur.
     mail_html = rapor.mail_html_uret(cikti)
     cikti["mailGonderilsinMi"] = mail_html is not None
     cikti["mailKonusu"] = rapor.mail_konusu(cikti) if mail_html else ""
     cikti["mailHtml"] = mail_html or ""
-    cikti["reviewEsigi"] = REVIEW_ESIGI
-    cikti["geriyeDonukGun"] = GERIYE_DONUK_GUN
-    cikti["ilanSayisi"] = len(ilanlar)
 
     os.makedirs(os.path.dirname(CIKTI_YOLU) or ".", exist_ok=True)
     with open(CIKTI_YOLU, "w", encoding="utf-8") as f:
