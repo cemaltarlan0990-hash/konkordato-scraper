@@ -87,9 +87,15 @@ SIRKET_EKLERI = (
     r"(?<![" + HARF + r"])A\.?\s?Ş\.?(?![" + HARF + r"])"
 )
 
+# (?i:...) kapsamli bayrak: SADECE sirket eki kismi buyuk/kucuk harf
+# duyarsiz olur, bastaki buyuk harf sarti korunur.
+# ZORUNLU: ilan metinleri her zaman BUYUK HARF degil. Gercek ornek:
+# "Fatih Golcuk Hali Ve Mobilya Sanayi Ticaret Anonim Sirketi (VKN:...)"
+# Sadece "ANONİM ŞİRKETİ" arayan desen bunu hic yakalamiyordu -
+# baslik formatindaki tum ilanlar sessizce kayboluyordu.
 UNVAN_DESENI = re.compile(
     r"([A-ZÇĞİÖŞÜ][A-ZÇĞİÖŞÜa-zçğıöşü0-9\.\,&/\-\s]{2,90}?"
-    r"(?:" + SIRKET_EKLERI + r"))"
+    r"(?i:" + SIRKET_EKLERI + r"))"
 )
 
 SINIR = re.compile(
@@ -97,7 +103,14 @@ SINIR = re.compile(
     r"DAVACI|DAVALI|BORÇLU|BORCLU|DAVACISI|KOMİSER|KOMISER|"
     r"VERGİ\s*NO(?:LU|SU)?|VERGI\s*NO(?:LU|SU)?|"
     r"İ\s*L\s*A\s*N|ESAS|SAYILI|DOSYA(?:SI)?|"
-    r"ALEYHİNE|TARAFINDAN|HAKKINDA|ÜNVANLI|UNVANLI|:)\s*",
+    r"ALEYHİNE|TARAFINDAN|HAKKINDA|ÜNVANLI|UNVANLI|"
+    # Baslik formatindaki ilanlarda unvan bu kaliplardan SONRA baslar:
+    # "... sicil numarasinda kayitli Fatih Golcuk Hali Ve Mobilya A.S."
+    # Bunlar olmadan "Denizli Sicilinde kayitli" gibi baglam kelimeleri
+    # unvanin basinda kaliyor ve kademeli aramada ilk kelime tutmuyor.
+    r"KAYITLI|KAYİTLI|SİCİLİNDE|SICILINDE|SİCİL\s*NUMARASINDA|"
+    r"TESCİLLİ|TESCILLI|"
+    r":)\s*",
     re.IGNORECASE,
 )
 
@@ -233,10 +246,12 @@ def firma_vkn_ciftleri(text):
     Bu, VKN-unvan eslemesinin TEK guvenilir kaynagi.
     """
     desen = (
-        r"([A-ZÇĞİÖŞÜ][A-ZÇĞİÖŞÜ0-9\.\,&/\- ]{2,80}?"
-        r"(?:" + SIRKET_EKLERI + r"))"
-        r"\s*\(?\s*(?:V\.?K\.?N\.?|Vergi\s*Kimlik\s*No|Vergi\s*No)"
-        r"\s*[:.]?\s*(\d{10})\s*\)?"
+        r"([A-ZÇĞİÖŞÜ][A-ZÇĞİÖŞÜa-zçğıöşü0-9\.\,&/\- ]{2,80}?"
+        r"(?i:" + SIRKET_EKLERI + r"))"
+        r"\s*[\(\[]?\s*"
+        r"(?i:V\.?\s?K\.?\s?N\.?|Vergi\s*Kimlik\s*(?:No|Numarasi|Numarası)|"
+        r"Vergi\s*(?:No|Numarasi|Numarası))"
+        r"\s*[:.\-]?\s*(\d{10})\s*[\)\]]?"
     )
     ciftler = []
     gorulen = set()
@@ -319,6 +334,12 @@ def ilan_listesini_al(geriye_donuk_gun):
             yanit.raise_for_status()
             ilanlar = yanit.json()["result"]["ads"]
         except Exception as hata:
+            # Ilk sayfa alinamiyorsa kaynak erisilemez demektir.
+            # Sessizce bos donmek "bugun ilan yok" gibi gorunur ve
+            # sistem yesil biter - en tehlikeli hata bicimi.
+            if not secilen:
+                raise RuntimeError(
+                    "ilan.gov.tr liste servisine erisilemedi: %s" % hata)
             print("UYARI: liste sayfasi alinamadi -> %s" % hata)
             break
 
@@ -391,6 +412,14 @@ def ilanlari_cek(geriye_donuk_gun=1):
 
     if hatali:
         print("Detayi alinamayan ilanlar: %s" % hatali)
+
+    # Ilan bulundu ama HICBIRININ detayi alinamadiysa, bu bir ag/servis
+    # arizasidir - "eslesme yok" diye rapor edilmemeli.
+    if secilen and not kayitlar:
+        raise RuntimeError(
+            "%d ilan listelendi ancak hicbirinin detayi alinamadi."
+            % len(secilen))
+
     return kayitlar
 
 
