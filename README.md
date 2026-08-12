@@ -1,72 +1,181 @@
+# Konkordato Takip Sistemi
+
+ilan.gov.tr'de yayımlanan konkordato ilanlarını her gün tarar, CRM'deki müşteri
+firmalarla eşleştirir ve eşleşme bulunduğunda e-posta uyarısı gönderir.
+
+Amaç: bir müşterinin finansal zorluğa girdiğini ilan yayımlandığı gün öğrenmek.
+
+---
+
+## Mimari
+
 ```mermaid
-graph TD
-    classDef trigger fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b;
-    classDef process fill:#ffffff,stroke:#455a64,stroke-width:2px,color:#263238;
-    classDef condition fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#e65100;
-    classDef success fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#1b5e20;
-    classDef ignore fill:#fbe9e7,stroke:#d84315,stroke-width:1px,color:#bf360c,stroke-dasharray: 3 3;
-    classDef nested fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#4a148c;
+flowchart TD
+    A["CRM (Dataverse)<br/>15.088 aktif firma"] -->|haftalık| B["OneDrive<br/>veri deposu"]
+    B -->|Power Automate| C["data/crm_referans.csv"]
+    D["ilan.gov.tr<br/>günlük ilanlar"] -->|scraper.py| E
 
-    START(["⚡ GitHub Actions Tetikleme<br/><i>(HTTP POST → workflow_dispatch)</i>"]):::trigger
-    WAIT["⏱ 60sn Bekle & Do Until<br/><i>(Run Tamamlanma Kontrolü)</i>"]:::process
-    FETCH["📄 ilanlar.json Oku (GET)<br/><i>Parse JSON → TumIlanlar</i>"]:::process
-    SPLIT_FILTER{"Filter Array ×2<br/>vergiNo dolu mu?"}:::condition
-
-    START --> WAIT --> FETCH --> SPLIT_FILTER
-
-    subgraph DAL_1 ["🟢 DAL 1: Vergi No İle Arama (VergiliIlanlar)"]
-        V_LOOP["Apply to Each<br/><i>(Her Vergili İlan)</i>"]:::process
-        V_DV["Dataverse Sorgusu<br/><code>twbs_vergino eq '...'</code>"]:::process
-        V_COND{"Condition:<br/>VergiNo_BulunduMu?"}:::condition
-        V_MATCH["✅ Satırı 'Vergi No' Etiketiyle<br/>Mail Listesine Ekle"]:::success
-        V_SKIP["🚫 İşlem Yapılmadıl"]:::ignore
-
-        V_LOOP --> V_DV --> V_COND
-        V_COND -- EVET --> V_MATCH
-        V_COND -- HAYIR --> V_SKIP
+    subgraph GH["GitHub Actions — her sabah 06:30 UTC"]
+        C --> E["matcher.py<br/>normalize + kademeli arama"]
+        E --> F["cikti/eslesmeler.json"]
     end
 
-    subgraph DAL_2 ["🟣 DAL 2: İsim İle Arama (VergisizIlanlar)"]
-        NV_LOOP["Apply to Each<br/><i>(Her Vergisiz İlan)</i>"]:::process
-        NV_CANDIDATE["AdayBulma<br/><i>(Dataverse contains)</i>"]:::process
-        NV_NORM["NormalizeTemel_CRM/Ilan"]:::process
-        NV_TIERA["TierA_Karsilastir"]:::process
-        NV_ACOND{"Condition:<br/>TierA_BulunduMu?"}:::condition
-        NV_AMATCH["✅ Satırı 'Unvanlı' Etiketiyle<br/>Mail Listesine Ekle"]:::success
-
-        subgraph NESTED ["⚡ Tier-B İşleme Area"]
-            NV_SPLIT["1. KelimeDizisi Split"]:::nested
-            NV_CLEAN["2. UnvanTemizle Do Until ×2"]:::nested
-            NV_TIERB["3. TierB_Karsilastir"]:::nested
-            NV_BCOND{"4. Condition:<br/>TierB_BulunduMu?"}:::condition
-            NV_BMATCH["✅ Satırı 'Unvansız' Etiketiyle<br/>Mail Listesine Ekle"]:::success
-            NV_BSKIP["🚫 İşlem Yapılmadıl"]:::ignore
-
-            NV_SPLIT --> NV_CLEAN --> NV_TIERB --> NV_BCOND
-            NV_BCOND -- EVET --> NV_BMATCH
-            NV_BCOND -- HAYIR --> NV_BSKIP
-        end
-
-        NV_LOOP --> NV_CANDIDATE --> NV_NORM --> NV_TIERA --> NV_ACOND
-        NV_ACOND -- EVET --> NV_AMATCH
-        NV_ACOND -- HAYIR --> NESTED
-    end
-
-    SPLIT_FILTER -- DOLU --> DAL_1
-    SPLIT_FILTER -- BOŞ --> DAL_2
-
-    MERGE["🔀 Dizi Birleştirme"]:::process
-    BUILD_HTML["📊 3 Ayrı HTML Tablosu Oluştur"]:::process
-    CHECK_MAIL{"Condition:<br/>En Az Bir Kayıt Var mı?"}:::condition
-    SEND_MAIL["✉️ Send_an_email_(V2)"]:::success
-    NO_MAIL["🔕 Mail Atılmaz"]:::ignore
-
-    V_MATCH --> MERGE
-    NV_AMATCH --> MERGE
-    NV_BMATCH --> MERGE
-
-    MERGE --> BUILD_HTML --> CHECK_MAIL
-    CHECK_MAIL -- EVET --> SEND_MAIL
-    CHECK_MAIL -- HAYIR --> NO_MAIL
+    F -->|Power Automate| G["E-posta<br/>3 tablo"]
 ```
+
+Üç katman, üç ayrı sorumluluk:
+
+| Katman | İş | Neden orada |
+|---|---|---|
+| **GitHub Actions** | Tarama, eşleştirme, skorlama | Hesaplama hızlı ve test edilebilir olmalı |
+| **Power Automate** | Dataverse'ten veri çekme, e-posta | Kurumsal bağlantılar hazır, ek kayıt gerekmiyor |
+| **OneDrive** | CRM verisinin kalıcı kopyası | Veri şirket içinde kalır |
+
+Eşleştirme mantığı tamamen Python tarafındadır. Power Automate hesaplama yapmaz;
+yalnızca veri taşır ve bildirim gönderir.
+
+---
+
+## Eşleştirme algoritması
+
+Aynı fonksiyon **hem CRM hem ilan tarafına** uygulanır. İki taraf farklı koddan
+geçerse tokenizasyon ayrışır ve karşılaştırma sessizce bozulur.
+
 ```
+"BAREM AMBALAJ SANAYİ VE TİCARET ANONİM ŞİRKETİ"   (ilan)
+"BAREM AMBALAJ SAN.TİC.A.Ş."                        (CRM)
+                    │
+                    ▼
+   1. Çift nokta temizliği      İ+U+0307 → İ
+   2. Türkçe büyük harf         i→İ, ı→I, sonra upper()
+   3. Karakter katlaması        İ,I,ı,i→I  Ş→S  Ğ→G  Ç→C  Ö→O  Ü→U
+   4. Boşluk VE nokta ile ayır  "SAN.TİC." → SAN | TIC
+   5. Tek harfleri birleştir    A . Ş → AS
+   6. Sondan ünvan sil          AS, ANONIM, SIRKETI, LTD, STI ...
+   7. Sondan jenerik sil        SANAYI, SAN, TICARET, TIC, VE ...
+                    │
+                    ▼
+        ["BAREM", "AMBALAJ"]  ==  ["BAREM", "AMBALAJ"]     → 2/2 MATCH
+```
+
+### Kademeli arama
+
+İlanın kelimeleri **soldan sağa** tek tek denenir, aday havuzu her adımda daralır.
+
+```
+adım 0:  BAREM     → 15.088 aday içinden 3 kaldı
+adım 1:  AMBALAJ   → 3 aday içinden 1 kaldı
+                     tüm kelimeler tuttu → 2/2 = TAM EŞLEŞME
+```
+
+Bir kelime hiçbir adayda bulunamazsa **durulur, atlanmaz.** Atlama denendi ve
+yanlış pozitif üretti. Skor = eşleşen kelime / toplam kelime.
+
+### Sonuç sınıfları
+
+| Sınıf | Koşul |
+|---|---|
+| `MATCH` | Tam eşleşme (N/N) **ve** tek aday |
+| `REVIEW` | Tam eşleşme ama birden fazla aday, veya kısmi eşleşme (skor ≥ 0.75) |
+| `NO MATCH` | Skor eşiğin altında, veya ilk kelime hiç tutmadı |
+
+`NO MATCH` geçerli ve beklenen bir sonuçtur — firma gerçekten müşteri olmayabilir.
+
+---
+
+## Dosya yapısı
+
+```
+konkordato-scraper/
+├── .github/workflows/
+│   └── gunluk.yml           Zamanlama, adımlar, commit
+├── src/
+│   ├── scraper.py           ilan.gov.tr'den ilan çeker
+│   ├── matcher.py           Normalizasyon + kademeli arama
+│   └── main.py              Orkestratör
+├── data/
+│   └── crm_referans.csv     CRM referansı (haftalık yenilenir)
+├── cikti/
+│   └── eslesmeler.json      Tarama sonucu (her koşuda üzerine yazılır)
+└── requirements.txt
+```
+
+**`crm_referans.csv` sütunları:**
+
+| Sütun | Rol |
+|---|---|
+| `OrijinalIsim` | CRM'deki ham hali — **e-postada bu gösterilir** |
+| `DuzenlenmisFirmaAdi` | Elle düzeltilmiş hali — eşleştirmede ek güvence |
+| `VKN` | Vergi kimlik numarası |
+
+E-postada `OrijinalIsim` gösterilmesi bir tasarım kararıdır: personel CRM'de
+o isimle arama yapar, düzeltilmiş isimle kaydı bulamaz.
+
+---
+
+## Ayarlar
+
+`matcher.py` başında:
+
+| Ayar | Varsayılan | Ne yapar |
+|---|---|---|
+| `KATLAMA` | `True` | Türkçe/Latin karakter farkını ortadan kaldırır |
+| `JENERIK_KUYRUK_SIL` | `True` | SANAYİ/TİCARET vb. kelimeleri sondan siler |
+| `ISIM_KAYNAGI` | `her_ikisi` | Hangi isim sütunundan eşleştirileceği |
+| `MIN_CRM_KAYIT` | `10000` | Altına düşerse çalışma durur |
+
+Çalışma anında ortam değişkeniyle ezilebilenler:
+
+```bash
+GERIYE_DONUK_GUN=14 REVIEW_ESIGI=0.75 python src/main.py
+```
+
+`GERIYE_DONUK_GUN`: `0` = sadece bugün, `1` = bugün + dün, `14` = son 15 gün.
+
+---
+
+## Elle çalıştırma
+
+Actions sekmesi → "Gunluk konkordato taramasi" → **Run workflow**.
+Açılan kutuda geriye dönük gün sayısını ve eşiği girebilirsin.
+
+---
+
+## Güvenlik önlemleri
+
+**Sessiz bozulmaya karşı.** CRM referansı 10.000 kaydın altına düşerse çalışma
+durur ve Actions kırmızı olur. Aksi halde sistem "bugün eşleşme yok" der ve
+bozukluk fark edilmez.
+
+**Bayat veriye karşı.** `eslesmeler.json` içindeki `uretimZamani` alanı, Power
+Automate'in dosyanın bugüne ait olup olmadığını kontrol etmesini sağlar. Actions
+patlarsa PA eski dosyayı okuyup yanlış rapor vermez.
+
+**Çakışmaya karşı.** Workflow `concurrency` grubu kullanır; iki koşu üst üste
+gelirse sıraya girer. Commit push'u üç kez denenir, araya giren commit olursa
+rebase edilir.
+
+---
+
+## Bilinen sınırlar
+
+- `firmalar[]` dizisi (ünvan–VKN çifti) yalnızca ilan metninde vergi numarası
+  ünvanın hemen ardından yazıldığında dolar. Çoğu mahkeme metni VKN içermez;
+  bu durumda eşleştirme isim üzerinden yapılır.
+- İlan metinlerindeki ünvan çıkarımı regex tabanlıdır. Alışılmadık yazımlar
+  kaçabilir veya kesik yakalanabilir.
+- CRM'de aynı çekirdek isme sahip mükerrer kayıtlar `REVIEW`'a düşer, otomatik
+  eşleşme sayılmaz.
+
+---
+
+## Geliştirme notları
+
+Algoritmaya dokunulduğunda geriye dönük veriyle test edilmeli:
+
+```bash
+GERIYE_DONUK_GUN=14 python src/main.py
+```
+
+Kontrol edilecekler: bilinen gerçek eşleşmeler hâlâ bulunuyor mu, yeni yanlış
+pozitif var mı, `REVIEW` listesi kullanılabilir uzunlukta mı.
