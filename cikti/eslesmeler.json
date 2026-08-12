@@ -1,12 +1,12 @@
 {
-  "uretimZamani": "2026-08-12T08:30:48.491280+00:00",
+  "uretimZamani": "2026-08-12T08:37:23.470210+00:00",
   "crmKayitSayisi": 15088,
   "katlama": true,
-  "toplamUnvan": 201,
+  "toplamUnvan": 197,
   "ozet": {
     "match": 1,
     "review": 1,
-    "noMatch": 199
+    "noMatch": 195
   },
   "vknEslesmeleri": [],
   "isimEslesmeleri": [
@@ -61,26 +61,26 @@
     }
   ],
   "teshis": {
-    "ilandanCikarilanVknCifti": 27,
-    "ilandanCikarilanSerbestVkn": 76,
+    "ilandanCikarilanVknCifti": 25,
+    "ilandanCikarilanSerbestVkn": 74,
     "crmdeBulunanVkn": 0,
     "crmdeBulunmayanVknOrnekleri": [
       "7720679565",
       "3852096544",
-      "1290348395",
-      "1250707144",
-      "6490990057",
-      "6490515355",
       "1630419630",
       "1420628928",
       "8330482293",
+      "0891344337",
+      "7050218304",
+      "7050035531",
+      "9780069746",
       "0891344337"
     ],
     "unvaniCikarilamayanIlan": 18,
-    "crmVknDoluKayit": 6397,
-    "crmVknBosKayit": 8691
+    "crmVknDoluKayit": 6391,
+    "crmVknBosKayit": 8697
   },
   "reviewEsigi": 0.75,
   "geriyeDonukGun": 10,
-  "ilanSayisi": 133
+  "ilanSayisi": 130
 }
