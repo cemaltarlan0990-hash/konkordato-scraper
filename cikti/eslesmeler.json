@@ -1,12 +1,12 @@
 {
-  "uretimZamani": "2026-08-12T07:46:56.512233+00:00",
+  "uretimZamani": "2026-08-12T08:01:43.332503+00:00",
   "crmKayitSayisi": 15088,
   "katlama": true,
-  "toplamUnvan": 230,
+  "toplamUnvan": 155,
   "ozet": {
-    "match": 2,
-    "review": 1,
-    "noMatch": 227
+    "match": 1,
+    "review": 0,
+    "noMatch": 154
   },
   "vknEslesmeleri": [],
   "isimEslesmeleri": [
@@ -32,77 +32,10 @@
       "esas": "ESAS NO : 2026/810",
       "link": "https://www.ilan.gov.tr/ilan/2185127/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ve-durusma-gununun-ilanen-tebligi",
       "ilanDurumu": "Geçici Mühlet"
-    },
-    {
-      "ilanId": "2183242",
-      "unvan": "BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ",
-      "vkn": "",
-      "yontem": "ISIM",
-      "durum": "MATCH",
-      "skor": 1.0,
-      "eslesenKelime": 4,
-      "toplamKelime": 4,
-      "adaylar": [
-        {
-          "crmIsim": "BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ TORBALI ŞUBESİ",
-          "crmVkn": "1790636155",
-          "crmKelimeSayisi": 9
-        }
-      ],
-      "tarih": "2026-07-31",
-      "sehir": "ORDU",
-      "mahkeme": "T.C. FATSA 1. ASLİYE HUKUK MAHKEMESİ",
-      "esas": "2026/143 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2183242/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari",
-      "ilanDurumu": "Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı"
     }
   ],
-  "incelenecekler": [
-    {
-      "ilanId": "2186046",
-      "unvan": "Ticaret A.Ş",
-      "vkn": "",
-      "yontem": "ISIM",
-      "durum": "REVIEW",
-      "skor": 1.0,
-      "eslesenKelime": 1,
-      "toplamKelime": 1,
-      "adaylar": [
-        {
-          "crmIsim": "TİCARET BAKANLIĞI EGE GÜMRÜK VE DIŞ TİCARET BÖLGE MÜDÜRLÜĞÜ İZMİR LABORATUVAR MÜDÜRLÜĞÜ",
-          "crmVkn": "1460244554",
-          "crmKelimeSayisi": 12
-        },
-        {
-          "crmIsim": "TİCARET BAKANLIĞI RİSK YÖNETİMİ TASFİYE VE DÖNER SERMAYE GENEL MÜDÜRLÜĞÜ",
-          "crmVkn": "6110026203",
-          "crmKelimeSayisi": 10
-        },
-        {
-          "crmIsim": "TİCARET BAKANLIĞI ULUDAĞ GÜMRÜK VE DIŞ TİCARET BÖLGE MÜDÜRLÜĞÜ BURSA TASFİYE İŞLETME MÜDÜRLÜĞÜ",
-          "crmVkn": "6110026203",
-          "crmKelimeSayisi": 13
-        },
-        {
-          "crmIsim": "TİCARET BAKANLIĞI ORTA ANADOLU GÜMRÜK VE DIŞ TİC. BÖLGE MÜDÜRLÜĞÜ, ERGAZİ TASFİYE İŞLETME MÜDÜRLÜĞÜ",
-          "crmVkn": "6110026203",
-          "crmKelimeSayisi": 14
-        },
-        {
-          "crmIsim": "TİCARET VE SANAYİ KONTUVARI T.A.Ş.",
-          "crmVkn": "8440013664",
-          "crmKelimeSayisi": 5
-        }
-      ],
-      "tarih": "2026-08-03",
-      "sehir": "ANKARA",
-      "mahkeme": null,
-      "esas": "2025/1009 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2186046/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilarin-alacaklarini-bildirmeye-davet",
-      "ilanDurumu": "Alacaklı Bildirimi"
-    }
-  ],
+  "incelenecekler": [],
   "reviewEsigi": 0.75,
-  "geriyeDonukGun": 16,
-  "ilanSayisi": 206
+  "geriyeDonukGun": 10,
+  "ilanSayisi": 133
 }
