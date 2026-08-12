@@ -276,7 +276,7 @@ class CRMReferans:
             if not kelime_dizileri:
                 continue
 
-            vkn = str(kayit.get("VKN") or "").strip()
+            vkn = vkn_normalize(kayit.get("VKN"))
             satir = {
                 "orijinal": gosterilecek,
                 "vkn": vkn,
@@ -306,9 +306,32 @@ class CRMReferans:
 # 3. ESLESTIRME
 # ---------------------------------------------------------------------------
 
+def vkn_normalize(deger):
+    """
+    VKN'yi karsilastirilabilir hale getirir.
+
+    Excel'den CSV'ye aktarimda VKN sayi olarak yorumlanabilir ve
+    BASTAKI SIFIR DUSER: "0891344337" -> "891344337" veya "891344337.0".
+    Bu, karsilastirmayi sessizce basarisiz kilar - hicbir hata vermez,
+    sadece eslesme bulunmaz.
+    """
+    if deger is None:
+        return ""
+    metin = str(deger).strip()
+    if metin.endswith(".0"):
+        metin = metin[:-2]
+    rakamlar = "".join(k for k in metin if k.isdigit())
+    if not rakamlar:
+        return ""
+    # 10 haneye tamamla (baslangictaki sifirlar kaybolmus olabilir)
+    if len(rakamlar) < 10:
+        rakamlar = rakamlar.zfill(10)
+    return rakamlar
+
+
 def vkn_ara(referans, vkn):
     """Vergi numarasi ile tam eslesme. Belirsizlik yok."""
-    vkn = str(vkn or "").strip()
+    vkn = vkn_normalize(vkn)
     if not vkn:
         return []
     return referans.vkn_index.get(vkn, [])
