@@ -1,40 +1,101 @@
-name: Test Scrape
+name: Gunluk konkordato taramasi
 
 on:
-  workflow_dispatch:        # elle tetikleme (test için kalsın)
   schedule:
-    - cron: '00 9 * * *'   # her gün 12.00'da Türkiye saati
+    # UTC. 06:30 UTC = 09:30 TR (yaz/kis fark etmez, TR sabit UTC+3).
+    # GitHub cron'u yogun anlarda 5-15 dk gecikebilir; PA'nin okuma
+    # saatini bundan en az yarim saat sonraya koy.
+    - cron: '30 6 * * *'
+  workflow_dispatch:
+    inputs:
+      geriye_donuk_gun:
+        description: 'Kac gun geriye bakilsin (0 = sadece bugun)'
+        required: false
+        default: '1'
+      review_esigi:
+        description: 'Kismi eslesme esigi (0.75 = 3/4 ve ustu)'
+        required: false
+        default: '0.75'
+  push:
+    paths:
+      - 'data/crm_referans.csv'
 
 permissions:
   contents: write
 
 concurrency:
-  group: ilan-tarama
+  group: konkordato-tarama
   cancel-in-progress: false
 
 jobs:
-  test-request:
+  tarama:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
+
     steps:
-      - name: Checkout repo
+      - name: Depoyu klonla
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Python kur
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
 
-      - name: Install dependencies
-        run: pip install requests
-
-      - name: Run test script
-        run: python test_scrape.py
-
-      - name: Commit and push ilanlar.json
+      - name: Bagimliliklari yukle
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add ilanlar.json
-          git diff --staged --quiet || git commit -m "Günlük ilan verisi güncellendi"
-          git push
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: CRM referansini dogrula
+        run: |
+          if [ ! -f data/crm_referans.csv ]; then
+            echo "HATA: data/crm_referans.csv bulunamadi."
+            exit 1
+          fi
+          satir=$(wc -l < data/crm_referans.csv)
+          echo "CRM referansi: $satir satir"
+          if [ "$satir" -lt 10000 ]; then
+            echo "HATA: CRM referansi beklenenden kucuk ($satir satir)."
+            echo "Bozuk veriyle calismak sessiz yanlis sonuc uretir."
+            exit 1
+          fi
+
+      - name: Taramayi calistir
+        env:
+          GERIYE_DONUK_GUN: ${{ github.event.inputs.geriye_donuk_gun || '1' }}
+          REVIEW_ESIGI: ${{ github.event.inputs.review_esigi || '0.75' }}
+          CRM_YOLU: data/crm_referans.csv
+          CIKTI_YOLU: cikti/eslesmeler.json
+        run: python src/main.py
+
+      - name: Sonucu commit et
+        run: |
+          git config user.name "konkordato-bot"
+          git config user.email "actions@github.com"
+          git add cikti/eslesmeler.json
+          if git diff --staged --quiet; then
+            echo "Degisiklik yok, commit atlanıyor."
+            exit 0
+          fi
+          git commit -m "Tarama sonucu: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          for deneme in 1 2 3; do
+            if git push; then
+              echo "Push basarili."
+              exit 0
+            fi
+            echo "Push basarisiz (deneme $deneme), rebase edilip tekrar denenecek."
+            git pull --rebase --autostash || true
+            sleep 5
+          done
+          echo "HATA: push uc denemede de basarisiz."
+          exit 1
+
+      - name: Ozeti yazdir
+        if: always()
+        run: |
+          if [ -f cikti/eslesmeler.json ]; then
+            python -c "import json,sys; d=json.load(open('cikti/eslesmeler.json',encoding='utf-8')); print('Ilan:',d.get('ilanSayisi'),'| Unvan:',d.get('toplamUnvan'),'| Ozet:',d.get('ozet'))"
+          else
+            echo "Cikti dosyasi uretilmedi."
+          fi
