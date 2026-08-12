@@ -16,6 +16,7 @@ import json
 from datetime import datetime, timezone
 
 import matcher
+import rapor
 from scraper import ilanlari_cek
 
 
@@ -88,6 +89,13 @@ def main():
 
     cikti = matcher.cikti_uret(sonuclar, crm_kayit_sayisi=len(referans))
     cikti["teshis"] = matcher.teshis_uret(ilanlar, referans)
+
+    # Mail govdesi burada uretilir; PA sadece hazir HTML'i basar.
+    # Sonuc yoksa mailHtml bos kalir ve mailGonderilsinMi=false olur.
+    mail_html = rapor.mail_html_uret(cikti)
+    cikti["mailGonderilsinMi"] = mail_html is not None
+    cikti["mailKonusu"] = rapor.mail_konusu(cikti) if mail_html else ""
+    cikti["mailHtml"] = mail_html or ""
     cikti["reviewEsigi"] = REVIEW_ESIGI
     cikti["geriyeDonukGun"] = GERIYE_DONUK_GUN
     cikti["ilanSayisi"] = len(ilanlar)
@@ -105,6 +113,7 @@ def main():
         % (t["ilandanCikarilanVknCifti"], t["ilandanCikarilanSerbestVkn"],
            t["crmdeBulunanVkn"], t["unvaniCikarilamayanIlan"],
            t["crmVknDoluKayit"], t["crmVknBosKayit"]))
+    log("Mail gonderilsin mi: %s" % cikti["mailGonderilsinMi"])
     log("Yazildi: %s" % CIKTI_YOLU)
     return 0
 
