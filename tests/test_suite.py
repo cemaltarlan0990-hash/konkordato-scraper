@@ -2,7 +2,7 @@
 """Konkordato boru hatti regresyon testleri."""
 
 import sys
-sys.path.insert(0, ".")
+sys.path.insert(0, "src")
 
 import scraper as s
 import scraper as s_mod
