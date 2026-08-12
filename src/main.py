@@ -87,6 +87,7 @@ def main():
     log("%d unvan islendi" % len(sonuclar))
 
     cikti = matcher.cikti_uret(sonuclar, crm_kayit_sayisi=len(referans))
+    cikti["teshis"] = matcher.teshis_uret(ilanlar, referans)
     cikti["reviewEsigi"] = REVIEW_ESIGI
     cikti["geriyeDonukGun"] = GERIYE_DONUK_GUN
     cikti["ilanSayisi"] = len(ilanlar)
@@ -98,6 +99,12 @@ def main():
     ozet = cikti["ozet"]
     log("MATCH: %d | REVIEW: %d | NO MATCH: %d"
         % (ozet["match"], ozet["review"], ozet["noMatch"]))
+    t = cikti["teshis"]
+    log("Teshis: VKN cifti=%d | serbest VKN=%d | CRM'de bulunan=%d | "
+        "unvansiz ilan=%d | CRM VKN dolu=%d bos=%d"
+        % (t["ilandanCikarilanVknCifti"], t["ilandanCikarilanSerbestVkn"],
+           t["crmdeBulunanVkn"], t["unvaniCikarilamayanIlan"],
+           t["crmVknDoluKayit"], t["crmVknBosKayit"]))
     log("Yazildi: %s" % CIKTI_YOLU)
     return 0
 
