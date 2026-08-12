@@ -25,6 +25,25 @@ UNVAN_KELIMELERI_HAM = [
     "KOLLEKTIF", "KOMANDIT", "ADI", "KOOPERATIFI", "KOOPERATIF",
     "AŞ", "ANONİM", "ŞİRKETİ", "ŞTİ", "LİMİTED",
     "KOLLEKTİF", "KOMANDİT", "ADİ", "KOOPERATİFİ",
+    "ORTAKLIGI", "ORTAKLIĞI", "SUBESI", "ŞUBESİ",
+]
+
+# Jenerik sektor/kuyruk kelimeleri.
+# Sebep: CRM "SAN. VE TIC." yazarken ilan "SANAYI VE TICARET" yaziyor.
+# Bunlar kelime kelime karsilastirmayi bozuyordu (ATABAY KIDS TEKSTIL
+# tam tutmasina ragmen skor 3/6'ya dusuyordu).
+#
+# Bu bir sozluk/kanoniklestirme DEGIL - ayni "sondan silme" mekanizmasi,
+# sadece daha genis liste. Ortadaki gecisler korunur; SADECE SONDAN silinir.
+# Kapatmak icin JENERIK_KUYRUK_SIL = False.
+JENERIK_KUYRUK_SIL = True
+
+JENERIK_KELIMELER_HAM = [
+    "SANAYI", "SANAYİ", "SANAYII", "SAN",
+    "TICARET", "TİCARET", "TIC", "TİC",
+    "VE", "ILE", "İLE",
+    "PAZARLAMA", "ITHALAT", "İTHALAT", "IHRACAT", "İHRACAT",
+    "DIS", "DIŞ", "IC", "İÇ",
 ]
 
 # CRM referansinda beklenen minimum kayit sayisi.
@@ -111,16 +130,29 @@ def tek_harfleri_birlestir(kelimeler):
     return sonuc
 
 
-def _unvan_seti(katlama):
-    """Unvan kelimelerini ayni normalizasyondan gecirip set olarak dondurur."""
+def _liste_normalize(ham_liste, katlama):
+    """Kelime listesini ayni normalizasyondan gecirip set olarak dondurur."""
     hazir = set()
-    for ham in UNVAN_KELIMELERI_HAM:
+    for ham in ham_liste:
         temiz = turkce_upper(cift_nokta_temizle(ham))
         if katlama:
             temiz = katla(temiz)
         for parca in tek_harfleri_birlestir(kelimelere_ayir(temiz)):
             hazir.add(parca)
     return hazir
+
+
+def _unvan_seti(katlama):
+    """
+    Sondan silinecek kelime setleri.
+    Iki asamali: once hukuki unvanlar, sonra jenerik kuyruk.
+    Doner: (unvan_seti, jenerik_seti)
+    """
+    unvanlar = _liste_normalize(UNVAN_KELIMELERI_HAM, katlama)
+    jenerik = set()
+    if JENERIK_KUYRUK_SIL:
+        jenerik = _liste_normalize(JENERIK_KELIMELER_HAM, katlama)
+    return unvanlar, jenerik
 
 
 def sondan_unvan_sil(kelimeler, unvanlar):
@@ -135,23 +167,42 @@ def sondan_unvan_sil(kelimeler, unvanlar):
     return sonuc
 
 
-def saf_kelimeler(isim, katlama=KATLAMA, unvanlar=None):
+def saf_kelimeler(isim, katlama=KATLAMA, setler=None):
     """
     Bir firma adindan cekirdek kelime listesi uretir.
     CRM ve ilan taraflarina AYNI SEKILDE uygulanir.
+
+    Silme iki asamali ve GERI ALINABILIR:
+      1. Hukuki unvanlar sondan silinir
+      2. Jenerik kuyruk sondan silinir
+    Bir asama listeyi tamamen bosaltirsa o asama GERI ALINIR.
+    Boylece "SANAYI VE TICARET A.S." gibi tamamen jenerik bir isim
+    bos listeye dusmez - elde kalan neyse onunla devam edilir.
     """
-    if unvanlar is None:
-        unvanlar = _unvan_seti(katlama)
+    if setler is None:
+        setler = _unvan_seti(katlama)
+    unvanlar, jenerik = setler
 
     metin = cift_nokta_temizle(isim)
     metin = turkce_upper(metin)
     if katlama:
         metin = katla(metin)
 
-    kelimeler = kelimelere_ayir(metin)
-    kelimeler = tek_harfleri_birlestir(kelimeler)
-    kelimeler = sondan_unvan_sil(kelimeler, unvanlar)
-    return kelimeler
+    kelimeler = tek_harfleri_birlestir(kelimelere_ayir(metin))
+    if not kelimeler:
+        return []
+
+    asama1 = sondan_unvan_sil(kelimeler, unvanlar)
+    if not asama1:
+        return kelimeler
+
+    if not jenerik:
+        return asama1
+
+    asama2 = sondan_unvan_sil(asama1, jenerik)
+    if not asama2:
+        return asama1
+    return asama2
 
 
 # ---------------------------------------------------------------------------
@@ -167,7 +218,7 @@ class CRMReferans:
 
     def __init__(self, kayitlar, katlama=KATLAMA):
         self.katlama = katlama
-        self.unvanlar = _unvan_seti(katlama)
+        self.setler = _unvan_seti(katlama)
         self.kayitlar = []
         self.vkn_index = {}
 
@@ -176,7 +227,7 @@ class CRMReferans:
             if not isim:
                 continue
             vkn = str(kayit.get("VKN") or "").strip()
-            kelimeler = saf_kelimeler(isim, katlama, self.unvanlar)
+            kelimeler = saf_kelimeler(isim, katlama, self.setler)
             if not kelimeler:
                 continue
 
@@ -273,7 +324,7 @@ def unvan_eslestir(referans, ilan_id, unvan, vkn=None):
             return sonuc
 
     # --- Isim yolu ---
-    kelimeler = saf_kelimeler(unvan, referans.katlama, referans.unvanlar)
+    kelimeler = saf_kelimeler(unvan, referans.katlama, referans.setler)
     sonuc["yontem"] = "ISIM"
     sonuc["toplamKelime"] = len(kelimeler)
 
@@ -311,22 +362,65 @@ def unvan_eslestir(referans, ilan_id, unvan, vkn=None):
 def ilanlari_isle(referans, ilanlar):
     """
     Tum ilanlari isler.
-    unvanlar[i] ile vergiNolari[i] ayni firmaya aittir.
+
+    VKN-unvan eslemesi SADECE firmalar[] uzerinden kurulur.
+    unvanlar[] ile vergi numaralari arasinda pozisyonel esleme YOKTUR -
+    scraper iki listeyi farkli siralarda dolduruyor.
     """
     sonuclar = []
+
     for ilan in ilanlar:
         ilan_id = ilan.get("ilanId") or ilan.get("id")
-        unvanlar = ilan.get("unvanlar") or []
-        vergi_nolari = ilan.get("vergiNolari") or []
+        ek_alanlar = {
+            alan: ilan[alan]
+            for alan in ("tarih", "sehir", "mahkeme", "esas", "durum", "link")
+            if alan in ilan
+        }
 
-        for i, unvan in enumerate(unvanlar):
-            if not unvan or not str(unvan).strip():
+        islenen_unvanlar = set()
+
+        # --- 1. Unvani ve VKN'si birlikte yakalanmis firmalar ---
+        for firma in (ilan.get("firmalar") or []):
+            unvan = (firma.get("firma") or "").strip()
+            vkn = (firma.get("vergiNo") or "").strip()
+            if not unvan and not vkn:
                 continue
-            vkn = vergi_nolari[i] if i < len(vergi_nolari) else None
-            sonuc = unvan_eslestir(referans, ilan_id, str(unvan).strip(), vkn)
-            for alan in ("tarih", "sehir", "mahkeme", "esas"):
-                if alan in ilan:
-                    sonuc[alan] = ilan[alan]
+            sonuc = unvan_eslestir(referans, ilan_id, unvan, vkn)
+            sonuc.update(ek_alanlar)
+            sonuclar.append(sonuc)
+            if unvan:
+                islenen_unvanlar.add(unvan)
+
+        # --- 2. VKN'siz unvanlar (isim yoluyla) ---
+        for unvan in (ilan.get("unvanlar") or []):
+            unvan = str(unvan or "").strip()
+            if not unvan or unvan in islenen_unvanlar:
+                continue
+            sonuc = unvan_eslestir(referans, ilan_id, unvan, None)
+            sonuc.update(ek_alanlar)
+            sonuclar.append(sonuc)
+            islenen_unvanlar.add(unvan)
+
+        # --- 3. Unvana baglanamamis serbest VKN'ler ---
+        for vkn in (ilan.get("serbestVergiNolari") or []):
+            bulunan = vkn_ara(referans, str(vkn).strip())
+            if not bulunan:
+                continue
+            sonuc = {
+                "ilanId": ilan_id,
+                "unvan": "",
+                "vkn": str(vkn).strip(),
+                "yontem": "VKN",
+                "durum": "MATCH",
+                "skor": 1.0,
+                "eslesenKelime": 0,
+                "toplamKelime": 0,
+                "adaylar": [
+                    {"crmIsim": b["orijinal"], "crmVkn": b["vkn"]}
+                    for b in bulunan
+                ],
+            }
+            sonuc.update(ek_alanlar)
             sonuclar.append(sonuc)
 
     return sonuclar
