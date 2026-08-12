@@ -18,6 +18,13 @@ import unicodedata
 # Kapatmak icin False yap. Iki tarafa birden uygulanir.
 KATLAMA = True
 
+# Eslestirmede hangi isim sutunu kullanilacak:
+#   "orijinal"    - sadece OrijinalIsim (CRM'deki ham hali)
+#   "duzenlenmis" - sadece DuzenlenmisFirmaAdi (elle duzeltilmis hali)
+#   "her_ikisi"   - ikisi de denenir, biri tutarsa eslesme sayilir
+# Mail her durumda OrijinalIsim gosterir.
+ISIM_KAYNAGI = "her_ikisi"
+
 # Sondan silinecek unvan kelimeleri (ham hali; kod bunlari da ayni
 # normalizasyondan gecirir, boylece katlama acik/kapali fark etmez)
 UNVAN_KELIMELERI_HAM = [
@@ -214,27 +221,61 @@ class CRMReferans:
     CRM firma listesini bellege alir ve her kayit icin saf kelimeleri
     CALISMA ANINDA uretir. Dosyadaki hazir SafKelimeler sutunu
     KULLANILMAZ - iki tarafin ayni koddan gecmesi garantisi icin.
+
+    Iki isim sutunu desteklenir:
+      OrijinalIsim        - CRM'deki ham hali. Mail'de BU gosterilir,
+                            cunku personel CRM'de bu isimle arama yapiyor.
+      DuzenlenmisFirmaAdi - elle duzeltilmis hali (yazim hatalari,
+                            eksik/hatali karakterler). Eslestirmede
+                            daha guvenilir.
+
+    ISIM_KAYNAGI ile hangisinin eslestirmede kullanilacagi secilir.
+    "her_ikisi" modunda her iki yazimin kelime dizisi de aday havuzuna
+    girer; biri tutarsa eslesme sayilir. Mail her durumda OrijinalIsim
+    gosterir.
     """
 
-    def __init__(self, kayitlar, katlama=KATLAMA):
+    def __init__(self, kayitlar, katlama=KATLAMA, isim_kaynagi=None):
         self.katlama = katlama
+        self.isim_kaynagi = isim_kaynagi or ISIM_KAYNAGI
         self.setler = _unvan_seti(katlama)
         self.kayitlar = []
         self.vkn_index = {}
 
         for kayit in kayitlar:
-            isim = (kayit.get("OrijinalIsim") or "").strip()
-            if not isim:
-                continue
-            vkn = str(kayit.get("VKN") or "").strip()
-            kelimeler = saf_kelimeler(isim, katlama, self.setler)
-            if not kelimeler:
+            orijinal = (kayit.get("OrijinalIsim") or "").strip()
+            duzenlenmis = (kayit.get("DuzenlenmisFirmaAdi") or "").strip()
+
+            # Mail'de her zaman OrijinalIsim gosterilir.
+            # Bos ise duzenlenmise duser.
+            gosterilecek = orijinal or duzenlenmis
+            if not gosterilecek:
                 continue
 
+            adaylar = []
+            if self.isim_kaynagi in ("orijinal", "her_ikisi") and orijinal:
+                adaylar.append(orijinal)
+            if self.isim_kaynagi in ("duzenlenmis", "her_ikisi") and duzenlenmis:
+                adaylar.append(duzenlenmis)
+            if not adaylar:
+                adaylar = [gosterilecek]
+
+            kelime_dizileri = []
+            for ad in adaylar:
+                kelimeler = saf_kelimeler(ad, katlama, self.setler)
+                if kelimeler and kelimeler not in kelime_dizileri:
+                    kelime_dizileri.append(kelimeler)
+            if not kelime_dizileri:
+                continue
+
+            vkn = str(kayit.get("VKN") or "").strip()
             satir = {
-                "orijinal": isim,
+                "orijinal": gosterilecek,
                 "vkn": vkn,
-                "kelimeler": kelimeler,
+                # Her yazim varyanti ayri bir arama satiri olur;
+                # hepsi ayni CRM kaydini gosterir.
+                "kelimeler": kelime_dizileri[0],
+                "tumKelimeler": kelime_dizileri,
             }
             self.kayitlar.append(satir)
             if vkn:
@@ -284,7 +325,8 @@ def kademeli_ara(referans, ilan_kelimeleri):
     for i, kelime in enumerate(ilan_kelimeleri):
         yeni = [
             a for a in adaylar
-            if len(a["kelimeler"]) > i and a["kelimeler"][i] == kelime
+            if any(len(kd) > i and kd[i] == kelime
+                   for kd in a["tumKelimeler"])
         ]
         if not yeni:
             break
@@ -342,7 +384,7 @@ def unvan_eslestir(referans, ilan_id, unvan, vkn=None):
         {
             "crmIsim": a["orijinal"],
             "crmVkn": a["vkn"],
-            "crmKelimeSayisi": len(a["kelimeler"]),
+            "crmKelimeSayisi": max(len(kd) for kd in a["tumKelimeler"]),
         }
         for a in adaylar[:10]
     ]
