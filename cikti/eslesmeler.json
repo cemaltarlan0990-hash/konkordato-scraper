@@ -1,38 +1,15 @@
 {
-  "uretimZamani": "2026-08-12T08:24:46.504603+00:00",
+  "uretimZamani": "2026-08-12T08:30:48.491280+00:00",
   "crmKayitSayisi": 15088,
   "katlama": true,
   "toplamUnvan": 201,
   "ozet": {
-    "match": 2,
-    "review": 0,
+    "match": 1,
+    "review": 1,
     "noMatch": 199
   },
   "vknEslesmeleri": [],
   "isimEslesmeleri": [
-    {
-      "ilanId": "2188735",
-      "unvan": "Ermetal Ltd. Şti",
-      "vkn": "",
-      "yontem": "ISIM",
-      "durum": "MATCH",
-      "skor": 1.0,
-      "eslesenKelime": 1,
-      "toplamKelime": 1,
-      "adaylar": [
-        {
-          "crmIsim": "ERMETAL OTOMOTIV (METAL) VE EŞYA SAN. VE TİC. A.Ş.",
-          "crmVkn": "",
-          "crmKelimeSayisi": 5
-        }
-      ],
-      "tarih": "2026-08-05",
-      "sehir": "KOCAELİ",
-      "mahkeme": null,
-      "esas": null,
-      "link": "https://www.ilan.gov.tr/ilan/2188735/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani",
-      "ilanDurumu": "Alacaklı Bildirimi"
-    },
     {
       "ilanId": "2185127",
       "unvan": "BAREM AMBALAJ SANAYİ VE TİCARET ANONİM ŞİRKETİ",
@@ -57,7 +34,52 @@
       "ilanDurumu": "Geçici Mühlet"
     }
   ],
-  "incelenecekler": [],
+  "incelenecekler": [
+    {
+      "ilanId": "2188735",
+      "unvan": "Ermetal Ltd. Şti",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "REVIEW",
+      "skor": 1.0,
+      "eslesenKelime": 1,
+      "toplamKelime": 1,
+      "adaylar": [
+        {
+          "crmIsim": "ERMETAL OTOMOTIV (METAL) VE EŞYA SAN. VE TİC. A.Ş.",
+          "crmVkn": "",
+          "crmKelimeSayisi": 5
+        }
+      ],
+      "not": "Tek kelimelik cekirdek - insan dogrulamasi gerekli",
+      "tarih": "2026-08-05",
+      "sehir": "KOCAELİ",
+      "mahkeme": null,
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2188735/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani",
+      "ilanDurumu": "Alacaklı Bildirimi"
+    }
+  ],
+  "teshis": {
+    "ilandanCikarilanVknCifti": 27,
+    "ilandanCikarilanSerbestVkn": 76,
+    "crmdeBulunanVkn": 0,
+    "crmdeBulunmayanVknOrnekleri": [
+      "7720679565",
+      "3852096544",
+      "1290348395",
+      "1250707144",
+      "6490990057",
+      "6490515355",
+      "1630419630",
+      "1420628928",
+      "8330482293",
+      "0891344337"
+    ],
+    "unvaniCikarilamayanIlan": 18,
+    "crmVknDoluKayit": 6397,
+    "crmVknBosKayit": 8691
+  },
   "reviewEsigi": 0.75,
   "geriyeDonukGun": 10,
   "ilanSayisi": 133
