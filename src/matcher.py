@@ -25,6 +25,14 @@ KATLAMA = True
 # Mail her durumda OrijinalIsim gosterir.
 ISIM_KAYNAGI = "her_ikisi"
 
+# Tek kelimelik cekirdek zayif kanittir: uzun bir CRM kaydinin sadece
+# ilk kelimesiyle eslesir ve skor yine 1.0 cikar.
+# Gercek ornek: ilan "Ermetal Ltd. Sti" -> cekirdek ["ERMETAL"],
+# CRM "ERMETAL OTOMOTIV (METAL) VE ESYA SAN. VE TIC. A.S." -> 5 kelime.
+# Muhtemelen dogru, ama makine tek basina karar vermemeli.
+# True: tek kelimelik cekirdek MATCH yerine REVIEW'a duser.
+TEK_KELIME_REVIEW = True
+
 # Sondan silinecek unvan kelimeleri (ham hali; kod bunlari da ayni
 # normalizasyondan gecirir, boylece katlama acik/kapali fark etmez)
 UNVAN_KELIMELERI_HAM = [
@@ -400,7 +408,11 @@ def unvan_eslestir(referans, ilan_id, unvan, vkn=None):
     ]
 
     tam = (eslesen == len(kelimeler))
-    if tam and len(adaylar) == 1:
+    if tam and len(adaylar) == 1 and TEK_KELIME_REVIEW and len(kelimeler) == 1:
+        # Tek kelime tuttu; aday kaydin geri kalani hic dogrulanmadi.
+        sonuc["durum"] = "REVIEW"
+        sonuc["not"] = "Tek kelimelik cekirdek - insan dogrulamasi gerekli"
+    elif tam and len(adaylar) == 1:
         sonuc["durum"] = "MATCH"
     elif tam:
         # Ayni cekirdek ada sahip birden fazla CRM kaydi (cakisma grubu)
@@ -527,6 +539,46 @@ def crm_oku(yol, sayfa=None):
 # ---------------------------------------------------------------------------
 # 5. CIKTI
 # ---------------------------------------------------------------------------
+
+def teshis_uret(ilanlar, referans):
+    """
+    Ham veri sayaclari. VKN esleşmesi bos ciktiginda sebebi ayirt etmek
+    icin sart: cift hic cikarilamadi mi, yoksa cikarildi da CRM'de o
+    numara yok mu? Ikisi tamamen farkli sorunlar.
+    """
+    vkn_cifti = 0
+    serbest_vkn = 0
+    unvansiz_ilan = 0
+    vkn_bulunan = 0
+    vkn_bulunamayan = []
+
+    for ilan in ilanlar:
+        firmalar = ilan.get("firmalar") or []
+        serbest = ilan.get("serbestVergiNolari") or []
+        vkn_cifti += len(firmalar)
+        serbest_vkn += len(serbest)
+        if not (ilan.get("unvanlar") or []) and not firmalar:
+            unvansiz_ilan += 1
+        for numara in [f.get("vergiNo") for f in firmalar] + list(serbest):
+            if not numara:
+                continue
+            if vkn_ara(referans, numara):
+                vkn_bulunan += 1
+            elif len(vkn_bulunamayan) < 10:
+                vkn_bulunamayan.append(numara)
+
+    crm_vkn_dolu = sum(1 for k in referans.kayitlar if k["vkn"])
+
+    return {
+        "ilandanCikarilanVknCifti": vkn_cifti,
+        "ilandanCikarilanSerbestVkn": serbest_vkn,
+        "crmdeBulunanVkn": vkn_bulunan,
+        "crmdeBulunmayanVknOrnekleri": vkn_bulunamayan,
+        "unvaniCikarilamayanIlan": unvansiz_ilan,
+        "crmVknDoluKayit": crm_vkn_dolu,
+        "crmVknBosKayit": len(referans.kayitlar) - crm_vkn_dolu,
+    }
+
 
 def cikti_uret(sonuclar, uretim_zamani=None, crm_kayit_sayisi=0):
     """
