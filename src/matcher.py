@@ -373,6 +373,16 @@ def unvan_eslestir(referans, ilan_id, unvan, vkn=None):
     if not kelimeler:
         return sonuc
 
+    # Cekirdek tamamen jenerik kelimelerden olusuyorsa arama yapma.
+    # Gercek ornek: scraper "Ticaret A.S" diye kesik bir unvan uretti,
+    # cekirdek sadece TICARET kaldi ve 5 alakasiz Bakanlik kaydiyla
+    # eslesti. Ayirt edici tek kelime yoksa sonuc anlamsizdir.
+    _, jenerik = referans.setler
+    if jenerik and all(k in jenerik for k in kelimeler):
+        sonuc["durum"] = "NO MATCH"
+        sonuc["not"] = "Cekirdek tamamen jenerik, arama yapilmadi"
+        return sonuc
+
     eslesen, adaylar = kademeli_ara(referans, kelimeler)
     sonuc["eslesenKelime"] = eslesen
     sonuc["skor"] = round(eslesen / len(kelimeler), 3)
