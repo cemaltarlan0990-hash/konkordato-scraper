@@ -130,15 +130,57 @@ YASAK_KELIMELER = [
 BASTA_TEK_HARF = re.compile(r"^(?:[A-ZÇĞİÖŞÜ](?!\.)\s+){1,2}")
 
 
+# Hukuki ek ve jenerik kuyruk kelimeleri - "anlamli kelime" sayarken haric
+_ANLAMSIZ_HAM = [
+    "ANONİM", "ŞİRKETİ", "LİMİTED", "ŞTİ", "LTD", "AŞ",
+    "KOLLEKTİF", "KOMANDİT", "ADİ", "ORTAKLIĞI", "KOOPERATİFİ",
+    "SANAYİ", "SAN", "TİCARET", "TİC", "VE", "İLE",
+    "DIŞ", "İÇ", "İTHALAT", "İHRACAT", "PAZARLAMA",
+]
+
+
+def _sadelestir(metin):
+    """
+    Karsilastirma icin Turkce karakterleri Latin karsiliklarina indirger.
+    ZORUNLU: Python'un upper()'i "Ticaret" -> "TICARET" (Latin I) uretir,
+    listedeki "TİCARET" (Turkce İ) ile eslesmez. Gercek veride bu yuzden
+    "Ticaret A.S" copu filtreden kacti.
+    """
+    tablo = {"İ": "I", "ı": "I", "i": "I", "Ş": "S", "ş": "S",
+             "Ğ": "G", "ğ": "G", "Ç": "C", "ç": "C",
+             "Ö": "O", "ö": "O", "Ü": "U", "ü": "U"}
+    metin = "".join(tablo.get(k, k) for k in (metin or ""))
+    return metin.upper()
+
+
+_ANLAMSIZ = {_sadelestir(k) for k in _ANLAMSIZ_HAM}
+
+
+def _anlamli_kelime_sayisi(metin):
+    """Hukuki ek ve jenerik kelimeler disindaki kelime sayisi."""
+    sayac = 0
+    for k in _sadelestir(metin).replace(".", " ").split():
+        k = k.strip(".,;:()")
+        if k and k not in _ANLAMSIZ and len(k) > 1:
+            sayac += 1
+    return sayac
+
+
 def unvan_temizle(unvan):
     """Unvanin basindaki mahkeme adi, taraf sifati gibi ekleri temizler."""
     u = re.sub(r"\s+", " ", unvan).strip()
     if "," in u:
         u = u.split(",")[-1].strip()
 
-    # Kucuk harfli " ve " ayiractir; buyuk harfli "VE" unvanin parcasidir
+    # Kucuk harfli " ve " genelde ayiractir ("X davaci ve Y A.S.").
+    # AMA firma adinin ortasinda da gecebilir ("Sanayi ve Ticaret A.S.").
+    # Korumasiz bolme gercek veride "Ticaret A.S" gibi cop uretti.
+    # Kural: bolmeden sonra kalan parca, hukuki ek disinda en az 2
+    # anlamli kelime icermiyorsa bolme GERI ALINIR.
     if " ve " in u:
-        u = u.split(" ve ")[-1].strip()
+        aday = u.split(" ve ")[-1].strip()
+        if _anlamli_kelime_sayisi(aday) >= 2:
+            u = aday
 
     m = SINIR.match(u)
     if m:
@@ -163,6 +205,10 @@ def unvan_temizle(unvan):
 
 def unvan_gecerli_mi(unvan):
     if len(unvan) < 10:
+        return False
+    # Tamamen jenerik unvan ("Ticaret A.S.") ayirt edici bilgi tasimaz;
+    # eslestirmede yuzlerce alakasiz kayitla eslesir.
+    if _anlamli_kelime_sayisi(unvan) < 1:
         return False
     if not BITIS_KONTROL.search(unvan):
         return False
