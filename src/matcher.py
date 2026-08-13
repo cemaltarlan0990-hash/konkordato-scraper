@@ -277,9 +277,12 @@ class CRMReferans:
                 continue
 
             vkn = vkn_normalize(kayit.get("VKN"))
+            cari = (kayit.get("CariKodu") or kayit.get("Carikodu")
+                    or kayit.get("CARIKODU") or "")
             satir = {
                 "orijinal": gosterilecek,
                 "vkn": vkn,
+                "cariKodu": str(cari).strip(),
                 # Her yazim varyanti ayri bir arama satiri olur;
                 # hepsi ayni CRM kaydini gosterir.
                 "kelimeler": kelime_dizileri[0],
@@ -392,7 +395,8 @@ def unvan_eslestir(referans, ilan_id, unvan, vkn=None):
             sonuc["durum"] = "MATCH"
             sonuc["skor"] = 1.0
             sonuc["adaylar"] = [
-                {"crmIsim": b["orijinal"], "crmVkn": b["vkn"]} for b in bulunan
+                {"crmIsim": b["orijinal"], "crmVkn": b["vkn"],
+                 "crmCariKodu": b["cariKodu"]} for b in bulunan
             ]
             return sonuc
 
@@ -425,6 +429,7 @@ def unvan_eslestir(referans, ilan_id, unvan, vkn=None):
         {
             "crmIsim": a["orijinal"],
             "crmVkn": a["vkn"],
+            "crmCariKodu": a["cariKodu"],
             "crmKelimeSayisi": max(len(kd) for kd in a["tumKelimeler"]),
         }
         for a in adaylar[:10]
@@ -483,10 +488,24 @@ def ilanlari_isle(referans, ilanlar):
                 islenen_unvanlar.add(unvan)
 
         # --- 2. VKN'siz unvanlar (isim yoluyla) ---
+        # Ayni firma ilan metninde farkli yazimlarla gecebiliyor
+        # (gercek ornek: "GÜRSÜT BESİCİLİK..." ve "Gürsüt Besicilik...").
+        # Cekirdek kelimeler ayniysa ayni firmadir; tek satir gosterilir.
+        islenen_cekirdekler = set()
+        for u in islenen_unvanlar:
+            islenen_cekirdekler.add(
+                tuple(saf_kelimeler(u, referans.katlama, referans.setler)))
+
         for unvan in (ilan.get("unvanlar") or []):
             unvan = str(unvan or "").strip()
             if not unvan or unvan in islenen_unvanlar:
                 continue
+            cekirdek = tuple(
+                saf_kelimeler(unvan, referans.katlama, referans.setler))
+            if cekirdek and cekirdek in islenen_cekirdekler:
+                continue
+            if cekirdek:
+                islenen_cekirdekler.add(cekirdek)
             sonuc = unvan_eslestir(referans, ilan_id, unvan, None)
             sonuc.update(ek_alanlar)
             sonuclar.append(sonuc)
@@ -507,7 +526,8 @@ def ilanlari_isle(referans, ilanlar):
                 "eslesenKelime": 0,
                 "toplamKelime": 0,
                 "adaylar": [
-                    {"crmIsim": b["orijinal"], "crmVkn": b["vkn"]}
+                    {"crmIsim": b["orijinal"], "crmVkn": b["vkn"],
+                     "crmCariKodu": b["cariKodu"]}
                     for b in bulunan
                 ],
             }
