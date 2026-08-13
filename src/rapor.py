@@ -27,6 +27,7 @@ RENK = {
 SUTUNLAR = [
     ("unvan", "İlandaki ünvan"),
     ("crmIsim", "CRM kaydı"),
+    ("cariKodu", "Cari kodu"),
     ("vkn", "VKN"),
     ("sehir", "Şehir"),
     ("mahkeme", "Mahkeme"),
@@ -66,6 +67,7 @@ def _satir_hucreleri(kayit):
     return [
         _g(kayit.get("unvan")),
         crm_isim,
+        _g(aday.get("crmCariKodu")),
         _g(vkn),
         _g(kayit.get("sehir")),
         _g(kayit.get("mahkeme")),
