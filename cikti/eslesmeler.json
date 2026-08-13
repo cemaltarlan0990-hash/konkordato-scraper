@@ -1,12 +1,12 @@
 {
-  "uretimZamani": "2026-08-13T07:15:24.693354+00:00",
+  "uretimZamani": "2026-08-13T10:28:30.881759+00:00",
   "crmKayitSayisi": 15088,
   "katlama": true,
-  "toplamUnvan": 19,
+  "toplamUnvan": 18,
   "ozet": {
     "match": 1,
     "review": 0,
-    "noMatch": 18
+    "noMatch": 17
   },
   "vknEslesmeleri": [],
   "isimEslesmeleri": [
@@ -23,6 +23,7 @@
         {
           "crmIsim": "GEOPLAS PLASTİK ZEMIN TEKNIKLERI VE KIMYA SAN.TIC.LTD.ŞTI.",
           "crmVkn": "",
+          "crmCariKodu": "",
           "crmKelimeSayisi": 6
         }
       ],
@@ -57,5 +58,5 @@
   "ilanSayisi": 13,
   "mailGonderilsinMi": true,
   "mailKonusu": "Konkordato taraması: 1 firma bulundu",
-  "mailHtml": "<div style=\"font-family:Arial,sans-serif;color:#2C2C2A;max-width:1000px\"><h2 style=\"font-size:17px;font-weight:600;margin:0 0 2px 0\">Konkordato ilan taraması</h2><p style=\"font-size:12px;color:#5F5E5A;margin:0\">2026-08-13 07:15 · son 2 gün taranan ilanlar</p><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#185FA5;margin:26px 0 4px 0\">İsimden eşleşenler <span style=\"font-weight:400;color:#5F5E5A\">(1)</span></h3><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #185FA5\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMİN TEKNİKLERİ VE KİMYA SANAYİ TİCARET LİMİTED ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMIN TEKNIKLERI VE KIMYA SAN.TIC.LTD.ŞTI.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ANKARA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/1 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2194447/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilar-toplantisina-davet\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table></div>"
+  "mailHtml": "<div style=\"font-family:Arial,sans-serif;color:#2C2C2A;max-width:1000px\"><h2 style=\"font-size:17px;font-weight:600;margin:0 0 2px 0\">Konkordato ilan taraması</h2><p style=\"font-size:12px;color:#5F5E5A;margin:0\">2026-08-13 10:28 · son 2 gün taranan ilanlar</p><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#185FA5;margin:26px 0 4px 0\">İsimden eşleşenler <span style=\"font-weight:400;color:#5F5E5A\">(1)</span></h3><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #185FA5\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Cari kodu</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMİN TEKNİKLERİ VE KİMYA SANAYİ TİCARET LİMİTED ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMIN TEKNIKLERI VE KIMYA SAN.TIC.LTD.ŞTI.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ANKARA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/1 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2194447/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilar-toplantisina-davet\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table></div>"
 }
