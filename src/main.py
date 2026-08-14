@@ -71,6 +71,19 @@ def main():
     log("%d CRM kaydi yuklendi (katlama=%s)"
         % (len(referans), matcher.KATLAMA))
 
+    # Cari kod ikincil bir alandir: okunamazsa eslestirme yine dogru calisir,
+    # sadece mailde tire gorunur. Bu yuzden calismayi DURDURMAZ - durdurmak
+    # konkordato uyarisinin hic gitmemesine yol acardi ki bu daha kotu.
+    # Ama sessiz de kalmaz: sutun adi degisirse Actions log'unda gorunur.
+    cari_dolu = referans.cari_kod_sayisi()
+    if cari_dolu == 0:
+        log("UYARI: Hicbir cari kod okunamadi. CRM dosyasindaki sutun adi "
+            "degismis olabilir. Beklenen adlar: %s"
+            % ", ".join(matcher.CARI_KOD_ANAHTARLARI))
+    else:
+        log("%d kayitta cari kod dolu (%d kayitta bos)"
+            % (cari_dolu, len(referans) - cari_dolu))
+
     log("Ilanlar cekiliyor (son %d gun)" % GERIYE_DONUK_GUN)
     try:
         ilanlar = ilanlari_cek(GERIYE_DONUK_GUN)
@@ -116,9 +129,23 @@ def main():
         % (t["ilandanCikarilanVknCifti"], t["ilandanCikarilanSerbestVkn"],
            t["crmdeBulunanVkn"], t["unvaniCikarilamayanIlan"],
            t["crmVknDoluKayit"], t["crmVknBosKayit"]))
+    log("Cari kod: CRM'de dolu=%d bos=%d | mailde gosterilen=%d"
+        % (t["crmCariKoduDoluKayit"], t["crmCariKoduBosKayit"],
+           _mailde_cari_kod_sayisi(cikti)))
     log("Mail gonderilsin mi: %s" % cikti["mailGonderilsinMi"])
     log("Yazildi: %s" % CIKTI_YOLU)
     return 0
+
+
+def _mailde_cari_kod_sayisi(cikti):
+    """Maile giren satirlardan kacinda cari kod dolu - log icin."""
+    sayac = 0
+    for anahtar in ("vknEslesmeleri", "isimEslesmeleri", "incelenecekler"):
+        for s in cikti.get(anahtar) or []:
+            aday = (s.get("adaylar") or [{}])[0]
+            if (aday.get("crmCariKodu") or "").strip():
+                sayac += 1
+    return sayac
 
 
 if __name__ == "__main__":
