@@ -65,6 +65,14 @@ JENERIK_KELIMELER_HAM = [
 # Bunun altina duserse veri bozuk demektir -> calisma durur.
 MIN_CRM_KAYIT = 10000
 
+# Cari kod sutunu icin denenecek basliklar.
+# CSV Excel'den, Dataverse'ten veya elle uretilebiliyor; her kaynak
+# baslgi farkli yaziyor. Sirayla denenir, ilk dolu olan alinir.
+CARI_KOD_ANAHTARLARI = (
+    "Cari_Kod", "CariKodu", "Carikodu", "CARIKODU",
+    "Cari Kodu", "cari_kod", "twbs_carikodu",
+)
+
 
 # ---------------------------------------------------------------------------
 # 1. TEMIZLIK VE NORMALIZASYON
@@ -220,6 +228,19 @@ def saf_kelimeler(isim, katlama=KATLAMA, setler=None):
     return asama2
 
 
+def cari_kod_oku(kayit):
+    """
+    CRM satirindan cari kodu cikarir.
+    Birden fazla olasi sutun adi denenir - bkz. CARI_KOD_ANAHTARLARI.
+    Hicbiri yoksa bos string doner (calismayi durdurmaz).
+    """
+    for anahtar in CARI_KOD_ANAHTARLARI:
+        deger = kayit.get(anahtar)
+        if deger is not None and str(deger).strip():
+            return str(deger).strip()
+    return ""
+
+
 # ---------------------------------------------------------------------------
 # 2. CRM REFERANSI
 # ---------------------------------------------------------------------------
@@ -277,17 +298,10 @@ class CRMReferans:
                 continue
 
             vkn = vkn_normalize(kayit.get("VKN"))
-            cari = ""
-            for anahtar in ("Cari_Kod", "CariKodu", "Carikodu", "CARIKODU",
-                            "Cari Kodu", "cari_kod"):
-                deger = kayit.get(anahtar)
-                    if deger is not None and str(deger).strip():
-                        cari = str(deger).strip()
-                        break
             satir = {
                 "orijinal": gosterilecek,
                 "vkn": vkn,
-                "cariKodu": str(cari).strip(),
+                "cariKodu": cari_kod_oku(kayit),
                 # Her yazim varyanti ayri bir arama satiri olur;
                 # hepsi ayni CRM kaydini gosterir.
                 "kelimeler": kelime_dizileri[0],
@@ -308,6 +322,15 @@ class CRMReferans:
                 "(minimum %d). Dosya eksik veya bozuk olabilir."
                 % (len(self.kayitlar), minimum)
             )
+
+    def cari_kod_sayisi(self):
+        """
+        Cari kodu dolu kayit sayisi.
+        Sadece SAYAR - karar (durdur / uyar / gecistir) main.py'ye aittir.
+        Cari kod ikincil bir alan oldugu icin eksikligi calismayi
+        durdurmamalidir; ama sessiz de kalmamalidir.
+        """
+        return sum(1 for k in self.kayitlar if k["cariKodu"])
 
 
 # ---------------------------------------------------------------------------
@@ -547,7 +570,8 @@ def ilanlari_isle(referans, ilanlar):
 # ---------------------------------------------------------------------------
 
 def crm_oku_csv(yol):
-    """CSV referans dosyasini okur. Sutunlar: OrijinalIsim, VKN"""
+    """CSV referans dosyasini okur.
+    Beklenen sutunlar: OrijinalIsim, DuzenlenmisFirmaAdi, VKN, Cari_Kod"""
     kayitlar = []
     with open(yol, encoding="utf-8-sig", newline="") as f:
         ornek = f.read(4096)
@@ -590,7 +614,7 @@ def crm_oku(yol, sayfa=None):
 
 def teshis_uret(ilanlar, referans):
     """
-    Ham veri sayaclari. VKN esleşmesi bos ciktiginda sebebi ayirt etmek
+    Ham veri sayaclari. VKN eslesmesi bos ciktiginda sebebi ayirt etmek
     icin sart: cift hic cikarilamadi mi, yoksa cikarildi da CRM'de o
     numara yok mu? Ikisi tamamen farkli sorunlar.
     """
@@ -616,6 +640,7 @@ def teshis_uret(ilanlar, referans):
                 vkn_bulunamayan.append(numara)
 
     crm_vkn_dolu = sum(1 for k in referans.kayitlar if k["vkn"])
+    crm_cari_dolu = referans.cari_kod_sayisi()
 
     return {
         "ilandanCikarilanVknCifti": vkn_cifti,
@@ -625,6 +650,8 @@ def teshis_uret(ilanlar, referans):
         "unvaniCikarilamayanIlan": unvansiz_ilan,
         "crmVknDoluKayit": crm_vkn_dolu,
         "crmVknBosKayit": len(referans.kayitlar) - crm_vkn_dolu,
+        "crmCariKoduDoluKayit": crm_cari_dolu,
+        "crmCariKoduBosKayit": len(referans.kayitlar) - crm_cari_dolu,
     }
 
 
