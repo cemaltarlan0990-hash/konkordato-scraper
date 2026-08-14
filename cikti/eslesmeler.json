@@ -1,20 +1,648 @@
 {
-  "uretimZamani": "2026-08-14T10:14:29.384542+00:00",
+  "uretimZamani": "2026-08-14T10:21:24.618318+00:00",
   "crmKayitSayisi": 15088,
   "katlama": true,
-  "toplamUnvan": 27,
+  "toplamUnvan": 825,
   "ozet": {
-    "match": 0,
-    "review": 0,
-    "noMatch": 27
+    "match": 19,
+    "review": 6,
+    "noMatch": 800
   },
-  "vknEslesmeleri": [],
-  "isimEslesmeleri": [],
-  "incelenecekler": [],
+  "vknEslesmeleri": [
+    {
+      "ilanId": "2171268",
+      "unvan": "",
+      "vkn": "1660374209",
+      "yontem": "VKN",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 0,
+      "toplamKelime": 0,
+      "adaylar": [
+        {
+          "crmIsim": "BERTAŞ BAZALT NAKLİYAT MAD. İNŞ. İTH. İHR. SAN. TİC. LTD. ŞTİ.",
+          "crmVkn": "1660374209",
+          "crmCariKodu": ""
+        }
+      ],
+      "tarih": "2026-07-20",
+      "sehir": "İZMİR",
+      "mahkeme": "T.C. İZMİR 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "ESAS NO : 2026/465",
+      "link": "https://www.ilan.gov.tr/ilan/2171268/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-kesin-muhlet-kararinin-ilanen-tebligine",
+      "ilanDurumu": "Kesin Mühlet"
+    },
+    {
+      "ilanId": "2157380",
+      "unvan": "",
+      "vkn": "6321086206",
+      "yontem": "VKN",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 0,
+      "toplamKelime": 0,
+      "adaylar": [
+        {
+          "crmIsim": "NOVA YÖN BULMA SİSTEMLERİ VE YÜZEY İŞLEM TEKNOLOJİLERİ SAN. VE TİC.A.Ş.",
+          "crmVkn": "6321086206",
+          "crmCariKodu": "120.01-002928"
+        }
+      ],
+      "tarih": "2026-07-03",
+      "sehir": "BURSA",
+      "mahkeme": "T.C. BURSA 3. ASLİYE TİCARET MAHKEMESİ",
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2157380/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari",
+      "ilanDurumu": "Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı"
+    },
+    {
+      "ilanId": "2155520",
+      "unvan": "",
+      "vkn": "1410632006",
+      "yontem": "VKN",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 0,
+      "toplamKelime": 0,
+      "adaylar": [
+        {
+          "crmIsim": "BARAN KABLO A.Ş.",
+          "crmVkn": "1410632006",
+          "crmCariKodu": ""
+        }
+      ],
+      "tarih": "2026-07-02",
+      "sehir": "KOCAELİ",
+      "mahkeme": "T .C. GEBZE ASLİYE TİCARET MAHKEMESİ",
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2155520/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-uzatilmasi-tebligi",
+      "ilanDurumu": "Geçici Mühlet"
+    }
+  ],
+  "isimEslesmeleri": [
+    {
+      "ilanId": "2194447",
+      "unvan": "GEOPLAS PLASTİK ZEMİN TEKNİKLERİ VE KİMYA SANAYİ TİCARET LİMİTED ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 6,
+      "toplamKelime": 6,
+      "adaylar": [
+        {
+          "crmIsim": "GEOPLAS PLASTİK ZEMIN TEKNIKLERI VE KIMYA SAN.TIC.LTD.ŞTI.",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 6
+        }
+      ],
+      "tarih": "2026-08-12",
+      "sehir": "ANKARA",
+      "mahkeme": null,
+      "esas": "2025/1 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2194447/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilar-toplantisina-davet",
+      "ilanDurumu": "Alacaklı Bildirimi"
+    },
+    {
+      "ilanId": "2185127",
+      "unvan": "BAREM AMBALAJ SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 2,
+      "toplamKelime": 2,
+      "adaylar": [
+        {
+          "crmIsim": "BAREM AMBALAJ SAN.TİC.A.Ş.",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 2
+        }
+      ],
+      "tarih": "2026-08-03",
+      "sehir": "İZMİR",
+      "mahkeme": "İZMİR 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "ESAS NO : 2026/810",
+      "link": "https://www.ilan.gov.tr/ilan/2185127/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ve-durusma-gununun-ilanen-tebligi",
+      "ilanDurumu": "Geçici Mühlet"
+    },
+    {
+      "ilanId": "2183242",
+      "unvan": "BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 4,
+      "toplamKelime": 4,
+      "adaylar": [
+        {
+          "crmIsim": "BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ TORBALI ŞUBESİ",
+          "crmVkn": "1790636155",
+          "crmCariKodu": "120.01-002660",
+          "crmKelimeSayisi": 9
+        }
+      ],
+      "tarih": "2026-07-31",
+      "sehir": "ORDU",
+      "mahkeme": "T.C. FATSA 1. ASLİYE HUKUK MAHKEMESİ",
+      "esas": "2026/143 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2183242/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari",
+      "ilanDurumu": "Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı"
+    },
+    {
+      "ilanId": "2171714",
+      "unvan": "GÜRSÜT BESİCİLİK GIDA SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 3,
+      "toplamKelime": 3,
+      "adaylar": [
+        {
+          "crmIsim": "GÜRSÜT BESİCİLİK GIDA SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+          "crmVkn": "4490487238",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 3
+        }
+      ],
+      "tarih": "2026-07-20",
+      "sehir": "İZMİR",
+      "mahkeme": "T.C İZMİR 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2024/911 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2171714/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinin-ilanen-tebligi",
+      "ilanDurumu": "Konkordato davasının ilanen tebliği"
+    },
+    {
+      "ilanId": "2171714",
+      "unvan": "Vakıf Katılım Bankası AŞ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 3,
+      "toplamKelime": 3,
+      "adaylar": [
+        {
+          "crmIsim": "VAKIF KATILIM BANKASI A.Ş.",
+          "crmVkn": "8830427700",
+          "crmCariKodu": "120.01-001597",
+          "crmKelimeSayisi": 3
+        }
+      ],
+      "tarih": "2026-07-20",
+      "sehir": "İZMİR",
+      "mahkeme": "T.C İZMİR 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2024/911 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2171714/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinin-ilanen-tebligi",
+      "ilanDurumu": "Konkordato davasının ilanen tebliği"
+    },
+    {
+      "ilanId": "2165229",
+      "unvan": "GAPSAN TEKSTİL SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 2,
+      "toplamKelime": 2,
+      "adaylar": [
+        {
+          "crmIsim": "GAPSAN TEKSTİL",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 2
+        }
+      ],
+      "tarih": "2026-07-13",
+      "sehir": "ŞANLIURFA",
+      "mahkeme": "T.C. ŞANLIURFA ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2025/1957",
+      "link": "https://www.ilan.gov.tr/ilan/2165229/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasi-kesin-muhlet-karari-ilanen-tebligi",
+      "ilanDurumu": "Kesin Mühlet"
+    },
+    {
+      "ilanId": "2164890",
+      "unvan": "IŞIK PERDE RAYLARI SANAYİ VE TİCARET A.Ş",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 3,
+      "toplamKelime": 3,
+      "adaylar": [
+        {
+          "crmIsim": "IŞIK PERDE RAYLARI SAN. VE TİC. AŞ.",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 3
+        }
+      ],
+      "tarih": "2026-07-13",
+      "sehir": "KOCAELİ",
+      "mahkeme": null,
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2164890/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani",
+      "ilanDurumu": "Alacaklı Bildirimi"
+    },
+    {
+      "ilanId": "2163424",
+      "unvan": "PROVEK İLAÇ KİMYA SANAYİ TİCARET ANONİM ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 3,
+      "toplamKelime": 3,
+      "adaylar": [
+        {
+          "crmIsim": "PROVEK İLAÇ KİMYA SANAYİ TİCARET ANONİM ŞİRKETİ",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 3
+        }
+      ],
+      "tarih": "2026-07-10",
+      "sehir": "İSTANBUL",
+      "mahkeme": "2. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2025/117 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2163424/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-kesin-muhlet-kararinin-uzatilmasinin-ilanen-tebligi",
+      "ilanDurumu": "Kesin Mühlet"
+    },
+    {
+      "ilanId": "2158790",
+      "unvan": "KUVEYT TÜRK KATILIM BANKASI A.Ş",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 4,
+      "toplamKelime": 4,
+      "adaylar": [
+        {
+          "crmIsim": "KUVEYT TÜRK KATILIM BANKASI A.Ş.",
+          "crmVkn": "6000026814",
+          "crmCariKodu": "120.01-001173",
+          "crmKelimeSayisi": 4
+        }
+      ],
+      "tarih": "2026-07-06",
+      "sehir": "MERSİN",
+      "mahkeme": "T.C. MERSİN1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2025/1273 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2158790/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--mahkeme-kararinin-ilanen-tebligi",
+      "ilanDurumu": "Mahkeme kararının ilanen tebliği"
+    },
+    {
+      "ilanId": "2158155",
+      "unvan": "Taha Kimya Kozmetik Ve Tüketim Ürünleri Sanayi Pazarlama Anonim Şirketi",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 6,
+      "toplamKelime": 6,
+      "adaylar": [
+        {
+          "crmIsim": "TAHA KİMYA KOZMETİK VE TÜKETİM ÜRÜNLERİ SAN.PAZ.A.Ş.",
+          "crmVkn": "8161323413",
+          "crmCariKodu": "120.01-002311",
+          "crmKelimeSayisi": 8
+        }
+      ],
+      "tarih": "2026-07-06",
+      "sehir": "GAZİANTEP",
+      "mahkeme": "T.C. GAZİANTEP 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2026/697 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2158155/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasina-iliskin-mahkeme-kararinin-ilanen-tebligi",
+      "ilanDurumu": "Konkordato davasına ilişkin mahkeme kararının ilanen tebliği"
+    },
+    {
+      "ilanId": "2157515",
+      "unvan": "GEOPLAS PLASTİK ZEMİN TEKNİKLERİ VE KİMYA SANAYİ TİCARET LİMİTED ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 6,
+      "toplamKelime": 6,
+      "adaylar": [
+        {
+          "crmIsim": "GEOPLAS PLASTİK ZEMIN TEKNIKLERI VE KIMYA SAN.TIC.LTD.ŞTI.",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 6
+        }
+      ],
+      "tarih": "2026-07-03",
+      "sehir": "ANKARA",
+      "mahkeme": null,
+      "esas": "2025/1 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2157515/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri",
+      "ilanDurumu": "Alacaklı Bildirimi"
+    },
+    {
+      "ilanId": "2157380",
+      "unvan": "NOVA YÖN BULMA SİSTEMLERİ VE YÜZEY İŞLEM TEKNOLOJİLERİ SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 8,
+      "toplamKelime": 8,
+      "adaylar": [
+        {
+          "crmIsim": "NOVA YÖN BULMA SİSTEMLERİ VE YÜZEY İŞLEM TEKNOLOJİLERİ SAN. VE TİC.A.Ş.",
+          "crmVkn": "6321086206",
+          "crmCariKodu": "120.01-002928",
+          "crmKelimeSayisi": 8
+        }
+      ],
+      "tarih": "2026-07-03",
+      "sehir": "BURSA",
+      "mahkeme": "T.C. BURSA 3. ASLİYE TİCARET MAHKEMESİ",
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2157380/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari",
+      "ilanDurumu": "Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı"
+    },
+    {
+      "ilanId": "2154477",
+      "unvan": "Turk İlaç Ve Serum Sanayi Anonim Şirketi",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 4,
+      "toplamKelime": 4,
+      "adaylar": [
+        {
+          "crmIsim": "TURK İLAÇ VE SERUM SANAYI A.Ş.",
+          "crmVkn": "8790644049",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 4
+        }
+      ],
+      "tarih": "2026-07-03",
+      "sehir": "ANKARA",
+      "mahkeme": "T.C. ANKARA 3. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2026/477 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2154477/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--gecici-muhlet-karari-tebligi",
+      "ilanDurumu": "Geçici Mühlet"
+    },
+    {
+      "ilanId": "2154477",
+      "unvan": "Turkplast Sağlık Ürünleri Anonim Şirketi",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 3,
+      "toplamKelime": 3,
+      "adaylar": [
+        {
+          "crmIsim": "TURKPLAST SAĞLIK ÜRÜNLERİ A.Ş.",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 3
+        }
+      ],
+      "tarih": "2026-07-03",
+      "sehir": "ANKARA",
+      "mahkeme": "T.C. ANKARA 3. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2026/477 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2154477/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--gecici-muhlet-karari-tebligi",
+      "ilanDurumu": "Geçici Mühlet"
+    },
+    {
+      "ilanId": "2155520",
+      "unvan": "BARAN KABLO ANONİM ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 2,
+      "toplamKelime": 2,
+      "adaylar": [
+        {
+          "crmIsim": "BARAN KABLO A.Ş.",
+          "crmVkn": "1410632006",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 2
+        }
+      ],
+      "tarih": "2026-07-02",
+      "sehir": "KOCAELİ",
+      "mahkeme": "T .C. GEBZE ASLİYE TİCARET MAHKEMESİ",
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2155520/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-uzatilmasi-tebligi",
+      "ilanDurumu": "Geçici Mühlet"
+    },
+    {
+      "ilanId": "2151484",
+      "unvan": "Boyar Kimya Sanayi Ve Ticaret Anonim Şirketi",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "MATCH",
+      "skor": 1.0,
+      "eslesenKelime": 2,
+      "toplamKelime": 2,
+      "adaylar": [
+        {
+          "crmIsim": "BOYAR KIMYA SAN.VE TİC.A.Ş.",
+          "crmVkn": "1820049698",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 2
+        }
+      ],
+      "tarih": "2026-06-30",
+      "sehir": "GAZİANTEP",
+      "mahkeme": "T.C. GAZİANTEP 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2026/92 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2151484/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinin-ilanen-tebligi",
+      "ilanDurumu": "Konkordato davasının ilanen tebliği"
+    }
+  ],
+  "incelenecekler": [
+    {
+      "ilanId": "2188735",
+      "unvan": "Ermetal Ltd. Şti",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "REVIEW",
+      "skor": 1.0,
+      "eslesenKelime": 1,
+      "toplamKelime": 1,
+      "adaylar": [
+        {
+          "crmIsim": "ERMETAL OTOMOTIV (METAL) VE EŞYA SAN. VE TİC. A.Ş.",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 5
+        }
+      ],
+      "not": "Tek kelimelik cekirdek - insan dogrulamasi gerekli",
+      "tarih": "2026-08-05",
+      "sehir": "KOCAELİ",
+      "mahkeme": null,
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2188735/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani",
+      "ilanDurumu": "Alacaklı Bildirimi"
+    },
+    {
+      "ilanId": "2178608",
+      "unvan": "Makine San. Tic. Ltd. Şti",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "REVIEW",
+      "skor": 1.0,
+      "eslesenKelime": 1,
+      "toplamKelime": 1,
+      "adaylar": [
+        {
+          "crmIsim": "MAKİNE VE KİMYA ENDÜSTRİSİ ANONİM ŞİRKETİ",
+          "crmVkn": "6111520767",
+          "crmCariKodu": "120.01-000252",
+          "crmKelimeSayisi": 4
+        }
+      ],
+      "not": "Tek kelimelik cekirdek - insan dogrulamasi gerekli",
+      "tarih": "2026-07-27",
+      "sehir": "BURSA",
+      "mahkeme": "BURSA 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2178608/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri",
+      "ilanDurumu": "Alacaklı Bildirimi"
+    },
+    {
+      "ilanId": "2168163",
+      "unvan": "BALONEVİ SANAYİ VE TİCARET ANONİM ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "REVIEW",
+      "skor": 1.0,
+      "eslesenKelime": 1,
+      "toplamKelime": 1,
+      "adaylar": [
+        {
+          "crmIsim": "BALONEVİ SANAYİ VE TİCARET A.Ş",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 1
+        }
+      ],
+      "not": "Tek kelimelik cekirdek - insan dogrulamasi gerekli",
+      "tarih": "2026-07-16",
+      "sehir": "İSTANBUL",
+      "mahkeme": "3. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2026/720 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2168163/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhlet-kararinin-ilanen-tebligi",
+      "ilanDurumu": "Konkordato mühlet kararının ilanen tebliği"
+    },
+    {
+      "ilanId": "2162768",
+      "unvan": "Hunca Kozmetik Sanayii Anonim Şirketi",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "REVIEW",
+      "skor": 1.0,
+      "eslesenKelime": 2,
+      "toplamKelime": 2,
+      "adaylar": [
+        {
+          "crmIsim": "HUNCA KOZMETIK SANAYI A.S.",
+          "crmVkn": "",
+          "crmCariKodu": "120-34-08010",
+          "crmKelimeSayisi": 2
+        },
+        {
+          "crmIsim": "HUNCA KOZMETİK SANAYİİ ANONİM ŞİRKETİ",
+          "crmVkn": "4640031405",
+          "crmCariKodu": "120-34-08010",
+          "crmKelimeSayisi": 2
+        }
+      ],
+      "tarih": "2026-07-09",
+      "sehir": "TEKİRDAĞ",
+      "mahkeme": "T.C. TEKİRDAĞ ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2025/288 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2162768/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-alacaklilar-toplantisina-davet",
+      "ilanDurumu": "Alacaklı Bildirimi"
+    },
+    {
+      "ilanId": "2155535",
+      "unvan": "GAPSAN PAZARLAMA VE DIŞ TİCARET LİMİTED ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "REVIEW",
+      "skor": 1.0,
+      "eslesenKelime": 1,
+      "toplamKelime": 1,
+      "adaylar": [
+        {
+          "crmIsim": "GAPSAN TEKSTİL",
+          "crmVkn": "",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 2
+        }
+      ],
+      "not": "Tek kelimelik cekirdek - insan dogrulamasi gerekli",
+      "tarih": "2026-07-03",
+      "sehir": "İSTANBUL",
+      "mahkeme": "T.C. BAKIRKÖY 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": "2025/1118 Esas",
+      "link": "https://www.ilan.gov.tr/ilan/2155535/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--alacaklilari-alacaklarini-bildirmeye-davet-tebligi",
+      "ilanDurumu": "Alacaklı Bildirimi"
+    },
+    {
+      "ilanId": "2150909",
+      "unvan": "MAKİNA SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+      "vkn": "",
+      "yontem": "ISIM",
+      "durum": "REVIEW",
+      "skor": 1.0,
+      "eslesenKelime": 1,
+      "toplamKelime": 1,
+      "adaylar": [
+        {
+          "crmIsim": "MAKİNA ELEKTRİK SANAYİ VE TİC.A.Ş.",
+          "crmVkn": "1630028416",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 2
+        },
+        {
+          "crmIsim": "MAKİNA TAKIM ENDÜSTRİYEL A.Ş.",
+          "crmVkn": "6110002998",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 3
+        },
+        {
+          "crmIsim": "MAKİNA VE KİMYA ENDÜSTRİSİ KURUMU GENEL MÜDÜRLÜĞÜ İKMAL DAİRESİ BAŞKANLIĞI",
+          "crmVkn": "6110003220",
+          "crmCariKodu": "",
+          "crmKelimeSayisi": 10
+        },
+        {
+          "crmIsim": "MAKİNA VE KİMYA ENDÜSTRİ KURUMU GENEL MÜDÜRLÜĞÜ",
+          "crmVkn": "6110003220",
+          "crmCariKodu": "120.01-002237",
+          "crmKelimeSayisi": 7
+        }
+      ],
+      "tarih": "2026-06-29",
+      "sehir": "BURSA",
+      "mahkeme": "T.C. BURSA 1. ASLİYE TİCARET MAHKEMESİ",
+      "esas": null,
+      "link": "https://www.ilan.gov.tr/ilan/2150909/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--durusma-gun-ve-saatinin-ilanen-tebligi",
+      "ilanDurumu": "Duruşma"
+    }
+  ],
   "teshis": {
-    "ilandanCikarilanVknCifti": 3,
-    "ilandanCikarilanSerbestVkn": 8,
-    "crmdeBulunanVkn": 0,
+    "ilandanCikarilanVknCifti": 98,
+    "ilandanCikarilanSerbestVkn": 319,
+    "crmdeBulunanVkn": 3,
     "crmdeBulunmayanVknOrnekleri": [
       "5760506202",
       "3960031053",
@@ -27,16 +655,16 @@
       "6470353209",
       "7970337125"
     ],
-    "unvaniCikarilamayanIlan": 2,
+    "unvaniCikarilamayanIlan": 96,
     "crmVknDoluKayit": 6380,
     "crmVknBosKayit": 8708,
     "crmCariKoduDoluKayit": 2650,
     "crmCariKoduBosKayit": 12438
   },
   "reviewEsigi": 0.75,
-  "geriyeDonukGun": 1,
-  "ilanSayisi": 19,
-  "mailGonderilsinMi": false,
-  "mailKonusu": "",
-  "mailHtml": ""
+  "geriyeDonukGun": 60,
+  "ilanSayisi": 600,
+  "mailGonderilsinMi": true,
+  "mailKonusu": "Konkordato taraması: 25 firma bulundu",
+  "mailHtml": "<div style=\"font-family:Arial,sans-serif;color:#2C2C2A;max-width:1000px\"><h2 style=\"font-size:17px;font-weight:600;margin:0 0 2px 0\">Konkordato ilan taraması</h2><p style=\"font-size:12px;color:#5F5E5A;margin:0\">2026-08-14 10:21 · son 61 gün taranan ilanlar</p><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#0F6E56;margin:26px 0 4px 0\">Vergi numarasından eşleşenler <span style=\"font-weight:400;color:#5F5E5A\">(3)</span></h3><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #0F6E56\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Cari kodu</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BERTAŞ BAZALT NAKLİYAT MAD. İNŞ. İTH. İHR. SAN. TİC. LTD. ŞTİ.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">1660374209</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İZMİR</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. İZMİR 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ESAS NO : 2026/465</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Kesin Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2171268/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-kesin-muhlet-kararinin-ilanen-tebligine\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">NOVA YÖN BULMA SİSTEMLERİ VE YÜZEY İŞLEM TEKNOLOJİLERİ SAN. VE TİC.A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">120.01-002928</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">6321086206</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BURSA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. BURSA 3. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2157380/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BARAN KABLO A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">1410632006</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">KOCAELİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T .C. GEBZE ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Geçici Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2155520/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-uzatilmasi-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#185FA5;margin:26px 0 4px 0\">İsimden eşleşenler <span style=\"font-weight:400;color:#5F5E5A\">(16)</span></h3><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #185FA5\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Cari kodu</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMİN TEKNİKLERİ VE KİMYA SANAYİ TİCARET LİMİTED ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMIN TEKNIKLERI VE KIMYA SAN.TIC.LTD.ŞTI.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ANKARA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/1 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2194447/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilar-toplantisina-davet\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BAREM AMBALAJ SANAYİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BAREM AMBALAJ SAN.TİC.A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İZMİR</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İZMİR 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ESAS NO : 2026/810</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Geçici Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2185127/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-ve-durusma-gununun-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BOLAMAN PARK GIDA ÜRÜNLERİ VE TİCARET ANONİM ŞİRKETİ TORBALI ŞUBESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">120.01-002660</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">1790636155</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ORDU</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. FATSA 1. ASLİYE HUKUK MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2026/143 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2183242/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GÜRSÜT BESİCİLİK GIDA SANAYİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GÜRSÜT BESİCİLİK GIDA SANAYİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">4490487238</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İZMİR</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C İZMİR 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2024/911 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Konkordato davasının ilanen tebliği</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2171714/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinin-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Vakıf Katılım Bankası AŞ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">VAKIF KATILIM BANKASI A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">120.01-001597</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">8830427700</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İZMİR</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C İZMİR 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2024/911 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Konkordato davasının ilanen tebliği</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2171714/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinin-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GAPSAN TEKSTİL SANAYİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GAPSAN TEKSTİL</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ŞANLIURFA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. ŞANLIURFA ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/1957</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Kesin Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2165229/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasi-kesin-muhlet-karari-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">IŞIK PERDE RAYLARI SANAYİ VE TİCARET A.Ş</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">IŞIK PERDE RAYLARI SAN. VE TİC. AŞ.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">KOCAELİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2164890/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">PROVEK İLAÇ KİMYA SANAYİ TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">PROVEK İLAÇ KİMYA SANAYİ TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İSTANBUL</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/117 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Kesin Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2163424/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-kesin-muhlet-kararinin-uzatilmasinin-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">KUVEYT TÜRK KATILIM BANKASI A.Ş</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">KUVEYT TÜRK KATILIM BANKASI A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">120.01-001173</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">6000026814</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">MERSİN</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. MERSİN1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/1273 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Mahkeme kararının ilanen tebliği</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2158790/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--mahkeme-kararinin-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Taha Kimya Kozmetik Ve Tüketim Ürünleri Sanayi Pazarlama Anonim Şirketi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">TAHA KİMYA KOZMETİK VE TÜKETİM ÜRÜNLERİ SAN.PAZ.A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">120.01-002311</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">8161323413</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GAZİANTEP</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. GAZİANTEP 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2026/697 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Konkordato davasına ilişkin mahkeme kararının ilanen tebliği</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2158155/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasina-iliskin-mahkeme-kararinin-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMİN TEKNİKLERİ VE KİMYA SANAYİ TİCARET LİMİTED ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMIN TEKNIKLERI VE KIMYA SAN.TIC.LTD.ŞTI.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ANKARA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/1 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2157515/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">NOVA YÖN BULMA SİSTEMLERİ VE YÜZEY İŞLEM TEKNOLOJİLERİ SANAYİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">NOVA YÖN BULMA SİSTEMLERİ VE YÜZEY İŞLEM TEKNOLOJİLERİ SAN. VE TİC.A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">120.01-002928</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">6321086206</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BURSA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. BURSA 3. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Konkordato mühletinin uzatılmasına ilişkin mahkeme kararı</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2157380/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhletinin-uzatilmasina-iliskin-mahkeme-karari\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Turk İlaç Ve Serum Sanayi Anonim Şirketi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">TURK İLAÇ VE SERUM SANAYI A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">8790644049</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ANKARA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. ANKARA 3. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2026/477 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Geçici Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2154477/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--gecici-muhlet-karari-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Turkplast Sağlık Ürünleri Anonim Şirketi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">TURKPLAST SAĞLIK ÜRÜNLERİ A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ANKARA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. ANKARA 3. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2026/477 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Geçici Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2154477/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--gecici-muhlet-karari-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BARAN KABLO ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BARAN KABLO A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">1410632006</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">KOCAELİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T .C. GEBZE ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Geçici Mühlet</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2155520/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-gecici-muhlet-kararinin-uzatilmasi-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Boyar Kimya Sanayi Ve Ticaret Anonim Şirketi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BOYAR KIMYA SAN.VE TİC.A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">1820049698</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GAZİANTEP</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. GAZİANTEP 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2026/92 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Konkordato davasının ilanen tebliği</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2151484/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-davasinin-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#854F0B;margin:26px 0 4px 0\">İncelenecekler <span style=\"font-weight:400;color:#5F5E5A\">(6)</span></h3><p style=\"font-family:Arial,sans-serif;font-size:12px;color:#5F5E5A;margin:0 0 8px 0\">Tam eşleşme sağlanamadı veya birden fazla aday bulundu.</p><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #854F0B\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Cari kodu</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Ermetal Ltd. Şti</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ERMETAL OTOMOTIV (METAL) VE EŞYA SAN. VE TİC. A.Ş.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">KOCAELİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2188735/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-davet-ilani\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Makine San. Tic. Ltd. Şti</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">MAKİNE VE KİMYA ENDÜSTRİSİ ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">120.01-000252</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">6111520767</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BURSA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BURSA 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2178608/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilara-cagri\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BALONEVİ SANAYİ VE TİCARET ANONİM ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BALONEVİ SANAYİ VE TİCARET A.Ş</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İSTANBUL</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">3. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2026/720 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Konkordato mühlet kararının ilanen tebliği</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2168163/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-muhlet-kararinin-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Hunca Kozmetik Sanayii Anonim Şirketi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">HUNCA KOZMETIK SANAYI A.S. <span style=\"color:#5F5E5A\">(+1 benzer kayıt)</span></td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">120-34-08010</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">TEKİRDAĞ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. TEKİRDAĞ ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/288 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2162768/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-alacaklilar-toplantisina-davet\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GAPSAN PAZARLAMA VE DIŞ TİCARET LİMİTED ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GAPSAN TEKSTİL</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">İSTANBUL</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. BAKIRKÖY 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/1118 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2155535/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--alacaklilari-alacaklarini-bildirmeye-davet-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr><tr style=\"background:#FAFAF8\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">MAKİNA SANAYİ VE TİCARET LİMİTED ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">MAKİNA ELEKTRİK SANAYİ VE TİC.A.Ş. <span style=\"color:#5F5E5A\">(+3 benzer kayıt)</span></td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">1630028416</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">BURSA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">T.C. BURSA 1. ASLİYE TİCARET MAHKEMESİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Duruşma</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2150909/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--durusma-gun-ve-saatinin-ilanen-tebligi\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table></div>"
 }
