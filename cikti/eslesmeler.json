@@ -1,62 +1,40 @@
 {
-  "uretimZamani": "2026-08-13T10:35:56.275358+00:00",
+  "uretimZamani": "2026-08-14T05:15:26.856577+00:00",
   "crmKayitSayisi": 15088,
   "katlama": true,
-  "toplamUnvan": 18,
+  "toplamUnvan": 26,
   "ozet": {
-    "match": 1,
+    "match": 0,
     "review": 0,
-    "noMatch": 17
+    "noMatch": 26
   },
   "vknEslesmeleri": [],
-  "isimEslesmeleri": [
-    {
-      "ilanId": "2194447",
-      "unvan": "GEOPLAS PLASTİK ZEMİN TEKNİKLERİ VE KİMYA SANAYİ TİCARET LİMİTED ŞİRKETİ",
-      "vkn": "",
-      "yontem": "ISIM",
-      "durum": "MATCH",
-      "skor": 1.0,
-      "eslesenKelime": 6,
-      "toplamKelime": 6,
-      "adaylar": [
-        {
-          "crmIsim": "GEOPLAS PLASTİK ZEMIN TEKNIKLERI VE KIMYA SAN.TIC.LTD.ŞTI.",
-          "crmVkn": "",
-          "crmCariKodu": "",
-          "crmKelimeSayisi": 6
-        }
-      ],
-      "tarih": "2026-08-12",
-      "sehir": "ANKARA",
-      "mahkeme": null,
-      "esas": "2025/1 Esas",
-      "link": "https://www.ilan.gov.tr/ilan/2194447/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilar-toplantisina-davet",
-      "ilanDurumu": "Alacaklı Bildirimi"
-    }
-  ],
+  "isimEslesmeleri": [],
   "incelenecekler": [],
   "teshis": {
-    "ilandanCikarilanVknCifti": 2,
-    "ilandanCikarilanSerbestVkn": 5,
+    "ilandanCikarilanVknCifti": 3,
+    "ilandanCikarilanSerbestVkn": 7,
     "crmdeBulunanVkn": 0,
     "crmdeBulunmayanVknOrnekleri": [
-      "1210981431",
-      "7610916847",
-      "3300460446",
-      "0790334652",
-      "8370318733",
-      "3830424125",
-      "8611079432"
+      "3960031053",
+      "6221489427",
+      "8720024804",
+      "4800448065",
+      "3960680254",
+      "2520692688",
+      "1460783380",
+      "6470353209",
+      "3280837682",
+      "7970337125"
     ],
-    "unvaniCikarilamayanIlan": 2,
+    "unvaniCikarilamayanIlan": 1,
     "crmVknDoluKayit": 6391,
     "crmVknBosKayit": 8697
   },
   "reviewEsigi": 0.75,
   "geriyeDonukGun": 1,
-  "ilanSayisi": 13,
-  "mailGonderilsinMi": true,
-  "mailKonusu": "Konkordato taraması: 1 firma bulundu",
-  "mailHtml": "<div style=\"font-family:Arial,sans-serif;color:#2C2C2A;max-width:1000px\"><h2 style=\"font-size:17px;font-weight:600;margin:0 0 2px 0\">Konkordato ilan taraması</h2><p style=\"font-size:12px;color:#5F5E5A;margin:0\">2026-08-13 10:35 · son 2 gün taranan ilanlar</p><h3 style=\"font-family:Arial,sans-serif;font-size:15px;font-weight:600;color:#185FA5;margin:26px 0 4px 0\">İsimden eşleşenler <span style=\"font-weight:400;color:#5F5E5A\">(1)</span></h3><table cellpadding=\"7\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:12px;color:#2C2C2A;border-top:2px solid #185FA5\"><tr style=\"background:#F1EFE8\"><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlandaki ünvan</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">CRM kaydı</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Cari kodu</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">VKN</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Şehir</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Mahkeme</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Esas no</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">Durum</th><th align=\"left\" style=\"border-bottom:1px solid #D3D1C7;font-weight:600;white-space:nowrap\">İlan</th></tr><tr style=\"background:#FFFFFF\"><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMİN TEKNİKLERİ VE KİMYA SANAYİ TİCARET LİMİTED ŞİRKETİ</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">GEOPLAS PLASTİK ZEMIN TEKNIKLERI VE KIMYA SAN.TIC.LTD.ŞTI.</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">ANKARA</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">&ndash;</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">2025/1 Esas</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\">Alacaklı Bildirimi</td><td style=\"border-bottom:1px solid #D3D1C7;vertical-align:top\"><a href=\"https://www.ilan.gov.tr/ilan/2194447/iflas-hukuku-davalari-konkordato-ve-muhlet-iik-288inci-md--konkordato-komiserliginden-alacaklilar-toplantisina-davet\" style=\"color:#185FA5\">Görüntüle</a></td></tr></table></div>"
+  "ilanSayisi": 17,
+  "mailGonderilsinMi": false,
+  "mailKonusu": "",
+  "mailHtml": ""
 }
