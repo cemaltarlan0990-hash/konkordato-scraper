@@ -1,5 +1,5 @@
 {
-  "uretimZamani": "2026-08-14T12:19:33.966867+00:00",
+  "uretimZamani": "2026-08-14T13:54:56.761600+00:00",
   "crmKayitSayisi": 15088,
   "katlama": true,
   "toplamUnvan": 27,
@@ -28,10 +28,10 @@
       "7970337125"
     ],
     "unvaniCikarilamayanIlan": 2,
-    "crmVknDoluKayit": 6380,
-    "crmVknBosKayit": 8708,
-    "crmCariKoduDoluKayit": 2650,
-    "crmCariKoduBosKayit": 12438
+    "crmVknDoluKayit": 6367,
+    "crmVknBosKayit": 8721,
+    "crmCariKoduDoluKayit": 2535,
+    "crmCariKoduBosKayit": 12553
   },
   "reviewEsigi": 0.75,
   "geriyeDonukGun": 1,
