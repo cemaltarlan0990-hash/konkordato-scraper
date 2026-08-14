@@ -277,8 +277,13 @@ class CRMReferans:
                 continue
 
             vkn = vkn_normalize(kayit.get("VKN"))
-            cari = (kayit.get("CariKodu") or kayit.get("Carikodu")
-                    or kayit.get("CARIKODU") or "")
+            cari = ""
+            for anahtar in ("Cari_Kod", "CariKodu", "Carikodu", "CARIKODU",
+                            "Cari Kodu", "cari_kod"):
+                deger = kayit.get(anahtar)
+                    if deger is not None and str(deger).strip():
+                        cari = str(deger).strip()
+                        break
             satir = {
                 "orijinal": gosterilecek,
                 "vkn": vkn,
