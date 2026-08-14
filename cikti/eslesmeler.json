@@ -1,6 +1,6 @@
 {
-  "uretimZamani": "2026-08-14T07:50:35.531870+00:00",
-  "crmKayitSayisi": 15088,
+  "uretimZamani": "2026-08-14T08:00:20.819734+00:00",
+  "crmKayitSayisi": 14083,
   "katlama": true,
   "toplamUnvan": 27,
   "ozet": {
@@ -28,8 +28,8 @@
       "7970337125"
     ],
     "unvaniCikarilamayanIlan": 2,
-    "crmVknDoluKayit": 6391,
-    "crmVknBosKayit": 8697
+    "crmVknDoluKayit": 6101,
+    "crmVknBosKayit": 7982
   },
   "reviewEsigi": 0.75,
   "geriyeDonukGun": 1,
