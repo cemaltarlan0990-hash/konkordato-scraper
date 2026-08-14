@@ -1,21 +1,22 @@
 {
-  "uretimZamani": "2026-08-14T05:19:35.532664+00:00",
+  "uretimZamani": "2026-08-14T06:19:39.280185+00:00",
   "crmKayitSayisi": 15088,
   "katlama": true,
-  "toplamUnvan": 26,
+  "toplamUnvan": 27,
   "ozet": {
     "match": 0,
     "review": 0,
-    "noMatch": 26
+    "noMatch": 27
   },
   "vknEslesmeleri": [],
   "isimEslesmeleri": [],
   "incelenecekler": [],
   "teshis": {
     "ilandanCikarilanVknCifti": 3,
-    "ilandanCikarilanSerbestVkn": 7,
+    "ilandanCikarilanSerbestVkn": 8,
     "crmdeBulunanVkn": 0,
     "crmdeBulunmayanVknOrnekleri": [
+      "5760506202",
       "3960031053",
       "6221489427",
       "8720024804",
@@ -24,16 +25,15 @@
       "2520692688",
       "1460783380",
       "6470353209",
-      "3280837682",
-      "7970337125"
+      "3280837682"
     ],
-    "unvaniCikarilamayanIlan": 1,
+    "unvaniCikarilamayanIlan": 2,
     "crmVknDoluKayit": 6391,
     "crmVknBosKayit": 8697
   },
   "reviewEsigi": 0.75,
   "geriyeDonukGun": 1,
-  "ilanSayisi": 17,
+  "ilanSayisi": 19,
   "mailGonderilsinMi": false,
   "mailKonusu": "",
   "mailHtml": ""
