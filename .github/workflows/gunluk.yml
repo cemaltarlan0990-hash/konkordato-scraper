@@ -6,6 +6,13 @@ on:
     # GitHub cron'u yogun anlarda 5-15 dk gecikebilir; PA'nin okuma
     # saatini bundan en az yarim saat sonraya koy.
     - cron: '30 6 * * *'
+
+  # PA bu tetiklemeyi gonderir: POST /repos/{owner}/{repo}/dispatches
+  # Govde: {"event_type": "gunluk_tarama"}
+  # PA istege bagli olarak client_payload ile parametre gecebilir.
+  repository_dispatch:
+    types: [gunluk_tarama]
+
   workflow_dispatch:
     inputs:
       geriye_donuk_gun:
@@ -16,9 +23,6 @@ on:
         description: 'Kismi eslesme esigi (0.75 = 3/4 ve ustu)'
         required: false
         default: '0.75'
-  push:
-    paths:
-      - 'data/crm_referans.csv'
 
 permissions:
   contents: write
@@ -46,7 +50,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      
+
       - name: Testleri calistir
         run: python tests/test_suite.py
 
@@ -66,8 +70,8 @@ jobs:
 
       - name: Taramayi calistir
         env:
-          GERIYE_DONUK_GUN: ${{ github.event.inputs.geriye_donuk_gun || '1' }}
-          REVIEW_ESIGI: ${{ github.event.inputs.review_esigi || '0.75' }}
+          GERIYE_DONUK_GUN: ${{ github.event.inputs.geriye_donuk_gun || github.event.client_payload.geriye_donuk_gun || '1' }}
+          REVIEW_ESIGI: ${{ github.event.inputs.review_esigi || github.event.client_payload.review_esigi || '0.75' }}
           CRM_YOLU: data/crm_referans.csv
           CIKTI_YOLU: cikti/eslesmeler.json
         run: python src/main.py
@@ -78,7 +82,7 @@ jobs:
           git config user.email "actions@github.com"
           git add cikti/eslesmeler.json
           if git diff --staged --quiet; then
-            echo "Degisiklik yok, commit atlanıyor."
+            echo "Degisiklik yok, commit atlaniyor."
             exit 0
           fi
           git commit -m "Tarama sonucu: $(date -u '+%Y-%m-%d %H:%M UTC')"
