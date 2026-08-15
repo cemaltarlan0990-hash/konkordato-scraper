@@ -2,21 +2,36 @@ name: Gunluk konkordato taramasi
 
 on:
   # PA bu tetiklemeyi gonderir: POST /repos/{owner}/{repo}/dispatches
-  # Govde: {"event_type": "gunluk_tarama"}
-  # PA istege bagli olarak client_payload ile parametre gecebilir.
+  # Govde ornegi:
+  #   {"event_type": "gunluk_tarama",
+  #    "client_payload": {"geriye_donuk_gun": "5", "review_esigi": "0.80"}}
+  # client_payload gonderilmezse asagidaki statik varsayilanlar kullanilir.
   repository_dispatch:
     types: [gunluk_tarama]
 
+  # Actions sekmesi > Run workflow ile elle calistirma.
+  # Kutulari bos birakirsan statik varsayilan devreye girer.
   workflow_dispatch:
     inputs:
       geriye_donuk_gun:
-        description: 'Kac gun geriye bakilsin (1 = sadece bugun)'
+        description: 'Kac gun geriye bakilsin (0 = sadece bugun, 1 = bugun + dun)'
         required: false
-        default: '1'
+        type: string
+        default: ''
       review_esigi:
         description: 'Kismi eslesme esigi (0.75 = 3/4 ve ustu)'
         required: false
-        default: '0.75'
+        type: string
+        default: ''
+
+# ---------------------------------------------------------------
+# STATIK VARSAYILANLAR
+# Kalici degisiklik icin sadece burayi duzenle.
+# Elle calistirma ve PA client_payload bunlari gecici olarak ezer.
+# ---------------------------------------------------------------
+env:
+  VARSAYILAN_GERIYE_DONUK_GUN: '1'
+  VARSAYILAN_REVIEW_ESIGI: '0.75'
 
 permissions:
   contents: write
@@ -33,6 +48,52 @@ jobs:
     steps:
       - name: Depoyu klonla
         uses: actions/checkout@v4
+
+      - name: Parametreleri coz
+        id: parametre
+        env:
+          GIRDI_GUN: ${{ github.event.inputs.geriye_donuk_gun }}
+          PAYLOAD_GUN: ${{ github.event.client_payload.geriye_donuk_gun }}
+          GIRDI_ESIK: ${{ github.event.inputs.review_esigi }}
+          PAYLOAD_ESIK: ${{ github.event.client_payload.review_esigi }}
+        run: |
+          # Oncelik: elle girdi > PA client_payload > statik varsayilan.
+          # Bos string kontrolu bash'te yapiliyor; GitHub ifadelerindeki
+          # || operatoru bos stringi guvenilir sekilde elemiyor.
+          if [ -n "$GIRDI_GUN" ]; then
+            gun="$GIRDI_GUN"; gun_kaynak="elle girdi"
+          elif [ -n "$PAYLOAD_GUN" ]; then
+            gun="$PAYLOAD_GUN"; gun_kaynak="PA client_payload"
+          else
+            gun="$VARSAYILAN_GERIYE_DONUK_GUN"; gun_kaynak="statik varsayilan"
+          fi
+
+          if [ -n "$GIRDI_ESIK" ]; then
+            esik="$GIRDI_ESIK"; esik_kaynak="elle girdi"
+          elif [ -n "$PAYLOAD_ESIK" ]; then
+            esik="$PAYLOAD_ESIK"; esik_kaynak="PA client_payload"
+          else
+            esik="$VARSAYILAN_REVIEW_ESIGI"; esik_kaynak="statik varsayilan"
+          fi
+
+          # Bozuk deger sessizce varsayilana dusmemeli, calismayi durdurmali.
+          case "$gun" in
+            ''|*[!0-9]*)
+              echo "HATA: geriye_donuk_gun tam sayi olmali, gelen: '$gun'"
+              exit 1 ;;
+          esac
+          case "$esik" in
+            ''|*[!0-9.]*|*.*.*)
+              echo "HATA: review_esigi ondalik sayi olmali, gelen: '$esik'"
+              exit 1 ;;
+          esac
+
+          echo "gun=$gun" >> "$GITHUB_OUTPUT"
+          echo "esik=$esik" >> "$GITHUB_OUTPUT"
+
+          echo "Tetikleyici       : ${{ github.event_name }}"
+          echo "geriye_donuk_gun  : $gun  ($gun_kaynak)"
+          echo "review_esigi      : $esik  ($esik_kaynak)"
 
       - name: Python kur
         uses: actions/setup-python@v5
@@ -64,8 +125,8 @@ jobs:
 
       - name: Taramayi calistir
         env:
-          GERIYE_DONUK_GUN: ${{ github.event.inputs.geriye_donuk_gun || github.event.client_payload.geriye_donuk_gun || '1' }}
-          REVIEW_ESIGI: ${{ github.event.inputs.review_esigi || github.event.client_payload.review_esigi || '0.75' }}
+          GERIYE_DONUK_GUN: ${{ steps.parametre.outputs.gun }}
+          REVIEW_ESIGI: ${{ steps.parametre.outputs.esik }}
           CRM_YOLU: data/crm_referans.csv
           CIKTI_YOLU: cikti/eslesmeler.json
         run: python src/main.py
