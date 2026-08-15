@@ -1,12 +1,6 @@
 name: Gunluk konkordato taramasi
 
 on:
-  schedule:
-    # UTC. 06:30 UTC = 09:30 TR (yaz/kis fark etmez, TR sabit UTC+3).
-    # GitHub cron'u yogun anlarda 5-15 dk gecikebilir; PA'nin okuma
-    # saatini bundan en az yarim saat sonraya koy.
-    - cron: '30 6 * * *'
-
   # PA bu tetiklemeyi gonderir: POST /repos/{owner}/{repo}/dispatches
   # Govde: {"event_type": "gunluk_tarama"}
   # PA istege bagli olarak client_payload ile parametre gecebilir.
