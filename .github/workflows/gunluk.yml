@@ -30,7 +30,7 @@ on:
 # Elle calistirma ve PA client_payload bunlari gecici olarak ezer.
 # ---------------------------------------------------------------
 env:
-  VARSAYILAN_GERIYE_DONUK_GUN: '1'
+  VARSAYILAN_GERIYE_DONUK_GUN: '3'
   VARSAYILAN_REVIEW_ESIGI: '0.75'
 
 permissions:
