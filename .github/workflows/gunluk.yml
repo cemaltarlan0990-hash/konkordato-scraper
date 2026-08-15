@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       geriye_donuk_gun:
-        description: 'Kac gun geriye bakilsin (0 = sadece bugun)'
+        description: 'Kac gun geriye bakilsin (1 = sadece bugun)'
         required: false
         default: '1'
       review_esigi:
