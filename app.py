@@ -1,66 +1,82 @@
-from flask import Flask, jsonify, request
+"""
+Azure App Service giris noktasi.
+
+PA bu endpoint'lere HTTP istegi atar; sonuc dogrudan cevap govdesinde doner,
+dosyaya yazilmaz. Boylece eski Do Until / polling zinciri gerekmez.
+"""
+
+import os
+import sys
+import time
+import traceback
 from datetime import datetime, timezone
+
+from flask import Flask, jsonify, request
+
+# src/ klasorunu import yoluna ekle - main.py "import matcher" diyor,
+# yani src icinden calisiyormus gibi davranmali.
+KOK = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(KOK, "src"))
+
+import main as tarayici  # noqa: E402
 
 app = Flask(__name__)
 
-# Bellekte tutulan sahte "CRM verisi". Gercekte bu Blob Storage'dan okunacak.
-crm_kayitlari = []
+CRM_YOLU = os.environ.get("CRM_YOLU", os.path.join(KOK, "data", "crm_referans.csv"))
 
 
 @app.route("/")
 def saglik():
-    """Uygulamanin ayakta oldugunu gormek icin. Tarayicidan acilir."""
+    """Uygulama ayakta mi, CRM dosyasi yerinde mi."""
+    var = os.path.exists(CRM_YOLU)
     return jsonify({
         "durum": "calisiyor",
         "zaman": datetime.now(timezone.utc).isoformat(),
-        "crmKayitSayisi": len(crm_kayitlari)
+        "crmDosyasi": CRM_YOLU,
+        "crmDosyasiVar": var,
+        "crmBoyutBayt": os.path.getsize(CRM_YOLU) if var else 0,
     })
-
-
-@app.route("/crm-guncelle", methods=["POST"])
-def crm_guncelle():
-    """PA buraya ham CRM kayitlarini POST eder. Azure temizler ve saklar."""
-    gelen = request.get_json(silent=True) or {}
-    kayitlar = gelen.get("kayitlar", [])
-
-    temiz = []
-    for k in kayitlar:
-        isim = (k.get("name") or "").strip()
-        vkn = (k.get("twbs_vergino") or "").strip()
-        if not isim:
-            continue
-        temiz.append({"isim": isim, "vkn": vkn.zfill(10) if vkn else ""})
-
-    crm_kayitlari.clear()
-    crm_kayitlari.extend(temiz)
-
-    return jsonify({"alinan": len(kayitlar), "kaydedilen": len(temiz)})
 
 
 @app.route("/tara")
 def tara():
-    """PA buraya GET atar. Cevabi dogrudan JSON olarak alir, dosya yok."""
-    # Gercekte: scraper.py calisir, matcher.py eslestirir.
-    # Simdilik sahte bir eslesme uretiyoruz.
-    eslesmeler = [{"ilanFirma": "ORNEK GIDA SAN TIC AS", "crmFirma": "ORNEK GIDA"}]
+    """
+    Tarama + eslestirme. PA'nin kullandigi 3 alani doner.
 
-    if not eslesmeler:
+    ?gun=N  ile geriye donuk pencere degistirilebilir (varsayilan: 1).
+    ?tam=1  ile teshis dahil tam cikti doner (elle inceleme icin).
+    """
+    baslangic = time.time()
+    try:
+        gun = int(request.args.get("gun", "1"))
+    except ValueError:
+        return jsonify({"hata": "gun sayisal olmali"}), 400
+
+    try:
+        cikti = tarayici.tarama_yap(crm_yolu=CRM_YOLU, geriye_donuk_gun=gun)
+    except Exception as hata:
+        # Sessiz basarisizlik yok: PA 500 gorursa uyari maili atabilir.
+        traceback.print_exc()
         return jsonify({
+            "hata": str(hata),
             "mailGonderilsinMi": False,
             "mailKonusu": "",
-            "mailHtml": ""
-        })
+            "mailHtml": "",
+        }), 500
 
-    satirlar = "".join(
-        f"<tr><td>{e['ilanFirma']}</td><td>{e['crmFirma']}</td></tr>"
-        for e in eslesmeler
-    )
-    html = f"<table border='1'><tr><th>Ilan</th><th>CRM</th></tr>{satirlar}</table>"
+    sure = round(time.time() - baslangic, 1)
+    print("[tara] %s sn surdu, %d ilan" % (sure, cikti.get("ilanSayisi", 0)),
+          flush=True)
+
+    if request.args.get("tam") == "1":
+        cikti["sureSaniye"] = sure
+        return jsonify(cikti)
 
     return jsonify({
-        "mailGonderilsinMi": True,
-        "mailKonusu": f"Konkordato: {len(eslesmeler)} eslesme",
-        "mailHtml": html
+        "mailGonderilsinMi": cikti["mailGonderilsinMi"],
+        "mailKonusu": cikti["mailKonusu"],
+        "mailHtml": cikti["mailHtml"],
+        "sureSaniye": sure,
     })
 
 
