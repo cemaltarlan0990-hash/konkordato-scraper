@@ -18,7 +18,15 @@ from flask import Flask, jsonify, request
 KOK = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(KOK, "src"))
 
-import main as tarayici  # noqa: E402
+# DIKKAT: duz "import main" baska bir main modulunu bulabiliyor.
+# Dosyayi yolundan dogrudan yukluyoruz - hangi dosyanin calistigi kesin.
+import importlib.util  # noqa: E402
+
+MAIN_YOLU = os.path.join(KOK, "src", "main.py")
+_spec = importlib.util.spec_from_file_location("konkordato_main", MAIN_YOLU)
+tarayici = importlib.util.module_from_spec(_spec)
+sys.modules["konkordato_main"] = tarayici
+_spec.loader.exec_module(tarayici)
 
 app = Flask(__name__)
 
@@ -35,6 +43,23 @@ def saglik():
         "crmDosyasi": CRM_YOLU,
         "crmDosyasiVar": var,
         "crmBoyutBayt": os.path.getsize(CRM_YOLU) if var else 0,
+    })
+
+
+@app.route("/teshis")
+def teshis():
+    """Hangi dosyalarin yuklendigini gosterir - dagitim dogrulamasi icin."""
+    return jsonify({
+        "kok": KOK,
+        "mainYolu": MAIN_YOLU,
+        "mainVar": os.path.exists(MAIN_YOLU),
+        "taramaYapVar": hasattr(tarayici, "tarama_yap"),
+        "mainFonksiyonlari": sorted(
+            a for a in dir(tarayici) if not a.startswith("_")
+        ),
+        "kokDosyalari": sorted(os.listdir(KOK)),
+        "srcDosyalari": sorted(os.listdir(os.path.join(KOK, "src")))
+        if os.path.isdir(os.path.join(KOK, "src")) else [],
     })
 
 
