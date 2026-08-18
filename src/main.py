@@ -53,6 +53,66 @@ def esik_uygula(sonuclar, esik):
     return sonuclar
 
 
+def tarama_yap(crm_yolu=None, geriye_donuk_gun=None, review_esigi=None):
+    """
+    Taramayi calistirir ve cikti sozlugunu DONDURUR - dosyaya yazmaz.
+
+    Azure'daki app.py bunu cagirir ve sonucu dogrudan HTTP cevabinda verir.
+    main() de bunu cagirir, sadece ek olarak dosyaya yazar.
+
+    Hata durumunda RuntimeError firlatir. Sessiz basarisizlik yok: "0 ilan"
+    diye yesil bitmek en tehlikeli senaryo.
+    """
+    crm_yolu = crm_yolu or CRM_YOLU
+    geriye_donuk_gun = (geriye_donuk_gun if geriye_donuk_gun is not None
+                        else GERIYE_DONUK_GUN)
+    review_esigi = (review_esigi if review_esigi is not None
+                    else REVIEW_ESIGI)
+
+    log("CRM referansi okunuyor: %s" % crm_yolu)
+    if not os.path.exists(crm_yolu):
+        raise RuntimeError("CRM referans dosyasi bulunamadi: %s" % crm_yolu)
+
+    try:
+        referans = matcher.CRMReferans(matcher.crm_oku(crm_yolu))
+        referans.dogrula()
+    except ValueError as hata:
+        raise RuntimeError("CRM referansi gecersiz: %s" % hata)
+
+    log("%d CRM kaydi yuklendi (katlama=%s)"
+        % (len(referans), matcher.KATLAMA))
+
+    cari_dolu = referans.cari_kod_sayisi()
+    if cari_dolu == 0:
+        log("UYARI: Hicbir cari kod okunamadi. Beklenen adlar: %s"
+            % ", ".join(matcher.CARI_KOD_ANAHTARLARI))
+
+    log("Ilanlar cekiliyor (son %d gun)" % geriye_donuk_gun)
+    ilanlar = ilanlari_cek(geriye_donuk_gun)
+    log("%d ilan alindi" % len(ilanlar))
+
+    sonuclar = matcher.ilanlari_isle(referans, ilanlar)
+    sonuclar = esik_uygula(sonuclar, review_esigi)
+    log("%d unvan islendi" % len(sonuclar))
+
+    cikti = matcher.cikti_uret(sonuclar, crm_kayit_sayisi=len(referans))
+    cikti["teshis"] = matcher.teshis_uret(ilanlar, referans)
+
+    # DIKKAT: bu alanlar mail uretiminden ONCE atanmali - rapor.py
+    # tarih satirinda geriyeDonukGun'u kullaniyor.
+    cikti["reviewEsigi"] = review_esigi
+    cikti["geriyeDonukGun"] = geriye_donuk_gun
+    cikti["ilanSayisi"] = len(ilanlar)
+
+    mail_html = rapor.mail_html_uret(cikti)
+    cikti["mailGonderilsinMi"] = mail_html is not None
+    cikti["mailKonusu"] = rapor.mail_konusu(cikti) if mail_html else ""
+    cikti["mailHtml"] = mail_html or ""
+    cikti["uretimZamani"] = datetime.now(timezone.utc).isoformat()
+
+    return cikti
+
+
 def main():
     log("CRM referansi okunuyor: %s" % CRM_YOLU)
     if not os.path.exists(CRM_YOLU):
