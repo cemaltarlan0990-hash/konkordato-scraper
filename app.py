@@ -1,16 +1,13 @@
 """
 Azure App Service giris noktasi.
-
 PA bu endpoint'lere HTTP istegi atar; sonuc dogrudan cevap govdesinde doner,
 dosyaya yazilmaz. Boylece eski Do Until / polling zinciri gerekmez.
 """
-
 import os
 import sys
 import time
 import traceback
 from datetime import datetime, timezone
-from flask import request, jsonify
 from flask import Flask, jsonify, request
 
 # src/ klasorunu import yoluna ekle - main.py "import matcher" diyor,
@@ -31,6 +28,37 @@ _spec.loader.exec_module(tarayici)
 app = Flask(__name__)
 
 CRM_YOLU = os.environ.get("CRM_YOLU", os.path.join(KOK, "data", "crm_referans.csv"))
+
+# --- Anahtar kontrolu ---------------------------------------------------
+# Sadece asagidaki yollar kilitli. "/" ve "/teshis" acik kalir ki
+# tarayicidan saglik ve dagitim kontrolu yapilabilsin.
+KORUMALI_YOLLAR = {"/tara", "/crm-guncelle"}
+ANAHTAR_BASLIGI = "X-CRM-Anahtar"
+
+
+@app.before_request
+def anahtar_kontrolu():
+    """Korumali yollarda gelen istegin anahtarini dogrular."""
+    if request.path not in KORUMALI_YOLLAR:
+        return None
+
+    beklenen = os.environ.get("CRM_ANAHTAR", "").strip()
+    if not beklenen:
+        # Ortam degiskeni tanimli degil -> eski davranis surer.
+        return None
+
+    gelen = (request.headers.get(ANAHTAR_BASLIGI) or "").strip()
+    if gelen != beklenen:
+        print("[guvenlik] Yetkisiz istek: %s" % request.path, flush=True)
+        return jsonify({
+            "hata": "Yetkisiz istek",
+            "mailGonderilsinMi": False,
+            "mailKonusu": "",
+            "mailHtml": "",
+        }), 401
+
+    return None
+# ------------------------------------------------------------------------
 
 
 @app.route("/")
@@ -54,6 +82,7 @@ def teshis():
         "mainYolu": MAIN_YOLU,
         "mainVar": os.path.exists(MAIN_YOLU),
         "taramaYapVar": hasattr(tarayici, "tarama_yap"),
+        "anahtarTanimli": bool(os.environ.get("CRM_ANAHTAR", "").strip()),
         "mainFonksiyonlari": sorted(
             a for a in dir(tarayici) if not a.startswith("_")
         ),
@@ -67,11 +96,11 @@ def teshis():
 def tara():
     """
     Tarama + eslestirme. PA'nin kullandigi 3 alani doner.
-
     ?gun=N  ile geriye donuk pencere degistirilebilir (varsayilan: 1).
     ?tam=1  ile teshis dahil tam cikti doner (elle inceleme icin).
     """
     baslangic = time.time()
+
     try:
         gun = int(request.args.get("gun", "1"))
     except ValueError:
