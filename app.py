@@ -10,7 +10,7 @@ import sys
 import time
 import traceback
 from datetime import datetime, timezone
-
+from flask import request, jsonify
 from flask import Flask, jsonify, request
 
 # src/ klasorunu import yoluna ekle - main.py "import matcher" diyor,
