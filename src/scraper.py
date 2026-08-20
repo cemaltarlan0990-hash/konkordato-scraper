@@ -13,6 +13,7 @@ Eski surumden farklar:
 
 import re
 import json
+import unicodedata
 import requests
 import urllib3
 from datetime import datetime, timedelta, timezone
@@ -52,10 +53,32 @@ DETAY_URL = "https://www.ilan.gov.tr/api/api/services/app/AdDetail/GetAdDetail"
 # METIN
 # ---------------------------------------------------------------------------
 
+def metin_normalize(metin):
+    """Unicode kodlama varyantlarini tek bicime indirger.
+
+    SORUN: Turkce harfler iki farkli sekilde kodlanabiliyor. "Ş" ya tek
+    karakterdir (U+015E) ya da "S" + COMBINING CEDILLA (U+0327). Ekranda
+    ikisi de AYNI gorunur, string olarak farklidir. Desenler tek karakterli
+    bicimi bekledigi icin, ayrik kodlanmis ilanlarda HIC unvan cikmiyor -
+    ilan tamamen gorunmez oluyor. Ayni durum Ç, Ğ, Ö, Ü, İ icin de gecerli.
+
+    NFC bu varyantlari birlestirir. AMA cift nokta bozuklugunu
+    (dogru olusmus İ + FAZLADAN U+0307) cozmez - onu acikca silmek
+    gerekir. matcher.py ayni temizligi CRM tarafina uyguluyor; iki taraf
+    ayni bicimden gecmezse eslestirme sessizce basarisiz olur.
+    """
+    if not metin:
+        return ""
+    metin = metin.replace("\u0130\u0307", "\u0130")
+    metin = metin.replace("\u0049\u0307", "\u0130")
+    return unicodedata.normalize("NFC", metin)
+
+
 def clean_html(content):
     text = re.sub(r"&nbsp;", " ", content or "")
     text = re.sub(r"<[^>]+>", " ", text)
-    return re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"\s+", " ", text).strip()
+    return metin_normalize(text)
 
 
 # ---------------------------------------------------------------------------
