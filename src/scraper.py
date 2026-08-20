@@ -88,15 +88,52 @@ def gecerli_vkn(vkn):
 
 HARF = "A-Za-zÇĞİÖŞÜçğıöşüÂÎÛâîû"
 
+# Turkce <-> Latin karakter katlamasi.
+# ZORUNLU: ilan metinlerinin bir kismi Turkce karaktersiz yaziliyor
+# ("Anonim Sirketi", "Ltd. Sti", "A.S."). Desen sadece Turkce harfleri
+# bekledigi icin bu ilanlarda HIC unvan cikmiyordu - ilan tamamen
+# gorunmez oluyordu. (?i:) bayragi bunu COZMEZ: o sadece buyuk/kucuk
+# harf farkini kapsar, Ş ile S ayri harflerdir.
+_KATLAMA_SINIFLARI = {
+    "İ": "İIıi", "I": "İIıi", "ı": "İIıi", "i": "İIıi",
+    "Ş": "ŞşSs", "ş": "ŞşSs", "S": "ŞşSs", "s": "ŞşSs",
+    "Ğ": "ĞğGg", "ğ": "ĞğGg", "G": "ĞğGg", "g": "ĞğGg",
+    "Ç": "ÇçCc", "ç": "ÇçCc", "C": "ÇçCc", "c": "ÇçCc",
+    "Ö": "ÖöOo", "ö": "ÖöOo", "O": "ÖöOo", "o": "ÖöOo",
+    "Ü": "ÜüUu", "ü": "ÜüUu", "U": "ÜüUu", "u": "ÜüUu",
+}
+
+
+def _esnek(kelime):
+    """Duz bir kelimeyi Turkce/Latin katlamali desene cevirir.
+
+    "ŞİRKETİ" -> "[ŞşSs][İIıi]RKET[İIıi]"
+    Sadece harflere dokunur; regex meta karakterleri escape edilir.
+    """
+    parcalar = []
+    for ch in kelime:
+        sinif = _KATLAMA_SINIFLARI.get(ch)
+        parcalar.append("[" + sinif + "]" if sinif else re.escape(ch))
+    return "".join(parcalar)
+
+
 SIRKET_EKLERI = (
-    r"ANONİM\s+ŞİRKETİ|"
-    r"LİMİTED\s+ŞİRKETİ|"
-    r"KOLLEKTİF\s+ŞİRKETİ|"
-    r"KOMANDİT\s+ŞİRKETİ|"
-    r"ADİ\s+ORTAKLIĞI|"
-    r"KOOPERATİFİ|"
-    r"(?<![" + HARF + r"])LTD\.?\s?ŞTİ\.?|"
-    r"(?<![" + HARF + r"])A\.?\s?Ş\.?(?![" + HARF + r"])"
+    _esnek("ANONİM") + r"\s+" + _esnek("ŞİRKETİ") + r"|" +
+    _esnek("LİMİTED") + r"\s+" + _esnek("ŞİRKETİ") + r"|" +
+    _esnek("KOLLEKTİF") + r"\s+" + _esnek("ŞİRKETİ") + r"|" +
+    _esnek("KOMANDİT") + r"\s+" + _esnek("ŞİRKETİ") + r"|" +
+    _esnek("ADİ") + r"\s+" + _esnek("ORTAKLIĞI") + r"|" +
+    _esnek("KOOPERATİFİ") + r"|" +
+    r"(?<![" + HARF + r"])" + _esnek("LTD") + r"\.?\s?"
+    + _esnek("ŞTİ") + r"\.?|" +
+    # A.Ş. / A.S.
+    # DIKKAT: Latin "S" varyantinda NOKTA ZORUNLU. Noktasiz "AS" gercek
+    # bir Turkce kelime ("Alacaklilarin AS BANKASI subesine") ve desen
+    # onu unvan sanip cop uretiyordu. Turkce "Ş" varyantinda nokta
+    # opsiyonel kalir - mevcut davranis korunur.
+    r"(?<![" + HARF + r"])"
+    r"(?:A\.?\s?[Şş]\.?|A\.\s?[Ss]\.?|A\s?[Ss]\.)"
+    r"(?![" + HARF + r"])"
 )
 
 # (?i:...) kapsamli bayrak: SADECE sirket eki kismi buyuk/kucuk harf
@@ -139,12 +176,9 @@ CUMLE_BAGLACI = [
     "ALACAKLI", "ALACAKLISI",
 ]
 
-BITIS_KONTROL = re.compile(
-    r"(?:ANONİM\s+ŞİRKETİ|LİMİTED\s+ŞİRKETİ|KOLLEKTİF\s+ŞİRKETİ|"
-    r"KOMANDİT\s+ŞİRKETİ|ADİ\s+ORTAKLIĞI|KOOPERATİFİ|"
-    r"LTD\.?\s?ŞTİ\.?|A\.?\s?Ş\.?)$",
-    re.IGNORECASE,
-)
+# SIRKET_EKLERI ile AYNI listeden uretilir - ikisi ayrisirsa desen
+# unvani yakalar ama gecerlilik kontrolu eler, unvan sessizce kaybolur.
+BITIS_KONTROL = re.compile(r"(?:" + SIRKET_EKLERI + r")$", re.IGNORECASE)
 
 YASAK_KELIMELER = [
     "MAHKEMES", "KOMİSER", "KOMISER", "İCRA", "ICRA",
