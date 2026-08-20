@@ -111,7 +111,11 @@ UNVAN_DESENI = re.compile(
 )
 
 SINIR = re.compile(
-    r".*(?:MAHKEMESİ|MAHKEMESI|HAKİMLİĞİ|BAŞKANLIĞI|MÜDÜRLÜĞÜ|"
+    # \b ZORUNLU: bu desenler kelime ICINDE de eslesebiliyor.
+    # Gercek ornek: "ABC TEKSTİL ANONİM ŞİRKETİ" -> "TEKSTİL ANONİM"
+    # icindeki "İL AN" harfleri "İ L A N" baslik desenini tetikliyor ve
+    # unvanin basi kesiliyordu.
+    r".*\b(?:MAHKEMESİ|MAHKEMESI|HAKİMLİĞİ|BAŞKANLIĞI|MÜDÜRLÜĞÜ|"
     r"DAVACI|DAVALI|BORÇLU|BORCLU|DAVACISI|KOMİSER|KOMISER|"
     r"VERGİ\s*NO(?:LU|SU)?|VERGI\s*NO(?:LU|SU)?|"
     r"İ\s*L\s*A\s*N|ESAS|SAYILI|DOSYA(?:SI)?|"
@@ -122,7 +126,7 @@ SINIR = re.compile(
     # unvanin basinda kaliyor ve kademeli aramada ilk kelime tutmuyor.
     r"KAYITLI|KAYİTLI|SİCİLİNDE|SICILINDE|SİCİL\s*NUMARASINDA|"
     r"TESCİLLİ|TESCILLI|"
-    r":)\s*",
+    r":)[\u2019']?[a-zçğıöşü]*\s*",
     re.IGNORECASE,
 )
 
@@ -149,10 +153,12 @@ YASAK_KELIMELER = [
 ]
 
 # Unvanin basinda kalabilen tek harflik scraping artigi.
-# Gercek ornek: "I ATABAY KİDS TEKSTİL ..." -> bastaki I kaldirilmali,
-# yoksa kademeli aramada ilk kelime eslesmesi bozulur.
-# Kisaltma noktali gelir (A.Ş.), bu yuzden noktasiz tek harf artiktir.
-BASTA_TEK_HARF = re.compile(r"^(?:[A-ZÇĞİÖŞÜ](?!\.)\s+){1,2}")
+# Gercek ornek: "I ATABAY KİDS TEKSTİL ..." -> bastaki I kaldirilmali.
+# Bu artik "İLAN" basligindan kaliyor, bu yuzden SADECE I/İ silinir.
+# ONCEDEN: her tek harf, 2 taneye kadar siliniyordu. Bu gercek unvanlari
+# kesiyordu ("S TEKSTİL SANAYİ..." -> "TEKSTİL SANAYİ..."), marka adi
+# kayboldugu icin CRM'de bulunamiyordu.
+BASTA_TEK_HARF = re.compile(r"^[Iİ](?!\.)\s+")
 
 
 # Hukuki ek ve jenerik kuyruk kelimeleri - "anlamli kelime" sayarken haric
@@ -191,22 +197,44 @@ def _anlamli_kelime_sayisi(metin):
     return sayac
 
 
+_YASAK_SADE = [_sadelestir(k) for k in [
+    "MAHKEMES", "KOMİSER", "İCRA", "TİCARET SİCİL", "BAROSU", "NOTER",
+    "MÜDÜRLÜĞÜ", "BAKANLIĞI", "BAŞKANLIĞI", "AVUKAT", "HAKİMLİĞİ",
+    "DAVACI", "DAVALI", "BORÇLU", "ESAS", "SAYILI", "DOSYA",
+    "HAKKINDA", "ALEYHİNE", "TARAFINDAN", "ÜNVANLI", "KAYITLI",
+    "SİCİLİNDE", "TESCİLLİ", "ADRESİNDE", "MERKEZİ", "NEZDİNDE",
+]]
+
+_EK_DESENI = re.compile(r"(?i:" + SIRKET_EKLERI + r")")
+
+
+def _hukuki_ek_var(metin):
+    """Parcada sirket eki geciyor mu (A.Ş., Ltd. Şti, Anonim Şirketi...)."""
+    return bool(_EK_DESENI.search(metin or ""))
+
+
+def _baglam_mi(metin):
+    """
+    Parca bir firma unvani mi, yoksa cevre metin mi (mahkeme adi, taraf
+    sifati, dosya bilgisi)?  Bolme kararlarinda kullanilir.
+    """
+    if not metin:
+        return False
+    sade = _sadelestir(metin)
+    return any(y in sade for y in _YASAK_SADE)
+
+
 def unvan_temizle(unvan):
-    """Unvanin basindaki mahkeme adi, taraf sifati gibi ekleri temizler."""
+    """Unvanin basindaki mahkeme adi, taraf sifati gibi ekleri temizler.
+
+    SIRA KRITIK: once cevre metin (mahkeme/dosya/taraf ifadeleri) atilir,
+    SONRA bolme kararlari verilir. Ters sirada, regex'in yakaladigi
+    "Esas sayili dosyasi ile Ermetal Otomotiv ve ..." parcasindaki cevre
+    kelimeleri bolme kararini yaniltiyor ve firma adinin basi kesiliyordu.
+    """
     u = re.sub(r"\s+", " ", unvan).strip()
-    if "," in u:
-        u = u.split(",")[-1].strip()
 
-    # Kucuk harfli " ve " genelde ayiractir ("X davaci ve Y A.S.").
-    # AMA firma adinin ortasinda da gecebilir ("Sanayi ve Ticaret A.S.").
-    # Korumasiz bolme gercek veride "Ticaret A.S" gibi cop uretti.
-    # Kural: bolmeden sonra kalan parca, hukuki ek disinda en az 2
-    # anlamli kelime icermiyorsa bolme GERI ALINIR.
-    if " ve " in u:
-        aday = u.split(" ve ")[-1].strip()
-        if _anlamli_kelime_sayisi(aday) >= 2:
-            u = aday
-
+    # --- 1. ASAMA: cevre metni temizle ---
     m = SINIR.match(u)
     if m:
         u = u[m.end():]
@@ -223,6 +251,32 @@ def unvan_temizle(unvan):
         u = re.sub(r"^(?:[a-zçğıöşü]+\s+)+", "", u)
         if u == onceki:
             break
+
+    # --- 2. ASAMA: bolme kararlari (artik elimizde sade unvan var) ---
+
+    # VIRGUL
+    # Onceden: kosulsuz "son parcayi al". Firma adinin ICINDEKI virgulde
+    # de boluyordu: "ABC SANAYİ, TİCARET VE TURİZM A.Ş." -> "TİCARET VE
+    # TURİZM A.Ş." Marka adi kayboldugu icin CRM'de bulunamiyordu.
+    # Yeni kural: sadece virgulden onceki parca cevre metinse bol.
+    if "," in u:
+        sol, _, sag = u.rpartition(",")
+        sol, sag = sol.strip(), sag.strip()
+        if sag and _baglam_mi(sol):
+            u = sag
+
+    # " ve "
+    # Bu baglac iki islevde geciyor:
+    #   (a) iki AYRI firmayi ayirir: "ABC A.Ş. ve XYZ Ltd. Şti."
+    #   (b) TEK firmanin adinin parcasidir: "Ermetal Otomotiv ve Madeni Eşya"
+    # Onceki kural ikisini ayirt edemiyordu; (b)'de ismin basi kesiliyordu.
+    # Ayirt edici: (a)'da SOL parcada da hukuki ek vardir.
+    if " ve " in u:
+        sol, _, sag = u.rpartition(" ve ")
+        sol, sag = sol.strip(), sag.strip()
+        if (_hukuki_ek_var(sol) or _baglam_mi(sol)) and \
+                _anlamli_kelime_sayisi(sag) >= 2:
+            u = sag
 
     u = BASTA_TEK_HARF.sub("", u)
     return u.strip(" .,-:;")
