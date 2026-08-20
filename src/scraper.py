@@ -20,7 +20,19 @@ from datetime import datetime, timedelta, timezone
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 SAYFA_BOYUTU = 20
-MAKS_SAYFA = 30
+
+# Mutlak guvenlik siniri. Sabit 30 sayfa (600 ilan) tavani, genis
+# pencerelerde taramayi SESSIZCE kesiyordu: 90 gunluk tarama ~1100 ilan
+# demek, 600'de duruyor ve hicbir uyari vermiyordu.
+# Artik dongu tarih toleransiyla kendi kendine duruyor; bu sayi sadece
+# sonsuz donguye karsi emniyet supabi.
+MAKS_SAYFA = 500
+
+# Liste yeniden eskiye sirali geliyor. Pencereye giren ilan icermeyen
+# ardisik sayfa sayisi bunu asarsa pencerenin gerisine gectik demektir.
+# Tolerans birakiliyor cunku siralamanin garantisi yok - tek bos sayfada
+# durmak, arada tarihi eksik/bozuk kayit varsa erken kesintiye yol acar.
+BOS_SAYFA_TOLERANSI = 3
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -316,7 +328,12 @@ def esas_no_bul(filtreler):
 # ---------------------------------------------------------------------------
 
 def ilan_listesini_al(geriye_donuk_gun):
-    """Tarih penceresine giren ilan basliklarini toplar."""
+    """Tarih penceresine giren ilan basliklarini toplar.
+
+    Doner: (secilen_ilanlar, pencere_tarihleri)
+    Tavana dayanilirsa RuntimeError firlatir - eksik veriyle "eslesme yok"
+    demek, hic calismamaktan daha tehlikeli.
+    """
     bugun = datetime.now(timezone.utc).date()
     pencere = {
         (bugun - timedelta(days=i)).isoformat()
@@ -325,7 +342,16 @@ def ilan_listesini_al(geriye_donuk_gun):
 
     secilen = {}
     skip = 0
-    for _ in range(MAKS_SAYFA):
+    bos_sayfa = 0
+    sayfa = 0
+    tavana_dayandi = False
+
+    while True:
+        if sayfa >= MAKS_SAYFA:
+            tavana_dayandi = True
+            break
+        sayfa += 1
+
         payload = {"keys": {"txv": [49]}, "skipCount": skip,
                    "maxResultCount": SAYFA_BOYUTU}
         try:
@@ -340,7 +366,8 @@ def ilan_listesini_al(geriye_donuk_gun):
             if not secilen:
                 raise RuntimeError(
                     "ilan.gov.tr liste servisine erisilemedi: %s" % hata)
-            print("UYARI: liste sayfasi alinamadi -> %s" % hata)
+            print("UYARI: liste sayfasi alinamadi (sayfa %d) -> %s"
+                  % (sayfa, hata))
             break
 
         if not ilanlar:
@@ -353,8 +380,23 @@ def ilan_listesini_al(geriye_donuk_gun):
                 uygun += 1
 
         if uygun == 0:
-            break
+            bos_sayfa += 1
+            if bos_sayfa >= BOS_SAYFA_TOLERANSI:
+                break
+        else:
+            bos_sayfa = 0
+
         skip += SAYFA_BOYUTU
+
+    print("Taranan liste sayfasi: %d (%d ilan gorundu)"
+          % (sayfa, skip + SAYFA_BOYUTU if sayfa else 0))
+
+    if tavana_dayandi:
+        raise RuntimeError(
+            "Sayfa tavanina dayanildi (%d sayfa / ~%d ilan). Pencere %d gun. "
+            "Tarama EKSIK olurdu, bu yuzden durduruldu. MAKS_SAYFA artirilmali "
+            "ya da pencere daraltilmali."
+            % (MAKS_SAYFA, MAKS_SAYFA * SAYFA_BOYUTU, geriye_donuk_gun))
 
     return secilen, sorted(pencere)
 
